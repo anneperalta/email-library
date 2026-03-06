@@ -20,11 +20,45 @@
 
     body { background-color: #eff1f4; }
 
+    /* ── Icon colour filters ──────────────────────────────────────── */
     .icon-blue    { filter: invert(26%) sepia(100%) saturate(2500%) hue-rotate(205deg) brightness(88%); }
     .icon-success { filter: invert(27%) sepia(89%) saturate(700%) hue-rotate(121deg) brightness(86%); }  /* #1B7B3E */
     .icon-alert   { filter: invert(68%) sepia(99%) saturate(580%) hue-rotate(0deg) brightness(105%); }   /* #FFAB00 */
     .icon-error   { filter: invert(15%) sepia(100%) saturate(4000%) hue-rotate(353deg) brightness(86%); } /* #D11D1D */
 
+    /* ── Property header ─────────────────────────────────────────── */
+    .property-name    { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 38px; color: #333333; }
+    .property-address { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
+    .contact-phone,
+    .contact-email,
+    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #006ADD; text-decoration: none; }
+
+    /* ── Opening ──────────────────────────────────────────────────── */
+    .opening-salutation,
+    .opening-body     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
+
+    /* ── Status box ───────────────────────────────────────────────── */
+    .status-title        { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 38px; color: #333333; }
+    .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 18px; color: #717171; }
+    .status-amount       { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
+    .status-info         { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
+
+    /* ── Details ──────────────────────────────────────────────────── */
+    .details-title { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 20px; font-weight: 600; line-height: 26px; color: #333333; }
+    .details-label { margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 16px; color: #717171; }
+    .details-value { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
+
+    /* ── Closing ──────────────────────────────────────────────────── */
+    .closing-body { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
+    .closing-sign { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
+    .closing-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 26px; color: #333333; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 700; line-height: 22px; color: #333333; }
+    .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+    .footer-copyright  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
     @media screen and (max-width: 480px) {
       .outer-padding        { padding: 20px 12px !important; }
       .card-body            { padding: 24px 20px 0 20px !important; }
@@ -52,12 +86,12 @@
               <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <h1 class="property-name" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 38px; color: #333333;">{{propertyName}}</h1>
+                    <h1 class="property-name">{{propertyName}}</h1>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 16px;">
-                    <p class="property-address" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333;">{{propertyAddress}}</p>
+                    <p class="property-address">{{propertyAddress}}</p>
                   </td>
                 </tr>
                 <tr>
@@ -65,10 +99,10 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block; filter: invert(26%) sepia(100%) saturate(2500%) hue-rotate(205deg) brightness(88%);" />
+                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
                         </td>
                         <td>
-                          <a class="contact-phone" href="tel:{{propertyPhone}}" style="font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #006ADD; text-decoration: none;">{{propertyPhone}}</a>
+                          <a class="contact-phone" href="tel:{{propertyPhone}}">{{propertyPhone}}</a>
                         </td>
                       </tr>
                     </table>
@@ -79,10 +113,10 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block; filter: invert(26%) sepia(100%) saturate(2500%) hue-rotate(205deg) brightness(88%);" />
+                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
                         </td>
                         <td>
-                          <a class="contact-email" href="mailto:{{propertyEmail}}" style="font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #006ADD; text-decoration: none;">{{propertyEmail}}</a>
+                          <a class="contact-email" href="mailto:{{propertyEmail}}">{{propertyEmail}}</a>
                         </td>
                       </tr>
                     </table>
@@ -93,10 +127,10 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block; filter: invert(26%) sepia(100%) saturate(2500%) hue-rotate(205deg) brightness(88%);" />
+                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
                         </td>
                         <td>
-                          <a class="contact-website" href="{{propertyWebsite}}" style="font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #006ADD; text-decoration: none;">{{propertyWebsite}}</a>
+                          <a class="contact-website" href="{{propertyWebsite}}">{{propertyWebsite}}</a>
                         </td>
                       </tr>
                     </table>
@@ -109,12 +143,12 @@
               <table class="section-opening" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 12px;">
-                    <p class="opening-salutation" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333;">Hi {{guestFirstName}},</p>
+                    <p class="opening-salutation">Hi {{guestFirstName}},</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 40px;">
-                    <p class="opening-body" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333;">[Opening message — explain what this email is about and any attachments.]</p>
+                    <p class="opening-body">[Opening message — explain what this email is about and any attachments.]</p>
                   </td>
                 </tr>
               </table>
@@ -128,7 +162,7 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="padding-bottom: 12px;">
-                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block; filter: invert(27%) sepia(89%) saturate(700%) hue-rotate(121deg) brightness(86%);" />
+                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;" />
                         </td>
                       </tr>
                     </table>
@@ -136,22 +170,22 @@
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="padding-bottom: 24px;">
-                          <h1 class="status-title" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 38px; color: #333333;">[Status title]</h1>
+                          <h1 class="status-title">[Status title]</h1>
                         </td>
                       </tr>
                       <tr>
                         <td style="padding-bottom: 2px;">
-                          <p class="status-amount-label" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 18px; color: #717171;">Total amount paid</p>
+                          <p class="status-amount-label">Total amount paid</p>
                         </td>
                       </tr>
                       <tr>
                         <td style="padding-bottom: 24px;">
-                          <p class="status-amount" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333;">{{currencyCode}} {{amount}}</p>
+                          <p class="status-amount">{{currencyCode}} {{amount}}</p>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          <p class="status-info" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333;">[Additional information here]</p>
+                          <p class="status-info">[Additional information here]</p>
                         </td>
                       </tr>
                     </table>
@@ -165,19 +199,19 @@
               <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 24px;">
-                    <h3 class="details-title" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 20px; font-weight: 600; line-height: 26px; color: #333333;">[Section title]</h3>
+                    <h3 class="details-title">[Section title]</h3>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 14px;">
-                    <p class="details-label" style="margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 16px; color: #717171;">[Label]</p>
-                    <p class="details-value" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333;">[Value]</p>
+                    <p class="details-label">[Label]</p>
+                    <p class="details-value">[Value]</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 24px;">
-                    <p class="details-label" style="margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 16px; color: #717171;">[Label]</p>
-                    <p class="details-value" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333;">[Value]</p>
+                    <p class="details-label">[Label]</p>
+                    <p class="details-value">[Value]</p>
                   </td>
                 </tr>
               </table>
@@ -187,17 +221,17 @@
               <table class="section-closing" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 24px;">
-                    <p class="closing-body" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333;">[Closing message paragraph]</p>
+                    <p class="closing-body">[Closing message paragraph]</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <p class="closing-sign" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333;">Kind regards,</p>
+                    <p class="closing-sign">Kind regards,</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 40px;">
-                    <p class="closing-name" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 26px; color: #333333;">{{propertyName}}</p>
+                    <p class="closing-name">{{propertyName}}</p>
                   </td>
                 </tr>
               </table>
@@ -213,7 +247,7 @@
                           <img class="footer-brand-icon" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
                         </td>
                         <td valign="middle">
-                          <p class="footer-brand-name" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 700; line-height: 22px; color: #333333;">Little Hotelier Pay</p>
+                          <p class="footer-brand-name">Little Hotelier Pay</p>
                         </td>
                       </tr>
                     </table>
@@ -221,12 +255,12 @@
                 </tr>
                 <tr>
                   <td style="padding-bottom: 8px;">
-                    <p class="footer-legal" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333;">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
+                    <p class="footer-legal">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 56px;">
-                    <p class="footer-copyright" style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333;">© SiteMinder 2026.&nbsp; All rights reserved.</p>
+                    <p class="footer-copyright">© SiteMinder 2026.&nbsp; All rights reserved.</p>
                   </td>
                 </tr>
               </table>
