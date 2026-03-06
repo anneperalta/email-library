@@ -74,10 +74,12 @@
       outline: 1.5px dashed rgba(180, 0, 243, 0.6) !important;
       cursor: crosshair !important;
     }
+    .spacing-mode [data-spacing] {
+      outline: 1.5px dashed rgba(243, 0, 180, 0.6) !important;
+      cursor: crosshair !important;
+    }
     #spec-tooltip {
       position: fixed;
-      background: #1a0022;
-      color: #e8b4ff;
       font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
       font-size: 11px;
       line-height: 1.7;
@@ -89,10 +91,23 @@
       white-space: pre;
       box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
     }
-    #spec-toggle {
+    #spec-tooltip.mode-spec {
+      background: #1a0022;
+      color: #e8b4ff;
+    }
+    #spec-tooltip.mode-spacing {
+      background: #220011;
+      color: #ffb4e8;
+    }
+    #spec-controls {
       position: fixed;
       top: 16px;
       right: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 99999;
+    }
+    #spec-controls button {
       background: #333333;
       color: #ffffff;
       border: none;
@@ -102,13 +117,11 @@
       font-family: 'Noto Sans', Arial, sans-serif;
       font-weight: 600;
       cursor: pointer;
-      z-index: 99999;
       letter-spacing: 0.02em;
       box-shadow: 0 2px 8px rgba(0,0,0,0.2);
     }
-    #spec-toggle.active {
-      background: #B400F3;
-    }
+    #spec-toggle.active    { background: #B400F3; }
+    #spacing-toggle.active { background: #F300B4; }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #eff1f4; font-family: 'Noto Sans', Arial, sans-serif; color: #333333;">
@@ -117,30 +130,35 @@
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
       <td class="outer-padding" align="center" valign="top" style="padding: 40px 16px;"
-          data-spec="width: 100%&#10;padding: 40px 16px&#10;(mobile: 20px 12px)">
+          data-spec="width: 100%&#10;padding: 40px 16px&#10;(mobile: 20px 12px)"
+          data-spacing="outer wrapper&#10;padding: 40px 16px&#10;(mobile: 20px 12px)">
 
         <!-- ==================== EMAIL CARD ==================== -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;"
                data-spec="max-width: 734px&#10;background: #ffffff&#10;border-radius: 16px">
           <tr>
             <td class="card-body" style="padding: 56px 56px 0 56px;"
-                data-spec="padding: 56px 56px 0 56px&#10;(mobile: 24px 20px 0 20px)">
+                data-spec="padding: 56px 56px 0 56px&#10;(mobile: 24px 20px 0 20px)"
+                data-spacing="card body&#10;padding: 56px 56px 0 56px&#10;(mobile: 24px 20px 0 20px)">
 
               <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
               <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0"
                      data-spec="section-property&#10;width: 100%">
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="property-name&#10;↓ 4px">
                     <h1 class="property-name">{{propertyName}}</h1>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
+                  <td style="padding-bottom: 16px;"
+                      data-spacing="property-address&#10;↓ 16px">
                     <p class="property-address">{{propertyAddress}}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="contact-phone row&#10;↓ 4px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
@@ -155,7 +173,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="contact-email row&#10;↓ 4px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
@@ -170,7 +189,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 40px;">
+                  <td style="padding-bottom: 40px;"
+                      data-spacing="contact-website row&#10;↓ 40px (section gap)">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
@@ -191,12 +211,14 @@
               <table class="section-opening" width="100%" cellpadding="0" cellspacing="0" border="0"
                      data-spec="section-opening&#10;width: 100%">
                 <tr>
-                  <td style="padding-bottom: 12px;">
+                  <td style="padding-bottom: 12px;"
+                      data-spacing="salutation&#10;↓ 12px">
                     <p class="opening-salutation">Hi {{guestFirstName}},</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 40px;">
+                  <td style="padding-bottom: 40px;"
+                      data-spacing="opening body&#10;↓ 40px (section gap)">
                     <p class="opening-body">[Opening message — explain what this email is about and any attachments.]</p>
                   </td>
                 </tr>
@@ -205,14 +227,17 @@
 
               <!-- ==================== SECTION: STATUS BOX ==================== -->
               <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;"
-                     data-spec="section-status&#10;width: 100%&#10;background: #f7f8fa&#10;border-radius: 10px&#10;margin-bottom: 40px">
+                     data-spec="section-status&#10;width: 100%&#10;background: #f7f8fa&#10;border-radius: 10px&#10;margin-bottom: 40px"
+                     data-spacing="section-status&#10;margin-bottom: 40px (section gap)">
                 <tr>
                   <td class="status-box-inner" style="padding: 35px;"
-                      data-spec="padding: 35px&#10;(mobile: 24px 20px)">
+                      data-spec="padding: 35px&#10;(mobile: 24px 20px)"
+                      data-spacing="status box inner&#10;padding: 35px&#10;(mobile: 24px 20px)">
 
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td style="padding-bottom: 12px;">
+                        <td style="padding-bottom: 12px;"
+                            data-spacing="status icon&#10;↓ 12px">
                           <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;"
                                data-spec="status icon&#10;width: 40px · height: 40px&#10;padding-bottom: 12px" />
                         </td>
@@ -221,22 +246,26 @@
 
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td style="padding-bottom: 24px;">
+                        <td style="padding-bottom: 24px;"
+                            data-spacing="status title&#10;↓ 24px">
                           <h1 class="status-title">[Status title]</h1>
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 2px;">
+                        <td style="padding-bottom: 2px;"
+                            data-spacing="amount label&#10;↓ 2px">
                           <p class="status-amount-label">Total amount paid</p>
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 24px;">
+                        <td style="padding-bottom: 24px;"
+                            data-spacing="amount&#10;↓ 24px">
                           <p class="status-amount">{{currencyCode}} {{amount}}</p>
                         </td>
                       </tr>
                       <tr>
-                        <td>
+                        <td
+                            data-spacing="status info&#10;(no bottom spacing)">
                           <p class="status-info">[Additional information here]</p>
                         </td>
                       </tr>
@@ -251,18 +280,21 @@
               <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0"
                      data-spec="section-details&#10;width: 100%">
                 <tr>
-                  <td style="padding-bottom: 24px;">
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="section title&#10;↓ 24px">
                     <h3 class="details-title">[Section title]</h3>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 14px;">
+                  <td style="padding-bottom: 14px;"
+                      data-spacing="detail row&#10;↓ 14px">
                     <p class="details-label">[Label]</p>
                     <p class="details-value">[Value]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 24px;">
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="detail row (last)&#10;↓ 24px (section gap)">
                     <p class="details-label">[Label]</p>
                     <p class="details-value">[Value]</p>
                   </td>
@@ -274,17 +306,20 @@
               <table class="section-closing" width="100%" cellpadding="0" cellspacing="0" border="0"
                      data-spec="section-closing&#10;width: 100%">
                 <tr>
-                  <td style="padding-bottom: 24px;">
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="closing body&#10;↓ 24px">
                     <p class="closing-body">[Closing message paragraph]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="closing sign&#10;↓ 4px">
                     <p class="closing-sign">Kind regards,</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 40px;">
+                  <td style="padding-bottom: 40px;"
+                      data-spacing="closing name&#10;↓ 40px (section gap)">
                     <p class="closing-name">{{propertyName}}</p>
                   </td>
                 </tr>
@@ -295,7 +330,8 @@
               <table class="section-footer" width="100%" cellpadding="0" cellspacing="0" border="0"
                      data-spec="section-footer&#10;width: 100%&#10;border-top: 1px solid #e0e0e0">
                 <tr>
-                  <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;">
+                  <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;"
+                      data-spacing="footer brand row&#10;padding-top: 40px · ↓ 12px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
@@ -310,12 +346,14 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 8px;">
+                  <td style="padding-bottom: 8px;"
+                      data-spacing="footer legal&#10;↓ 8px">
                     <p class="footer-legal">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 56px;">
+                  <td style="padding-bottom: 56px;"
+                      data-spacing="footer copyright&#10;↓ 56px (card bottom)">
                     <p class="footer-copyright">© SiteMinder 2026.&nbsp; All rights reserved.</p>
                   </td>
                 </tr>
@@ -332,36 +370,67 @@
   </table>
 
   <!-- ==================== SPEC ANNOTATIONS ==================== -->
-  <button id="spec-toggle">Specs</button>
+  <div id="spec-controls">
+    <button id="spacing-toggle">Spacing</button>
+    <button id="spec-toggle">Containers</button>
+  </div>
   <div id="spec-tooltip"></div>
   <script>
-    const toggle = document.getElementById('spec-toggle');
-    const tooltip = document.getElementById('spec-tooltip');
-    let active = false;
+    const specToggle    = document.getElementById('spec-toggle');
+    const spacingToggle = document.getElementById('spacing-toggle');
+    const tooltip       = document.getElementById('spec-tooltip');
+    let specActive    = false;
+    let spacingActive = false;
 
-    toggle.addEventListener('click', () => {
-      active = !active;
-      document.body.classList.toggle('spec-mode', active);
-      toggle.classList.toggle('active', active);
-      toggle.textContent = active ? 'Specs on' : 'Specs';
-      if (!active) tooltip.style.display = 'none';
+    function positionTooltip(e) {
+      const x = e.clientX + 16, y = e.clientY + 16;
+      tooltip.style.left = (x + tooltip.offsetWidth  > window.innerWidth  ? x - tooltip.offsetWidth  - 32 : x) + 'px';
+      tooltip.style.top  = (y + tooltip.offsetHeight > window.innerHeight ? y - tooltip.offsetHeight - 32 : y) + 'px';
+    }
+
+    specToggle.addEventListener('click', () => {
+      specActive = !specActive;
+      document.body.classList.toggle('spec-mode', specActive);
+      specToggle.classList.toggle('active', specActive);
+      specToggle.textContent = specActive ? 'Containers on' : 'Containers';
+      if (!specActive) tooltip.style.display = 'none';
+    });
+
+    spacingToggle.addEventListener('click', () => {
+      spacingActive = !spacingActive;
+      document.body.classList.toggle('spacing-mode', spacingActive);
+      spacingToggle.classList.toggle('active', spacingActive);
+      spacingToggle.textContent = spacingActive ? 'Spacing on' : 'Spacing';
+      if (!spacingActive) tooltip.style.display = 'none';
     });
 
     document.addEventListener('mousemove', (e) => {
-      if (!active) return;
-      const el = e.target.closest('[data-spec]');
-      if (el) {
-        tooltip.style.display = 'block';
-        tooltip.textContent = el.dataset.spec;
-        const x = e.clientX + 16;
-        const y = e.clientY + 16;
-        const tw = tooltip.offsetWidth;
-        const th = tooltip.offsetHeight;
-        tooltip.style.left = (x + tw > window.innerWidth ? x - tw - 32 : x) + 'px';
-        tooltip.style.top  = (y + th > window.innerHeight ? y - th - 32 : y) + 'px';
-      } else {
-        tooltip.style.display = 'none';
+      if (!specActive && !spacingActive) return;
+
+      // Spacing takes priority when both are on
+      if (spacingActive) {
+        const el = e.target.closest('[data-spacing]');
+        if (el) {
+          tooltip.className = 'mode-spacing';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.spacing;
+          positionTooltip(e);
+          return;
+        }
       }
+
+      if (specActive) {
+        const el = e.target.closest('[data-spec]');
+        if (el) {
+          tooltip.className = 'mode-spec';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.spec;
+          positionTooltip(e);
+          return;
+        }
+      }
+
+      tooltip.style.display = 'none';
     });
   </script>
   <!-- ==================== /SPEC ANNOTATIONS ==================== -->
