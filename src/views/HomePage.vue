@@ -40,8 +40,16 @@ const { popup, openComments, commentCount } = useComments()
       </div>
       <div class="home__base-links">
         <span class="home__base-label">Base templates</span>
-        <a href="/templates/new/lh-base.html" target="_blank" class="home__base-btn">LH</a>
-        <a href="/templates/new/sm-base.html" target="_blank" class="home__base-btn">SM</a>
+        <div class="home__base-group">
+          <span class="home__base-group-label">Property</span>
+          <a href="/templates/new/lh-base.html" target="_blank" class="home__base-btn">LH</a>
+          <a href="/templates/new/sm-base.html" target="_blank" class="home__base-btn">SM</a>
+        </div>
+        <div class="home__base-group">
+          <span class="home__base-group-label">Guest</span>
+          <span class="home__base-btn home__base-btn--disabled">LH</span>
+          <span class="home__base-btn home__base-btn--disabled">SM</span>
+        </div>
       </div>
     </div>
 
@@ -143,13 +151,25 @@ const { popup, openComments, commentCount } = useComments()
 .home__base-links {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   flex-shrink: 0;
 }
 
 .home__base-label {
   font-size: 13px;
   color: #6b7280;
+}
+
+.home__base-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.home__base-group-label {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-right: 2px;
 }
 
 .home__base-btn {
@@ -164,6 +184,12 @@ const { popup, openComments, commentCount } = useComments()
 
 .home__base-btn:hover {
   background: #f3f4f6;
+}
+
+.home__base-btn--disabled {
+  color: #d1d5db;
+  border-color: #e5e7eb;
+  cursor: default;
 }
 
 .home__title {
