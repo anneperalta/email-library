@@ -129,7 +129,6 @@ function commentCount(templateId) {
           <th>Status</th>
           <th>Old</th>
           <th>New</th>
-          <th>Figma</th>
           <th>Compare</th>
           <th>Comments</th>
         </tr>
@@ -156,10 +155,6 @@ function commentCount(templateId) {
           </td>
           <td>
             <router-link v-if="t.new" :to="`/preview/${t.id}/new`" class="home__link">Preview</router-link>
-            <span v-else class="home__na">—</span>
-          </td>
-          <td>
-            <a v-if="t.figma" :href="t.figma" target="_blank" class="home__link">Open ↗</a>
             <span v-else class="home__na">—</span>
           </td>
           <td>
