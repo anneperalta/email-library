@@ -83,6 +83,12 @@ function deleteComment(templateId, id) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
 }
 
+function resolveComment(templateId, id) {
+  const comment = allComments.value[templateId]?.find(c => c.id === id)
+  if (comment) comment.resolved = !comment.resolved
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
+}
+
 function commentCount(templateId) {
   return allComments.value[templateId]?.length ?? 0
 }
@@ -208,9 +214,17 @@ function commentCount(templateId) {
               <span class="comment-item__author">{{ c.name }}</span>
               <span class="comment-item__time">{{ c.timestamp }}</span>
             </div>
-            <button class="comment-item__delete" @click="deleteComment(popup.templateId, c.id)" title="Delete">✕</button>
+            <div class="comment-item__actions">
+              <button
+                class="comment-item__resolve"
+                :class="{ 'comment-item__resolve--done': c.resolved }"
+                @click="resolveComment(popup.templateId, c.id)"
+                :title="c.resolved ? 'Unresolve' : 'Resolve'"
+              >✓</button>
+              <button class="comment-item__delete" @click="deleteComment(popup.templateId, c.id)" title="Delete">✕</button>
+            </div>
           </div>
-          <p class="comment-item__text">{{ c.text }}</p>
+          <p class="comment-item__text" :class="{ 'comment-item__text--resolved': c.resolved }">{{ c.text }}</p>
         </div>
       </div>
 
@@ -542,6 +556,13 @@ function commentCount(templateId) {
   color: #9ca3af;
 }
 
+.comment-item__actions {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.comment-item__resolve,
 .comment-item__delete {
   background: none;
   border: none;
@@ -551,6 +572,20 @@ function commentCount(templateId) {
   padding: 1px 3px;
   border-radius: 3px;
   line-height: 1;
+}
+
+.comment-item__resolve:hover {
+  color: #22c55e;
+  background: #f0fdf4;
+}
+
+.comment-item__resolve--done {
+  color: #22c55e !important;
+}
+
+.comment-item__resolve--done:hover {
+  color: #16a34a !important;
+  background: #dcfce7;
 }
 
 .comment-item__delete:hover {
@@ -563,6 +598,11 @@ function commentCount(templateId) {
   color: #374151;
   font-size: 13px;
   line-height: 1.5;
+}
+
+.comment-item__text--resolved {
+  color: #9ca3af;
+  text-decoration: line-through;
   word-break: break-word;
 }
 
