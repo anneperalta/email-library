@@ -8,7 +8,7 @@ const filterStatus = ref('All')
 const filterProduct = ref('All')
 
 const categories = ['All', ...new Set(templates.map(t => t.category))].sort()
-const statuses = ['All', 'not-started', 'in-progress', 'in-review', 'done']
+const statuses = ['All', 'not-started', 'in-review', 'done']
 const products = ['All', 'LH', 'SM']
 
 const filtered = computed(() => templates.filter(t => {
@@ -28,7 +28,7 @@ const progress = total ? Math.round((done / total) * 100) : 0
   <div class="home">
     <div class="home__header">
       <div>
-        <h1 class="home__title">Pay Email Template Library</h1>
+        <h1 class="home__title">Pay Email Library</h1>
         <p class="home__subtitle">{{ done }} of {{ total }} templates complete</p>
         <div class="home__progress-bar">
           <div class="home__progress-fill" :style="{ width: progress + '%' }"></div>
