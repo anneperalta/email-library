@@ -61,7 +61,7 @@
     /* ── Responsive ───────────────────────────────────────────────── */
     @media screen and (max-width: 480px) {
       .outer-padding        { padding: 20px 12px !important; }
-      .card-body            { padding: 24px 20px 0 20px !important; }
+      .card-body            { padding: 24px 20px !important; }
       .status-box-inner     { padding: 24px 20px !important; }
       .property-name        { font-size: 22px !important; line-height: 30px !important; }
       .status-title         { font-size: 22px !important; line-height: 30px !important; }
@@ -129,17 +129,17 @@
   <!-- ==================== OUTER WRAPPER ==================== -->
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
-      <td class="outer-padding" align="center" valign="top" style="padding: 40px 16px;"
-          data-spec="width: 100%&#10;padding: 40px 16px&#10;(mobile: 20px 12px)"
-          data-spacing="outer wrapper&#10;padding: 40px 16px&#10;(mobile: 20px 12px)">
+      <td class="outer-padding" align="center" valign="top" style="padding: 24px 16px;"
+          data-spec="width: 100%&#10;padding: 24px 16px&#10;(mobile: 20px 12px)"
+          data-spacing="outer wrapper&#10;padding: 24px 16px&#10;(mobile: 20px 12px)">
 
         <!-- ==================== EMAIL CARD ==================== -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;"
                data-spec="max-width: 734px&#10;background: #ffffff&#10;border-radius: 16px">
           <tr>
-            <td class="card-body" style="padding: 56px 56px 0 56px;"
-                data-spec="padding: 56px 56px 0 56px&#10;(mobile: 24px 20px 0 20px)"
-                data-spacing="card body&#10;padding: 56px 56px 0 56px&#10;(mobile: 24px 20px 0 20px)">
+            <td class="card-body" style="padding: 56px;"
+                data-spec="padding: 56px (all sides)&#10;(mobile: 24px 20px)"
+                data-spacing="card body&#10;padding: 56px (all sides)&#10;(mobile: 24px 20px)">
 
               <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
               <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -342,8 +342,7 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 56px;"
-                      data-spacing="footer copyright&#10;↓ 56px (card bottom)">
+                  <td data-spacing="footer copyright&#10;(no bottom padding — card body handles it)">
                     <p class="footer-copyright">© SiteMinder 2026.&nbsp; All rights reserved.</p>
                   </td>
                 </tr>
