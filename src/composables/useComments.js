@@ -26,11 +26,10 @@ function audit(action, templateId, comment) {
 // Module-level state so it's shared across all component instances
 const allComments = ref(loadComments())
 const newName = ref(localStorage.getItem('pay-email-library-author') || '')
+const popup   = ref(null)
+const newText = ref('')
 
 export function useComments() {
-  const popup  = ref(null)
-  const newText = ref('')
-
   const POPUP_W = 300
   const POPUP_H = 360
 
