@@ -1,19 +1,22 @@
 <script setup>
 import { ref, computed } from 'vue'
-import { templates, statusConfig } from '../data/templates.js'
+import { templates, statusConfig, productConfig } from '../data/templates.js'
 
 const search = ref('')
 const filterCategory = ref('All')
 const filterStatus = ref('All')
+const filterProduct = ref('All')
 
 const categories = ['All', ...new Set(templates.map(t => t.category))].sort()
 const statuses = ['All', 'not-started', 'in-progress', 'in-review', 'done']
+const products = ['All', 'LH', 'SM']
 
 const filtered = computed(() => templates.filter(t => {
   const matchSearch = t.name.toLowerCase().includes(search.value.toLowerCase())
   const matchCat = filterCategory.value === 'All' || t.category === filterCategory.value
   const matchStatus = filterStatus.value === 'All' || t.status === filterStatus.value
-  return matchSearch && matchCat && matchStatus
+  const matchProduct = filterProduct.value === 'All' || t.product === filterProduct.value
+  return matchSearch && matchCat && matchStatus && matchProduct
 }))
 
 const total = templates.length
@@ -43,6 +46,11 @@ const progress = total ? Math.round((done / total) * 100) : 0
           {{ s === 'All' ? 'All statuses' : statusConfig[s].label }}
         </option>
       </select>
+      <select v-model="filterProduct" class="home__select">
+        <option v-for="p in products" :key="p" :value="p">
+          {{ p === 'All' ? 'All products' : productConfig[p].label }}
+        </option>
+      </select>
     </div>
 
     <div v-if="filtered.length === 0" class="home__empty">No templates match your filters.</div>
@@ -52,6 +60,7 @@ const progress = total ? Math.round((done / total) * 100) : 0
         <tr>
           <th>Template</th>
           <th>Category</th>
+          <th>Product</th>
           <th>Status</th>
           <th>Old</th>
           <th>New</th>
@@ -63,6 +72,12 @@ const progress = total ? Math.round((done / total) * 100) : 0
         <tr v-for="t in filtered" :key="t.id">
           <td class="home__name">{{ t.name }}</td>
           <td class="home__category">{{ t.category }}</td>
+          <td>
+            <span
+              class="home__badge"
+              :style="{ background: productConfig[t.product]?.color ?? '#9ca3af' }"
+            >{{ productConfig[t.product]?.label ?? t.product }}</span>
+          </td>
           <td>
             <span
               class="home__badge"
