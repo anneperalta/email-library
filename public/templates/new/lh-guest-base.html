@@ -68,6 +68,47 @@
       .status-amount        { font-size: 20px !important; line-height: 26px !important; }
       .details-title        { font-size: 18px !important; line-height: 24px !important; }
     }
+
+    /* ── Spec annotations ─────────────────────────────────────────── */
+    .spec-mode [data-spec] {
+      outline: 1.5px dashed rgba(0, 106, 221, 0.6) !important;
+      cursor: crosshair !important;
+    }
+    #spec-tooltip {
+      position: fixed;
+      background: #1e1e2e;
+      color: #cdd6f4;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 11px;
+      line-height: 1.7;
+      padding: 7px 11px;
+      border-radius: 6px;
+      pointer-events: none;
+      z-index: 99999;
+      display: none;
+      white-space: pre;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+    #spec-toggle {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      background: #333333;
+      color: #ffffff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: 'Noto Sans', Arial, sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      z-index: 99999;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #spec-toggle.active {
+      background: #006ADD;
+    }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #eff1f4; font-family: 'Noto Sans', Arial, sans-serif; color: #333333;">
@@ -75,15 +116,19 @@
   <!-- ==================== OUTER WRAPPER ==================== -->
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
-      <td class="outer-padding" align="center" valign="top" style="padding: 40px 16px;">
+      <td class="outer-padding" align="center" valign="top" style="padding: 40px 16px;"
+          data-spec="width: 100%&#10;padding: 40px 16px&#10;(mobile: 20px 12px)">
 
         <!-- ==================== EMAIL CARD ==================== -->
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;"
+               data-spec="max-width: 734px&#10;background: #ffffff&#10;border-radius: 16px">
           <tr>
-            <td class="card-body" style="padding: 56px 56px 0 56px;">
+            <td class="card-body" style="padding: 56px 56px 0 56px;"
+                data-spec="padding: 56px 56px 0 56px&#10;(mobile: 24px 20px 0 20px)">
 
               <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
-              <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     data-spec="section-property&#10;width: 100%">
                 <tr>
                   <td style="padding-bottom: 4px;">
                     <h1 class="property-name">{{propertyName}}</h1>
@@ -99,7 +144,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-spec="icon: phone&#10;width: 16px · height: 16px&#10;padding-right: 8px" />
                         </td>
                         <td>
                           <a class="contact-phone" href="tel:{{propertyPhone}}">{{propertyPhone}}</a>
@@ -113,7 +159,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-spec="icon: email&#10;width: 16px · height: 16px&#10;padding-right: 8px" />
                         </td>
                         <td>
                           <a class="contact-email" href="mailto:{{propertyEmail}}">{{propertyEmail}}</a>
@@ -127,7 +174,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-spec="icon: website&#10;width: 16px · height: 16px&#10;padding-right: 8px" />
                         </td>
                         <td>
                           <a class="contact-website" href="{{propertyWebsite}}">{{propertyWebsite}}</a>
@@ -140,7 +188,8 @@
               <!-- ==================== /SECTION: PROPERTY HEADER ==================== -->
 
               <!-- ==================== SECTION: OPENING ==================== -->
-              <table class="section-opening" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <table class="section-opening" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     data-spec="section-opening&#10;width: 100%">
                 <tr>
                   <td style="padding-bottom: 12px;">
                     <p class="opening-salutation">Hi {{guestFirstName}},</p>
@@ -155,14 +204,17 @@
               <!-- ==================== /SECTION: OPENING ==================== -->
 
               <!-- ==================== SECTION: STATUS BOX ==================== -->
-              <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;">
+              <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;"
+                     data-spec="section-status&#10;width: 100%&#10;background: #f7f8fa&#10;border-radius: 10px&#10;margin-bottom: 40px">
                 <tr>
-                  <td class="status-box-inner" style="padding: 35px;">
+                  <td class="status-box-inner" style="padding: 35px;"
+                      data-spec="padding: 35px&#10;(mobile: 24px 20px)">
 
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="padding-bottom: 12px;">
-                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;" />
+                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;"
+                               data-spec="status icon&#10;width: 40px · height: 40px&#10;padding-bottom: 12px" />
                         </td>
                       </tr>
                     </table>
@@ -196,7 +248,8 @@
               <!-- ==================== /SECTION: STATUS BOX ==================== -->
 
               <!-- ==================== SECTION: DETAILS ==================== -->
-              <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     data-spec="section-details&#10;width: 100%">
                 <tr>
                   <td style="padding-bottom: 24px;">
                     <h3 class="details-title">[Section title]</h3>
@@ -218,7 +271,8 @@
               <!-- ==================== /SECTION: DETAILS ==================== -->
 
               <!-- ==================== SECTION: CLOSING ==================== -->
-              <table class="section-closing" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <table class="section-closing" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     data-spec="section-closing&#10;width: 100%">
                 <tr>
                   <td style="padding-bottom: 24px;">
                     <p class="closing-body">[Closing message paragraph]</p>
@@ -238,13 +292,15 @@
               <!-- ==================== /SECTION: CLOSING ==================== -->
 
               <!-- ==================== SECTION: FOOTER ==================== -->
-              <table class="section-footer" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <table class="section-footer" width="100%" cellpadding="0" cellspacing="0" border="0"
+                     data-spec="section-footer&#10;width: 100%&#10;border-top: 1px solid #e0e0e0">
                 <tr>
                   <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img class="footer-brand-icon" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
+                          <img class="footer-brand-icon" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;"
+                               data-spec="icon: check&#10;width: 22px · height: 22px&#10;padding-right: 8px" />
                         </td>
                         <td valign="middle">
                           <p class="footer-brand-name">Little Hotelier Pay</p>
@@ -274,6 +330,41 @@
       </td>
     </tr>
   </table>
+
+  <!-- ==================== SPEC ANNOTATIONS ==================== -->
+  <button id="spec-toggle">Specs</button>
+  <div id="spec-tooltip"></div>
+  <script>
+    const toggle = document.getElementById('spec-toggle');
+    const tooltip = document.getElementById('spec-tooltip');
+    let active = false;
+
+    toggle.addEventListener('click', () => {
+      active = !active;
+      document.body.classList.toggle('spec-mode', active);
+      toggle.classList.toggle('active', active);
+      toggle.textContent = active ? 'Specs on' : 'Specs';
+      if (!active) tooltip.style.display = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!active) return;
+      const el = e.target.closest('[data-spec]');
+      if (el) {
+        tooltip.style.display = 'block';
+        tooltip.textContent = el.dataset.spec;
+        const x = e.clientX + 16;
+        const y = e.clientY + 16;
+        const tw = tooltip.offsetWidth;
+        const th = tooltip.offsetHeight;
+        tooltip.style.left = (x + tw > window.innerWidth ? x - tw - 32 : x) + 'px';
+        tooltip.style.top  = (y + th > window.innerHeight ? y - th - 32 : y) + 'px';
+      } else {
+        tooltip.style.display = 'none';
+      }
+    });
+  </script>
+  <!-- ==================== /SPEC ANNOTATIONS ==================== -->
 
 </body>
 </html>
