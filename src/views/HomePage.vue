@@ -204,8 +204,10 @@ function commentCount(templateId) {
           class="comment-item"
         >
           <div class="comment-item__meta">
-            <span class="comment-item__author">{{ c.name }}</span>
-            <span class="comment-item__time">{{ c.timestamp }}</span>
+            <div class="comment-item__info">
+              <span class="comment-item__author">{{ c.name }}</span>
+              <span class="comment-item__time">{{ c.timestamp }}</span>
+            </div>
             <button class="comment-item__delete" @click="deleteComment(popup.templateId, c.id)" title="Delete">✕</button>
           </div>
           <p class="comment-item__text">{{ c.text }}</p>
@@ -525,8 +527,14 @@ function commentCount(templateId) {
 .comment-item__meta {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 4px;
+}
+
+.comment-item__info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .comment-item__time {
