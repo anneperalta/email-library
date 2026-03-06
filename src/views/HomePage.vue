@@ -26,6 +26,22 @@ const progress = total ? Math.round((done / total) * 100) : 0
 // ── Comments ──────────────────────────────────────────────────────────────────
 
 const STORAGE_KEY = 'pay-email-library-comments'
+const AUDIT_KEY   = 'pay-email-library-audit'
+
+function audit(action, templateId, comment) {
+  try {
+    const log = JSON.parse(localStorage.getItem(AUDIT_KEY) || '[]')
+    log.push({
+      action,
+      templateId,
+      commentId: comment.id,
+      name: comment.name,
+      text: comment.text,
+      at: new Date().toISOString(),
+    })
+    localStorage.setItem(AUDIT_KEY, JSON.stringify(log))
+  } catch {}
+}
 
 const loadComments = () => {
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') }
@@ -64,7 +80,7 @@ function addComment() {
   localStorage.setItem('pay-email-library-author', newName.value.trim())
   const { templateId } = popup.value
   if (!allComments.value[templateId]) allComments.value[templateId] = []
-  allComments.value[templateId].push({
+  const comment = {
     id: Date.now(),
     name: name || 'Anonymous',
     text,
@@ -72,12 +88,16 @@ function addComment() {
       day: 'numeric', month: 'short', year: 'numeric',
       hour: '2-digit', minute: '2-digit'
     }),
-  })
+  }
+  allComments.value[templateId].push(comment)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
+  audit('added', templateId, comment)
   newText.value = ''
 }
 
 function deleteComment(templateId, id) {
+  const comment = allComments.value[templateId]?.find(c => c.id === id)
+  if (comment) audit('deleted', templateId, comment)
   allComments.value[templateId] = allComments.value[templateId].filter(c => c.id !== id)
   if (!allComments.value[templateId].length) delete allComments.value[templateId]
   localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
@@ -85,7 +105,9 @@ function deleteComment(templateId, id) {
 
 function resolveComment(templateId, id) {
   const comment = allComments.value[templateId]?.find(c => c.id === id)
-  if (comment) comment.resolved = !comment.resolved
+  if (!comment) return
+  comment.resolved = !comment.resolved
+  audit(comment.resolved ? 'resolved' : 'unresolved', templateId, comment)
   localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
 }
 
