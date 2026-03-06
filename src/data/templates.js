@@ -635,7 +635,7 @@ export const templates = [
 
 export const statusConfig = {
   'not-started': { label: 'Not started', color: '#9ca3af' },
-  'in-review':   { label: 'In review',   color: '#f97316' },
+  'in-review':   { label: 'In review',   color: '#f59e0b' },
   'done':        { label: 'Done',        color: '#22c55e' },
 }
 
