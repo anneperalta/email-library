@@ -7,23 +7,13 @@ export const templates = [
   // ── Autopay ────────────────────────────────────────────────────
   {
     id: 'autopay-card-validation-failed-lh',
-    name: 'Card Validation Failed (LH)',
+    name: 'Card Validation Failed – Property (LH)',
     category: 'Autopay',
     product: 'LH',
     figma: null,
     status: 'done',
     old: '/templates/old/autopay/card-validation-failed-lh-en.html',
     new: '/templates/new/autopay/card-validation-failed-lh-en.html',
-  },
-  {
-    id: 'autopay-card-validation-failed-property-lh',
-    name: 'Card Validation Failed – Property (LH)',
-    category: 'Autopay',
-    product: 'LH',
-    figma: null,
-    status: 'in-review',
-    old: '/templates/old/autopay/card-validation-failed-property-lh-en.html',
-    new: '/templates/new/autopay/card-validation-failed-property-lh-en.html',
   },
   {
     id: 'autopay-payment-failed-property-lh',
