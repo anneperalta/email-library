@@ -11,9 +11,9 @@ export const templates = [
     category: 'Autopay',
     product: 'LH',
     figma: null,
-    status: 'not-started',
+    status: 'in-progress',
     old: '/templates/old/autopay/card-validation-failed-lh-en.html',
-    new: null,
+    new: '/templates/new/autopay/card-validation-failed-lh-en.html',
   },
   {
     id: 'autopay-card-validation-failed-property-lh',
@@ -41,9 +41,9 @@ export const templates = [
     category: 'Autopay',
     product: 'SM',
     figma: null,
-    status: 'not-started',
+    status: 'in-progress',
     old: '/templates/old/autopay/payment-failed-property-sm-en.html',
-    new: null,
+    new: '/templates/new/autopay/payment-failed-property-sm-en.html',
   },
   {
     id: 'autopay-payment-success-guest-lh',

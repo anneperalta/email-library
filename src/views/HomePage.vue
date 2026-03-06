@@ -30,9 +30,14 @@ const progress = total ? Math.round((done / total) * 100) : 0
       <div>
         <h1 class="home__title">Pay Email Template Library</h1>
         <p class="home__subtitle">{{ done }} of {{ total }} templates complete</p>
+        <div class="home__progress-bar">
+          <div class="home__progress-fill" :style="{ width: progress + '%' }"></div>
+        </div>
       </div>
-      <div class="home__progress-bar">
-        <div class="home__progress-fill" :style="{ width: progress + '%' }"></div>
+      <div class="home__base-links">
+        <span class="home__base-label">Base templates</span>
+        <a href="/templates/new/lh-base.html" target="_blank" class="home__base-btn">LH</a>
+        <a href="/templates/new/sm-base.html" target="_blank" class="home__base-btn">SM</a>
       </div>
     </div>
 
@@ -40,7 +45,7 @@ const progress = total ? Math.round((done / total) * 100) : 0
       <input v-model="search" class="home__search" placeholder="Search templates…" />
       <select v-model="filterProduct" class="home__select">
         <option v-for="p in products" :key="p" :value="p">
-          {{ p === 'All' ? 'All products' : productConfig[p].label }}
+          {{ p === 'All' ? 'All brands' : productConfig[p].label }}
         </option>
       </select>
       <select v-model="filterCategory" class="home__select">
@@ -59,7 +64,7 @@ const progress = total ? Math.round((done / total) * 100) : 0
       <thead>
         <tr>
           <th>Template</th>
-          <th>Product</th>
+          <th>Brand</th>
           <th>Category</th>
           <th>Status</th>
           <th>Old</th>
@@ -115,7 +120,37 @@ const progress = total ? Math.round((done / total) * 100) : 0
 }
 
 .home__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
   margin-bottom: 32px;
+  gap: 16px;
+}
+
+.home__base-links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.home__base-label {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.home__base-btn {
+  padding: 4px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #374151;
+  text-decoration: none;
+}
+
+.home__base-btn:hover {
+  background: #f3f4f6;
 }
 
 .home__title {
@@ -136,6 +171,7 @@ const progress = total ? Math.round((done / total) * 100) : 0
   background: #e5e7eb;
   border-radius: 99px;
   max-width: 300px;
+  margin-top: 12px;
 }
 
 .home__progress-fill {

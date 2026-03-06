@@ -11,10 +11,6 @@ const version = computed(() => route.params.version) // 'old' | 'new'
 
 const src = computed(() => version.value === 'old' ? template.value?.old : template.value?.new)
 
-const viewportWidth = computed(() => ({
-  desktop: '100%',
-  mobile: '375px',
-}))
 const viewport = computed({
   get: () => route.query.viewport ?? 'desktop',
   set: val => router.replace({ query: { ...route.query, viewport: val } })
@@ -76,7 +72,7 @@ const viewport = computed({
         v-if="src"
         :src="src"
         class="preview__iframe"
-        :style="{ maxWidth: viewportWidth[viewport] }"
+        :style="viewport === 'mobile' ? { width: '430px', flex: 'none' } : { width: '100%' }"
         sandbox="allow-same-origin"
       ></iframe>
       <div v-else class="preview__missing">
