@@ -1,0 +1,47 @@
+<!-- metadata.subject = {{#if reservationId}} {{reservationId}} dispute was partially resolved in your favour {{else}} A disputed payment has been partially resolved in your favour{{/if}} -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:400);
+    td {
+      border: none; font-family:Lato, Helvetica, Sans-Serif;
+    }
+  </style>
+</head>
+<body>
+    <div style="margin: 0 auto; padding: 20px 0;">
+        <table style="width: 100%; border: none; padding-left: 10px; padding-right: 10px;">
+        <tr>
+            <td>
+                We have an update for you! The below disputed payment was partially resolved in your favour by your customer's bank or credit card company.
+                {{#sameRegion}}This means that a part of the disputed amount will be returned to your account in the next few days.{{/sameRegion}}
+                {{^sameRegion}}Part of the disputed amount will be deducted from your account within a day.{{/sameRegion}}<br><br>
+
+                Booking reference: {{ reservationId }}<br>
+                Description: {{ description }}<br>
+                Cardholder name: {{ cardHolderName }}<br>
+                Card number: •••• {{ cardLast4 }}<br>
+                Card expiry date: {{ cardExpiryMonth }} / {{ cardExpiryYear }}<br>
+                Statement descriptor: {{ statementDescription }}<br>
+                Disputed amount: {{ disputedAmount }}<br>
+                Original amount: {{ chargeAmount}}<br>
+                {{#sameRegion}}Amount to be returned: {{ returnAmount }}{{/sameRegion}}
+                {{^sameRegion}}Amount to be deducted: {{ deductAmount }}{{/sameRegion}}<br><br>
+
+                Disputes are decided by the cardholder's bank, according to the bank’s process. We have no way to affect this judgement call beyond submitting evidence on your behalf.<br><br>
+
+                We appreciate this isn't a great outcome and are sorry this is the case. Please let us know if you have any questions.<br><br>
+
+                <strong>Regards</strong><br>
+                SiteMinder Payments
+            </td>
+        </tr>
+    </table>
+  </div>
+</body>
+</html>

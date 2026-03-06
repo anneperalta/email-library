@@ -1,0 +1,117 @@
+<!-- metadata.subject = [{{propertyName}}]: Unsuccessful payout attempt - Your Account Is Restricted -->
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:700" rel="stylesheet" type="text/css">
+
+</head>
+
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+  <div class="container" style="width: 600px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div class="branding">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" height="75px">
+              <tr>
+                <td align="center" valign="top">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" valign="center" class="top-bar"
+                        style="background-color: #00033B; width: 100%; height: 76px;" width="100%" height="76"
+                        bgcolor="#00033B">
+                        <img height="27" width="157" src="{{assetPath}}/logos/sm.png">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="padding-top: 27px;">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" valign="top">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" valign="center" class="top-bar" style="width: 100%;" width="100%">
+                        <img width="66px" height="66px" src="{{assetPath}}/icons/round-info.png">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="text-area" style="font-family: Lato, Helvetica, Sans-Serif; font-size: 14px; font-weight: normal; font-stretch: normal;
+      font-style: normal; line-height: 1.43; letter-spacing: normal; color: #444444;">
+      <div class="heading" style="font-weight: bold; font-size: 21px; text-align: center; padding: 20px 0px 21px 0px;">
+        SiteMinder Negative Payout Attempt Unsuccessful</div>
+      <div class="content" style="padding: 0px 39px;">
+        <div>
+          <div>
+            <div style="text-decoration: underline; padding-bottom: 15px;"><strong>{{propertyName}}</strong></div>
+            Following unsuccessful direct debit attempts on the bank account associated with your SiteMinder Payments
+            account, payment and payout restrictions have now been applied.
+          </div>
+          <br>
+          <div>
+            Please urgently get in touch with our <a href="{{supportLink}}"
+              style="text-decoration: none; color: #008acd;">Support team</a> who will assist in bringing your
+            account out of arrears, and get you up and running with payment processing.
+          </div>
+          <br>
+          <div>
+            If you have any questions in relation to this direct debit, you can contact
+            <a class="link" href="mailto:{{supportEmail}}"
+              style="text-decoration: none; color: #008acd;">{{supportEmail}}</a>.
+          </div>
+        </div>
+        <div style="font-size:14px;padding:10px 0px 30px 0px">
+          You can also learn more by visiting our <a href="{{helpLink}}"
+            style="text-decoration: none; color: #008acd;">refunds and direct debit help pages</a>.
+        </div>
+        {{#if crmId}}
+        <div style="font-size: 11px;">{{crmId}}</div>
+        {{/if}}
+      </div>
+      <div class="footer" style="width: 100%; font-size: 8px; line-height: 1.63; background-color: #00033B;">
+        <div class="footer-text" style="padding: 47px 60px; text-align: center; color: white;">
+          <div>
+            <div>
+              This e-mail was sent to you by SiteMinder Limited | Ground Floor, 30 Windmill Street,
+              Millers Point, 2000 Australia
+            </div>
+            <div>
+              Hammersmith Embankment, Manbre Road, London W6 9RH United Kingdom -
+              Registered in England and Wales, registration number 07242801
+            </div>
+          </div>
+          <div>
+            <div>
+              The Colonnade, Tower 1, Suite 350 15301 North Dallas Parkway Addison TX 75001 USA
+            </div>
+            <div>
+              Australia: 1300 736 198 | International: +61 2 9221 4444 | New Zealand: 0800 452 450
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

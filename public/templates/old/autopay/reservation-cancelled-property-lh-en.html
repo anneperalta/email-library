@@ -1,0 +1,98 @@
+<!-- metadata.subject = [AUTO PAY] Payment cancelled for reservation {{reservationId}} -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+    a, a:hover, a:active, a:visited {
+      color: #E97500;
+    }
+
+    @media screen and (min-width: 600px) {
+      .info-box {
+        display: inline-block;
+        width: 208px;
+        margin: 0 2px 2px 0;
+        vertical-align: top;
+        min-height: 62px;
+      }
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body style="background-color: #F8F8F8; margin: 0; font-family: Lato, Helvetica, sans-serif; font-size: 14px; line-height: 1.4; color: #333333;">
+  <div style="padding: 14px 0;">
+    <table class="main-table" style="position: relative; max-width: 600px; border: none; margin: 0 auto;">
+      <tr>
+        <td style="background-color: #FFF3EB; padding: 28px;"><img src="{{assetPath}}/logos/littlehotelier.png" style="display: block; width: 155px; height: 20px; margin: 0 auto;" alt="Little Hotelier"></td>
+      </tr>
+      <tr>
+        <td style="padding: 42px 40px 27px 40px; background-color: #FFFFFF;">
+          <h1 style="font-family: Lato, Helvetica, sans-serif; color: #333333; font-size: 21px; text-align: left; margin: 0 0 32px 0;">
+            <img width="36" src="{{assetPath}}/icons/warning-icon.png" alt="logo" style="vertical-align: middle; margin-right: 5px;"/>
+            A reservation has been cancelled
+          </h1>
+          <p style="font-family: Lato, Helvetica, sans-serif; color: #444444; margin: 0 0 20px 0;">
+            Your guest has cancelled their reservation.
+            <strong>Please review the reservation details in your Front Desk to check if your guest needs to be refunded.</strong>
+          </p>
+          <div style="font-family: Lato, Helvetica, sans-serif; margin-bottom: 20px;">
+            <div class="info-box" style="margin: 0 0 2px 0; padding: 20px 24px; background-color: #F6F8FA;">
+              <div style="color: #777777; font-size: 12px; margin-bottom: 5px;">Date cancelled</div>
+              <div style="color: #3A3A3A;">
+                {{cancellationDate}}
+              </div>
+            </div>
+            <div class="info-box" style="margin: 0 0 2px 0; padding: 20px 24px; background-color: #F6F8FA;">
+              <div style="color: #777777; font-size: 12px; margin-bottom: 5px;">Reservation ID / Reference ID</div>
+              <div style="color: #3A3A3A;">{{reservationId}}</div>
+            </div>
+            <div class="info-box" style="margin: 0 0 2px 0; padding: 20px 24px; background-color: #F6F8FA;">
+              <div style="color: #777777; font-size: 12px; margin-bottom: 5px;">Amount</div>
+              <div style="color: #3A3A3A;">{{amount}}</div>
+            </div>
+          </div>
+          <p>
+            <strong>How to process a refund:</strong>
+          </p>
+          <ol style="margin-bottom:20; margin-left: 20px; padding:0; font-family: Lato, Helvetica, sans-serif; line-height:22px;" align="left">
+            <li>
+              Click on <strong>'View Reservation'</strong> below
+            </li>
+            <li>
+              Go to the <strong>'Payments'</strong> tab
+            </li>
+            <li>
+              Click on <strong>'Process Refund'</strong>
+            </li>
+            <li>
+              Enter the <strong>refund amount</strong>
+            </li>
+            <li>
+              Click on <strong>'Process'</strong>
+            </li>
+          </ol>
+          <div style="padding-left: 24px; padding-right: 24px; padding-top: 9px; padding-bottom: 9px; margin-top: 5px; margin-bottom: 20px; background: #484B4B; border-radius: 32px; justify-content: flex-start; align-items: center; gap: 8px; display: inline-flex">
+            <a href="{{reservationUrl}}" style="color: white; font-size: 15px; font-family: Noto Sans; font-weight: 400; text-decoration: none; line-height: 22px; word-wrap: break-word">View reservation</a>
+          </div>
+          <hr color="#DDDDDD" size="1"/>
+          <p style="font-family: Lato, Helvetica, sans-serif; color: #333333; margin: 15px 0 0 0;">If you have any questions please don't hesitate to e-mail our support team at <a href="mailto:support@littlehotelier.com" target="_blank" style="color: #E97500;">support@littlehotelier.com</a></p>
+        </td>
+      </tr>
+      <tr>
+        <td style="background-color: #242E38; color: #FFFFFF; font-size: 8px; padding: 42px; text-align: center;">
+          <p style="font-family: Lato, Helvetica, sans-serif; margin: 0; line-height: 1.6;">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

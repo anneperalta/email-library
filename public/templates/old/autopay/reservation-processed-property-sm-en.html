@@ -1,0 +1,172 @@
+<!-- metadata.subject = {{#if result}}{{#eq result "CARD_VALIDATION_FAILED"}} [AUTO PAY] Unable to schedule payments for reservation {{reservationId}} {{else}} [AUTO PAY] Payments modified for reservation {{reservationId}}{{/eq}}{{/if}} -->
+
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+
+</head>
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+<div class="container" style="width: 600px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div class="branding">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" height="75px">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="center" class="top-bar"
+                                            style="background-color: #00033B; width: 100%; height: 76px;" width="100%" height="76"
+                                            bgcolor="#00033B">
+                                            <img height="27" width="157" src="{{assetPath}}/logos/sm.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="padding-top: 27px;">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="center" class="top-bar" style="width: 100%;" width="100%">
+                                            <img width="66px" height="66px" src="{{assetPath}}/icons/round-info.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="font-family: Lato, Helvetica, Sans-Serif; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.43; letter-spacing: normal; color: #444444;">
+        <div style="font-weight: bold; font-size: 21px; text-align: center; padding: 20px 0px 21px 0px;">
+            {{#if result}}
+            {{#eq result "CARD_VALIDATION_FAILED" }}
+                Automated payments cannot be scheduled for this reservation.
+            {{else}}
+                A reservation change has affected scheduled payments
+            {{/eq}}
+            {{/if}}
+        </div>
+        <div style="font-weight: bold; font-size: 15px; padding: 0 30px 5px;">
+            <p>
+                Reservation ID: {{reservationId}}
+            </p>
+        </div>
+        <div style="padding: 0 30px;">
+            {{#if hasVoidedScheduledPayments}}
+                <p>
+                    Existing scheduled payments have been cancelled.
+                </p>
+            {{/if}}
+            {{#eq state "STOP_PROCESSING_DUE_TO_PAYMENT_TAKEN" }}
+                <p>
+                    Payments have already been processed. Additional payments or refunds will need to be processed manually.
+                </p>
+            {{else}}
+                {{#eq result "PROCESSING_FAILED"}}
+                    <p>
+                        An error occurred and we’re unable to update the existing scheduled payments for this reservation. Please review the scheduled payments and ensure they’re still correct.
+                    </p>
+                {{else eq result "RESERVATION_VALIDATION_FAILED"}}
+                    <p>
+                        Reservation has missing details and we’re unable to schedule payments. Please review the scheduled payments and ensure they’re still correct.
+                    </p>
+                {{else eq result "CARD_VALIDATION_FAILED"}}
+                    {{#eq cardValidationResult "DECLINED_3DS_AUTHENTICATION_REQUIRED"}}
+                    <p>
+                        The guest’s credit card requires 3D Secure authentication. We’re therefore unable to process automated payments for this reservation.
+                    </p>
+                    {{else eq cardValidationResult "EXPIRED_CARD"}}
+                    <p>
+                        The supplied credit card has expired. We’re therefore unable to process automated payments for this reservation.
+                    </p>
+                    {{else eq cardValidationResult "EXPIRED_CARD_ON_PAYMENT_DATE"}}
+                    <p>
+                        The supplied credit card will expire before the scheduled payment date. We’re therefore unable to process automated payments for this reservation.
+                    </p>
+                    {{else eq cardValidationResult "INVALID_CARD_DETAILS"}}
+                    <p>
+                        The supplied credit card details are invalid. We’re therefore unable to process automated payments for this reservation.
+                    </p>
+                    {{else}}
+                    <p>
+                        The supplied credit card has failed validation; automated payments cannot be scheduled for this reservation.
+                    </p>
+                    {{/eq}}
+                    <p>
+                        Please contact the guest to arrange an alternative payment.
+                    </p>
+                {{else}}
+                    {{#eq state "PAYMENT_SCHEDULED"}}
+                        <p>
+                            New payments have been scheduled for this reservation.
+                        </p>
+                    {{else}}
+                        <p>
+                            The modified reservation no longer matches your Automated Payments rules. Therefore no new payments have been scheduled.
+                        </p>
+                    {{/eq}}
+                {{/eq}}
+            {{/eq}}
+        </div>
+        <div style="padding: 0 30px 30px;">
+            {{#if reservationUrl}}
+                {{#eq result "CARD_VALIDATION_FAILED" }}
+                    <p>
+                        To process a payment manually, open the reservation via the link below and click <strong>Manage Payments</strong>.
+                    </p>
+                {{else}}
+                    <p>
+                        Click the link below to review the reservation.
+                    </p>
+                {{/eq}}
+                <p class="action-link">
+                    <a href="{{reservationUrl}}"><strong>View Reservation</strong></a>
+                </p>
+            {{/if}}
+        </div>
+        <div class="footer" style="width: 100%; font-size: 8px; line-height: 1.63; background-color: #00033B;">
+            <div class="footer-text" style="padding: 47px 60px; text-align: center; color: white;">
+                <div>
+                    <div>
+                        This e-mail was sent to you by SiteMinder Limited | Ground Floor, 30 Windmill Street,
+                        Millers Point, 2000 Australia
+                    </div>
+                    <div>
+                        Hammersmith Embankment, Manbre Road, London W6 9RH United Kingdom -
+                        Registered in England and Wales, registration number 07242801
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        The Colonnade, Tower 1, Suite 350 15301 North Dallas Parkway Addison TX 75001 USA
+                    </div>
+                    <div>
+                        Australia: 1300 736 198 | International: +61 2 9221 4444 | New Zealand: 0800 452 450
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

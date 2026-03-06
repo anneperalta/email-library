@@ -1,0 +1,180 @@
+<!-- metadata.subject = Little Hotelier Pay is now active -->
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+
+</head>
+
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+<div class="container" style="width: 600px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div class="branding">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" height="75px">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="center" class="top-bar"
+                                            style="background-color: #FFF3EB; width: 100%; height: 76px;" width="100%" height="76"
+                                            bgcolor="#FFF3EB">
+                                            <img height="27" width="216" src="{{assetPath}}/logos/littlehotelier.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="padding-top: 27px;">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="center" class="top-bar" style="width: 100%;" width="100%">
+                                            <img width="66px" height="66px" src="{{assetPath}}/icons/success-check.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div class="text-area"
+         style="font-family: Lato, Helvetica, Sans-Serif; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.43; letter-spacing: normal; color: #444444;">
+        <div class="heading" style="font-weight: bold; font-size: 21px; text-align: center; padding: 20px 0px 21px 0px;">
+            Congrats, you're now ready to go!
+        </div>
+        <div class="content" style="padding: 0px 39px;">
+            <div>
+                <div>
+                    Hi {{representativeName}},
+                </div>
+                <div>
+                    <p>
+                        Your quick, easy and secure Payments feature for {{propertyName}} is now ready to use.
+                    </p>
+                    <p>
+                        Here’s some helpful information to get you started.
+                    </p>
+                </div>
+                <br>
+                {{#if hasTBB}}
+                <div>
+                    <strong>Start taking payments in your Booking Engine.</strong>
+                    <br>
+                    Payments are automatically taken at the time of booking, if deposit settings are configured in the Booking Engine.
+                    <p>
+                        <a class="link" href="{{smFAQLink}}"
+                           style="text-decoration: none; color: #008acd;">
+                            Learn more
+                        </a>
+                    </p>
+                </div>
+                <br>
+                <div>
+                    <strong>Set up automated deposits.</strong>
+                    <br>
+                    Set up automated deposits and start benefiting from all payments made for your direct reservations to be automatically processed.
+                    <p>
+                        <a class="link" href="{{tbbPaymentsLearnMoreLink}}"
+                           style="text-decoration: none; color: #008acd;">
+                            Learn more
+                        </a>
+                    </p>
+                </div>
+                <br>
+                {{/if}}
+                <div>
+                    <strong>Start taking payments in Little Hotelier.</strong>
+                    <br>
+                    Whenever you take guest payments, go directly to your Little Hotelier reservation and select ‘Process Payment’. That’s it! No need for a physical terminal or double-handling of guest payment details.
+                    <p>
+                        <a class="link" href="{{lhPaymentsLearnMoreLink}}" style="text-decoration: none; color: #008acd;">
+                            Learn more
+                        </a>
+                    </p>
+                </div>
+                <br>
+                <div>
+                    <strong>How do I see all Payment transactions?</strong>
+                    <p style="margin-top: 0px">
+                        In your dashboard, select the ’My Apps’ tab in the top-right header and select ’Payments’ from the
+                        dropdown menu. This will give you access to:
+                    </p>
+                    <ul style="margin-top: 0px;">
+                        <li>
+                            A full list of your transactions through Little Hotelier Pay;
+                        </li>
+                        <li>
+                            Payout information for deposits into your bank account;
+                        </li>
+                        <li>
+                            Access to your online payment terminal - for non-reservation payments such as meals, merchandise or
+                            activities on your property.
+                        </li>
+                    </ul>
+                </div>
+                {{#if countryRequiresDDA}}
+                <div>
+                    <strong>Looking for the easiest way to manage your account balance?</strong>
+                    <p style="margin-top: 0px">
+                        Auto Top Up automatically resolves negative balances on your account.
+                        It ensures you can receive payments from guests, receive payouts to your bank account and process refunds with no interruptions.
+                    </p>
+                    <p>
+                        Follow the steps on your first login to the Payments Dashboard and simply accept the Direct Debit Authority to activate Auto Top Up.
+                    </p>
+                </div>
+                {{/if}}
+                <div>
+                    <hr style="border-top: 1px solid #d0d6d6; margin: 30px 0px">
+                    <p>We hope you enjoy your new, streamlined payment feature.</p>
+                    <p>
+                        <strong>The Little Hotelier Pay Team</strong>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="footer" style="width: 100%; font-size: 8px; line-height: 1.63; background-color: #242e38;">
+            <div class="footer-text" style="padding: 47px 60px; text-align: center; color: white;">
+                <div>
+                    <div>
+                        This e-mail was sent to you by SiteMinder Limited | Ground Floor, 30 Windmill Street,
+                        Millers Point, 2000 Australia
+                    </div>
+                    <div>
+                        Hammersmith Embankment, Manbre Road, London W6 9RH United Kingdom -
+                        Registered in England and Wales, registration number 07242801
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        The Colonnade, Tower 1, Suite 350 15301 North Dallas Parkway Addison TX 75001 USA
+                    </div>
+                    <div>
+                        Australia: 1300 736 198 | International: +61 2 9221 4444 | New Zealand: 0800 452 450
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

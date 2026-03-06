@@ -1,0 +1,171 @@
+<!-- metadata.subject =  Action required: Little Hotelier Pay account restricted -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+    a, a:hover, a:active, a:visited {
+      color: #006DFF;
+    }
+
+    @media screen and (min-width: 600px) {
+
+      body {
+        font-family: Lato, Helvetica, sans-serif; 
+        background-color: #F8F8F8; margin: 0; 
+        font-size: 14px; line-height: 1.4; 
+        color: #333333;
+      }
+
+      .wrapper {
+        padding: 14px 0;
+      }
+
+      .wrapper table {
+        position: relative; max-width: 600px; border: none; margin: 0 auto;
+      }
+
+      .header {
+        background-color: #FFF3EB; padding: 28px;
+      }
+
+      .header img {
+        display: block; 
+        width: 155px; 
+        height: 20px; 
+        margin: 0 auto;
+      }
+
+      .footer {
+        background-color: #242E38; 
+        color: #FFFFFF; 
+        font-size: 8px; 
+        padding: 42px; 
+        text-align: center;
+        line-height: 1.6em;
+      }
+
+      .footer p {
+        margin: 0; 
+      }
+
+      .main {
+        padding: 42px 40px 27px 40px; 
+        background-color: #FFFFFF;
+      }
+
+
+      .primary-section {
+        color: #333333; 
+        font-size: 20px; 
+        font-weight: 800; 
+        line-height: 1.2em;
+        margin: 0 0 32px 0;
+      }
+
+      .primary-section img {
+        margin: 5px 15px auto 0; 
+        vertical-align: middle;
+        width: 36px; 
+        height: 36px;
+        float: left;
+      }
+
+      .last-section {
+        color: #333333; 
+        margin: 15px 0 0 0;
+      }
+
+      #complete-now-button {
+        display: block;
+        background: #484B4B;
+        width: 100px;
+        height: 22px;
+        padding: 9px 24px 9px 24px;
+        border-radius: 32px;
+        color: #FFFFFF;
+      }
+
+      p {
+        margin-top: 0;
+        margin-bottom: 25px;
+      }
+
+      h4 {
+        margin-bottom: 0;
+      }
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <table>
+      <tr>
+        <td class="header"><img src="{{assetPath}}/logos/littlehotelier.png" alt="Little Hotelier"></td>
+      </tr>
+      <tr>
+        <td class="main">
+          <p class="primary-section">
+            <img src="{{assetPath}}/icons/warning-icon.png">
+            Verify your Little Hotelier Pay account now to continue processing payments
+          </p>
+          <p>Hi {{recipient}},</p>
+          <p>
+            Your Little Hotelier Pay account for <strong>{{property.name}}</strong> is currently restricted. You cannot process payments or receive payouts until verification is complete.  
+          </p>
+          <p>
+            It only takes a few minutes to complete verify your account so you can process payments seamlessly.
+          </p>
+          <p>
+            <a href="{{verificationLink}}" id="complete-now-button">Complete now</a>
+          </p>
+
+          <hr color="#DDDDDD" size="1"/>
+
+          <h3>Frequently asked questions</h3>
+
+          <h4>What happens if I don’t verify my account?</h4>
+          <p>
+            Without verification, you cannot process payments or receive payouts to your bank account. If you don't verify your account within 30 days, your account may be terminated without further notice.
+          </p>
+
+          <h4>What’s required to complete verification?</h4>
+          <p>
+            You'll need to provide documentation that varies based on your location. This could include a scanned copy of a government-issued photo ID, social security number or business registration documents.
+          </p>
+          
+          <p>
+            <a href="{{helpLink}}" target="_blank">
+              Learn more
+              <img src="{{assetPath}}/icons/external-link.png" style="vertical-align: middle; margin-left: 5px" >
+            </a>
+          </p>
+
+          <hr color="#DDDDDD" size="1"/>
+
+          <p class="last-section">
+            Need help? Contact our Little Hotelier support team at <a href="mailto:support@littlehotelier.com" target="_blank">support@littlehotelier.com</a>.
+          </p>
+          <p style="font-weight: 600">
+              The Little Hotelier Pay Team
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td class="footer">
+          <p>SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>

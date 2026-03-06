@@ -1,0 +1,140 @@
+<!-- metadata.subject = Thank you, your payment has been received - {{{propertyName}}} -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,600&display=swap" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,600&display=swap);
+
+    a, a:hover, a:active, a:visited {
+      color: #006ADD;
+    }
+
+    @media screen and (min-width: 680px) {
+      .white-container {
+        padding: 48px 24px;
+      }
+
+      h1, .confirmed {
+        font-size: 30px !important;
+      }
+
+      .readonly-field {
+        display: inline-block !important;
+        vertical-align: top !important;
+        width: 284px !important;
+      }
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body style="margin: 0; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 15px; line-height: 1.5; color: #333333;">
+  <div class="grey-container" style="background-color: #EFF1F4; width: 100%;">
+    <div style="padding: 48px 16px;">
+      <div class="white-container" style="max-width: 806px; background-color: #FFFFFF; margin: 0 auto; padding: 44px 24px;">
+        <table class="main-table" style="position: relative; max-width: 600px; border: none; width: 100%; margin: 0 auto;">
+          <tr>
+            <td>
+              <h1 style="font-family: 'Noto Sans', Helvetica, sans-serif; font-weight: 600; font-size: 24px; margin: 0;">{{propertyName}}</h1>
+              <div style="font-family: 'Noto Sans', Helvetica, sans-serif;">{{propertyLocation}}</div>
+              <div style="margin-top: 16px;">
+                {{#if propertyPhone.url}}
+                <div style="font-family: 'Noto Sans', Helvetica, sans-serif; margin-bottom: 8px;"><a href="{{propertyPhone.url}}" target="_blank" style="color: #006ADD; text-decoration: none;"><img src="{{assetPath}}/payment-requests/phone@2x.png" style="width: 15px; height: 15px; margin-right: 8px; vertical-align: middle;" alt="Phone">{{propertyPhone.text}}</a></div>
+                {{/if}}
+                {{#if propertyEmail.url}}
+                <div style="font-family: 'Noto Sans', Helvetica, sans-serif; margin-bottom: 8px;"><a href="{{propertyEmail.url}}" target="_blank" style="color: #006ADD; text-decoration: none;"><img src="{{assetPath}}/payment-requests/email@2x.png" style="width: 15px; height: 15px; margin-right: 8px; vertical-align: middle;" alt="E-mail">{{propertyEmail.text}}</a></div>
+                {{/if}}
+                {{#if propertyWebsite.url}}
+                <div style="font-family: 'Noto Sans', Helvetica, sans-serif;"><a href="{{propertyWebsite.url}}" target="_blank" style="color: #006ADD; text-decoration: none;"><img src="{{assetPath}}/payment-requests/website@2x.png" style="width: 15px; height: 15px; margin-right: 8px; vertical-align: middle;" alt="Website">{{propertyWebsite.text}}</a></div>
+                {{/if}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 25px 0 48px 0; font-size: 16px;">
+              <p style="font-family: 'Noto Sans', Helvetica, sans-serif;">Hi {{payerFirstName}} {{payerLastName}},</p>
+              <p style="font-family: 'Noto Sans', Helvetica, sans-serif;">Thank you. Your payment has been received.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: #EFF1F4; padding: 24px;">
+              <img src="{{assetPath}}/payment-requests/check-mark@2x.png" alt="Check mark" style="width: 92px; height: 86px;">
+              <div class="confirmed" style="font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 24px; color: #333333; margin: 12px 0  24px 0;"><strong style="font-weight: 600;">Payment confirmed</strong></div>
+              <div style="font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px; color: #717171;">Total amount paid</div>
+              <div style="font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 24px;"><strong style="font-weight: 600;">{{totalPaid}}</strong></div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 64px 0 13px 0;">
+              <h2 style="font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 20px; margin: 0 0 12px 0;">Your booking information</h2>
+              <div class="fields">
+                <div class="readonly-field" style="width: 100%; margin-bottom: 12px;">
+                  <div class="label" style="color: #717171; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px;">Reservation ID / Reference ID</div>
+                  <div class="primary-value">{{reservationId}}</div>
+                </div>
+                <div class="readonly-field" style="width: 100%; margin-bottom: 12px;">
+                  <div class="label" style="color: #717171; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px;">Reservation dates</div>
+                  <div class="primary-value" style="font-family: 'Noto Sans', Helvetica, sans-serif;">{{reservationDates}}</div>
+                  {{#if numberOfNights}}
+                  <div class="secondary-value" style="color: #717171; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px;">
+                  {{#eq numberOfNights "1" }}
+                    {{numberOfNights}} night
+                  {{else}}
+                    {{numberOfNights}} nights
+                  {{/eq}}
+                  </div>
+                  {{/if}}
+                </div>
+                <div class="readonly-field" style="width: 100%; margin-bottom: 12px;">
+                  <div class="label" style="color: #717171; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px;">Room details</div>
+                  {{#each rooms}}
+                  <div style="margin-bottom: 8px;">
+                    <div class="primary-value" style="font-family: 'Noto Sans', Helvetica, sans-serif;">{{roomTypeName}}</div>
+                    {{#if numberOfGuests}}
+                    <div class="secondary-value" style="color: #717171; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px;">
+                    {{#eq numberOfGuests "1" }}
+                      {{numberOfGuests}} guest
+                    {{else}}
+                      {{numberOfGuests}} guests
+                    {{/eq}}
+                    </div>
+                    {{/if}}
+                  </div>
+                  {{/each}}
+                </div>
+                {{#if checkInTime}}
+                <div class="readonly-field" style="margin-bottom: 12px;">
+                  <div class="label" style="width: 100%; color: #717171; font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 13px;">Arrival time</div>
+                  <div class="primary-value" style="font-family: 'Noto Sans', Helvetica, sans-serif;">{{checkInTime}}</div>
+                </div>
+                {{/if}}
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding-bottom: 24px; font-size: 16px;">
+              <p style="font-family: 'Noto Sans', Helvetica, sans-serif; color: #333333;">We look forward to welcoming you on {{checkInDate}}. Please contact us if you have any questions.</p>
+              <p style="font-family: 'Noto Sans', Helvetica, sans-serif; color: #333333;">Kind regards,<br />{{propertyName}}</p>
+              <p style="font-family: 'Noto Sans', Helvetica, sans-serif;"><a href="{{propertyPhone.url}}" target="_blank" style="color: #006ADD; text-decoration: none;">{{propertyPhone.text}}</a><br />
+                <a href="{{propertyEmail.url}}" target="_blank" style="color: #006ADD; text-decoration: none;">{{propertyEmail.text}}</a><br />
+                <a href="{{propertyWebsite.url}}" target="_blank" style="color: #006ADD; text-decoration: none;">{{propertyWebsite.text}}</a></p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background-color: #EFF1F4; padding: 24px;">
+              <div><img src="{{assetPath}}/payment-requests/siteminder-pay-icon.png" alt="" style="display: inline-block; width: 149px; height: 21px; vertical-align: middle; margin: 0 10px 10px 0;"></div>
+              <p style="font-family: 'Noto Sans', Helvetica, sans-serif; font-size: 12px; margin: 0;">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia.<br />Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.<br />&copy; SiteMinder 2023. All rights reserved.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

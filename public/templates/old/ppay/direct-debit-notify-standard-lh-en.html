@@ -1,0 +1,126 @@
+<!-- metadata.subject = Upcoming direct debit - account in negative balance -->
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+
+</head>
+
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+  <div class="container" style="width: 600px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div class="branding">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" height="75px">
+              <tr>
+                <td align="center" valign="top">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" valign="center" class="top-bar"
+                        style="background-color: #FFF3EB; width: 100%; height: 76px;" width="100%" height="76"
+                        bgcolor="#FFF3EB">
+                        <img height="27" width="216" src="{{assetPath}}/logos/littlehotelier.png">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="text-area"
+      style="font-family: Lato, Helvetica, Sans-Serif; font-size: 16px; line-height: 1.25; letter-spacing: normal; color: #444444;">
+      <div class="heading" style="font-weight: bold; font-size: 21px; text-align: center; padding: 42px 0px 21px 0px;">
+        Little Hotelier direct debit initiated</div>
+      <div class="content" style="padding: 0px 39px;">
+        <div>
+          <div>
+            We’re writing to let you know that a direct debit will be collected from the linked bank account on
+            Little Hotelier for the purposes of covering a negative balance on your account. This is likely due to refunds
+            or disputes that have been processed. Details of the upcoming debit are below:
+          </div>
+          <br>
+          <table class="table-info"
+            style="width: 100%; border-collapse: collapse; border-spacing: 0; background-color: #f6f8fa; font-size: 14px;"
+            width="100%" bgcolor="#f6f8fa">
+            <tr>
+              <td class="cell"
+                style="width: 50%; border: white; border-style: solid; border-width: 2px; padding-left: 24px; padding-top: 20px; padding-bottom: 21px; padding-right: 19px; text-align: left; vertical-align: top;"
+                width="50%" align="left" valign="top">
+                <span class="cell-header" style="color: #777777; padding-bottom: 4px;">Date (on or after):</span>
+                <div>{{createdAt}}</div>
+              </td>
+              <td class="cell"
+                style="width: 50%; border: white; border-style: solid; border-width: 2px; padding-left: 24px; padding-top: 20px; padding-bottom: 21px; padding-right: 19px; text-align: left; vertical-align: top;"
+                width="50%" align="left" valign="top">
+                <span class="cell-header" style="color: #777777; padding-bottom: 4px;">Amount:</span>
+                <div>{{amount}}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell"
+                style="width: 50%; border: white; border-style: solid; border-width: 2px; padding-left: 24px; padding-top: 20px; padding-bottom: 21px; padding-right: 19px; text-align: left; vertical-align: top;"
+                width="50%" align="left" valign="top">
+                <span class="cell-header" style="color: #777777; padding-bottom: 4px;">Property:</span>
+                {{#if propertyName}}
+                <div>{{propertyName}}</div>
+                {{else}}
+                <div>-</div>
+                {{/if}}
+
+              </td>
+              <td class="cell"
+                style="width: 50%; border: white; border-style: solid; border-width: 2px; padding-left: 24px; padding-top: 20px; padding-bottom: 21px; padding-right: 19px; text-align: left; vertical-align: top;"
+                width="50%" align="left" valign="top">
+                <span class="cell-header" style="color: #777777; padding-bottom: 4px;">Account number:</span>
+                <div>{{bankName}} ****{{bankLast4}}</div>
+              </td>
+            </tr>
+            <tr>
+              <td class="cell"
+                style="border: white; border-style: solid; border-right-style: none; border-width: 2px; padding-left: 24px; padding-top: 20px; padding-bottom: 21px; padding-right: 19px; text-align: left; vertical-align: top;"
+                align="left" valign="top">
+                <span class="cell-header" style="color: #777777; padding-bottom: 4px;">Associated payout:</span>
+                <div><a class="link" href="{{associatedPayoutLink}}"
+                    style="text-decoration: none; color: #008acd;">{{associatedPayoutName}}</a></div>
+              </td>
+            </tr>
+          </table>
+          <hr>
+
+        </div>
+        <div style="font-size:14px;padding:10px 0px 30px 0px">
+          <div>
+            If you have any questions about this debit, visit our <a class="link" href="{{helpLink}}"
+              style="text-decoration: none; color: #008acd;">refunds and direct debits help page</a>
+            or contact
+            <a class="link" href="mailto:{{supportEmail}}" style="text-decoration: none; color: #008acd;">{{supportEmail}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer" style="width: 100%; font-size: 8px; line-height: 1.5; background-color: #242e38;">
+        <div class="footer-text" style="padding: 47px 60px; text-align: center; color: white;">
+          <div>This e-mail was sent to you by SiteMinder Limited | Ground Floor, 30 Windmill Street, Millers Point, 2000 Australia Waterfront, Hammersmith Embankment, Manbre Road, London W6 9RH United Kingdom -
+            Registered in England and Wales, registration number 07242801
+          </div>
+          <div>
+            <div>
+              The Colonnade, Tower 1, Suite 350 15301 North Dallas Parkway Addison TX 75001 USA
+            </div>
+            <div>
+              Australia: 1300 736 198 | International: +61 2 9221 4444 | New Zealand: 0800 452 450
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

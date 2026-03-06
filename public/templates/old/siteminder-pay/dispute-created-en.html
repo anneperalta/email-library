@@ -1,0 +1,89 @@
+<!-- metadata.subject = {{#if reservationId}} {{reservationId}} has a disputed payment {{else}} You have a disputed payment{{/if}} -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:400);
+    td {
+      border: none; font-family:Lato, Helvetica, Sans-Serif;
+    }
+  </style>
+</head>
+<body>
+    <div style="margin: 0 auto; padding: 20px 0;">
+        <table style="width: 100%; border: none; padding-left: 10px; padding-right: 10px;">
+        <tr>
+            <td>
+                <strong>Hello</strong><br><br>
+                A cardholder has initiated a dispute of the payment of {{disputedAmount}} with their bank or card issuer.<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Transaction details</strong><br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Booking reference: {{reservationId}}<br>
+                Description: {{description}}<br>
+                Cardholder name: {{cardHolderName}}<br>
+                Card number: {{cardLast4}}<br>
+                Card expiry: {{cardExpiryMonth}} / {{cardExpiryYear}}<br>
+                Charge description: {{statementDescription}}<br>
+                Disputed amount: {{disputedAmount}}<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                The card issuer may deduct the amount from your account while the dispute is reviewed. If a ‘chargeback’ has been authorised, the amount will be taken within a day.<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Next steps</strong><br><br>
+                Common reasons for a payment dispute include guests not recognising the business name on their statement, or guests being  unaware of a deposit being charged.<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Contact the cardholder</strong><br><br>
+                As a first step we recommend contacting the cardholder to understand why they raised the dispute. If it was made in error you can ask the cardholder to withdraw.<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Challenge the dispute</strong><br><br>
+                If the payment was valid but the guest refuses to withdraw the dispute, or it was made in bad faith, you can challenge the dispute with the card issuer.<br>
+                To begin the process, reply to this e-mail and include any evidence supporting your right to keep the disputed payment. We will submit the evidence to the card issuer on your behalf.<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <strong>Types of evidence</strong><br><br>
+                <ul>
+                    <li>Correspondence such as text messages and e-mails between you and the cardholder</li>
+                    <li>Evidence of the supply of goods and services</li>
+                    <li>Identification collected at check-in</li>
+                </ul>
+                <br>
+                Your evidence is required by {{dueDate}}.<br><br>
+                Once evidence has been submitted, card issuers generally take 60 to 75 days to reach a final decision. If the dispute is resolved in your favour any money that may have been taken will be paid back to you.<br><br>
+                If you do not submit any evidence, it’s unlikely the dispute will be resolved in your favour.<br><br>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                We understand how frustrating lost income and the dispute process can be, so we're here to help. You can reply to this e-mail if you have questions or to submit your evidence.<br><br>
+                <strong>Regards</strong><br>
+                SiteMinder Payments
+            </td>
+        </tr>
+    </table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!-- metadata.subject = Confirmation of direct debit set up -->
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400" rel="stylesheet" type="text/css">
+
+</head>
+
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+  <div class="container" style="width: 600px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div class="branding">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="600" height="75px">
+              <tr>
+                <td align="center" valign="top">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" valign="center" class="top-bar"
+                        style="background-color: #FFF3EB; width: 100%; height: 76px;" width="100%" height="76"
+                        bgcolor="#FFF3EB">
+                        <img height="27" width="216" src="{{assetPath}}/logos/littlehotelier.png">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div style="padding-top: 27px;">
+      <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+        <tr>
+          <td align="center" valign="top">
+            <table border="0" cellpadding="0" cellspacing="0">
+              <tr>
+                <td align="center" valign="top">
+                  <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                    <tr>
+                      <td align="center" valign="center" class="top-bar" style="width: 100%;" width="100%">
+                        <img width="66px" height="66px" src="{{assetPath}}/icons/round-info.png">
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <div class="text-area"
+      style="font-family: Lato, Helvetica, Sans-Serif; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.43; letter-spacing: normal; color: #444444;">
+      <div class="heading" style="font-weight: bold; font-size: 21px; text-align: center; padding: 20px 0px 21px 0px;">
+        Your account is set up for automatic top-ups </div>
+      <div class="content" style="padding: 0px 39px;">
+        <div>
+          <div>
+            We’re writing to confirm the direct debit instructions with Little Hotelier specific to the
+            following account details:
+          </div>
+          <br>
+          <div>
+            ACCOUNT NUMBER: ****{{bankLast4}} <br>
+            {{#if isDdaTypeBACS}}
+            SORT CODE: {{sortCode}} <br>
+            {{/if}}
+            {{#if propertyName}}
+            PROPERTY NAME: {{propertyName}}
+            {{/if}}
+          </div>
+          <br>
+          <div>
+            Future transactions for automatic top-ups on your account will appear on your “Little Hotelier Payments” bank account 
+            with mandate reference: {{mandateId}}.
+          </div>
+          <br>
+          <div>
+            If you’d like to cancel or make changes to this arrangement contact
+            <a class="link" href="mailto:{{supportEmail}}"
+              style="text-decoration: none; color: #008acd;">{{supportEmail}}</a>.
+          </div>
+          <br>
+          <div>
+            You have the right to cancel this Direct Debit arrangement at any time.
+            {{#if isDdaTypeBACS}}
+            BACS Direct Debit collections are covered by the Direct Debit Guarantee.
+            {{/if}}
+          </div>
+          <br>
+          {{#if isDdaTypeBACS}}
+          <div>
+            <div style="height: 50px;line-height: 4;">
+              <u>The Direct Debit Guarantee</u>
+              <img style="float:right;" width="120px" height="50px" src="{{assetPath}}/logos/BacsDirectDebitLogo.jpg">
+            </div>
+            <ul style="margin-top: 0px;">
+              <li>
+                The Guarantee is offered by all banks and building societies that accept instructions to pay Direct
+                Debits
+              </li>
+              <li>
+                If there are any changes to the amount, date or frequency of your Direct Debit the organisation will
+                notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed.
+                If you request the organisation to collect a payment, confirmation of the amount and date will be
+                given to you at the time of the request
+              </li>
+              <li>
+                If an error is made in the payment of your Direct Debit, by the organisation or your bank or building
+                society, you are entitled to a full and immediate refund of the amount paid from your bank or
+                building society
+                <ul>
+                  <li>
+                    If you receive a refund you are not entitled to, you must pay it back when the organisation asks
+                    you to
+                  </li>
+                </ul>
+              </li>
+              <li>
+                You can cancel a Direct Debit at any time by simply contacting your bank or building society.
+                Written confirmation may be required. Please also notify the organisation.
+              </li>
+            </ul>
+          </div>
+          {{/if}}
+          <div>
+            <div style="font-size:14px;padding:10px 0px 20px 0px">
+              Visit our <a href="{{helpLink}}" style="text-decoration: none; color: #008acd;">refunds and direct debit
+                help pages</a> or contact <a class="link" href="mailto:{{supportEmail}}"
+                style="text-decoration: none; color: #008acd;">{{supportEmail}}</a>.
+            </div>
+            {{#if crmId}}
+            <div style="font-size: 11px;">{{crmId}}</div>
+            {{/if}}
+          </div>
+        </div>
+      </div>
+      <div class="footer" style="width: 100%; font-size: 8px; line-height: 1.63; background-color: #242e38;">
+        <div class="footer-text" style="padding: 47px 60px; text-align: center; color: white;">
+          <div>
+            <div>
+              This e-mail was sent to you by SiteMinder Limited | Ground Floor, 30 Windmill Street,
+              Millers Point, 2000 Australia
+            </div>
+            <div>
+              Hammersmith Embankment, Manbre Road, London W6 9RH United Kingdom -
+              Registered in England and Wales, registration number 07242801
+            </div>
+          </div>
+          <div>
+            <div>
+              The Colonnade, Tower 1, Suite 350 15301 North Dallas Parkway Addison TX 75001 USA
+            </div>
+            <div>
+              Australia: 1300 736 198 | International: +61 2 9221 4444 | New Zealand: 0800 452 450
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

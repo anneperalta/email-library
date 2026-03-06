@@ -1,0 +1,138 @@
+<!-- metadata.subject = [AUTO PAY] A payment failed for reservation {{reservationId}}-->
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+
+</head>
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+<div class="container" style="width: 600px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div class="branding">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="600" height="75px">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="center" class="top-bar"
+                                            style="background-color: #00033B; width: 100%; height: 76px;" width="100%" height="76"
+                                            bgcolor="#00033B">
+                                            <img height="27" width="157" src="{{assetPath}}/logos/sm.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="padding-top: 27px;">
+        <table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%">
+            <tr>
+                <td align="center" valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0">
+                        <tr>
+                            <td align="center" valign="top">
+                                <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                    <tr>
+                                        <td align="center" valign="center" class="top-bar" style="width: 100%;" width="100%">
+                                            <img width="66px" height="66px" src="{{assetPath}}/icons/round-info.png">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div style="font-family: Lato, Helvetica, Sans-Serif; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.43; letter-spacing: normal; color: #444444;">
+        <div style="font-weight: bold; font-size: 21px; text-align: center; padding: 20px 0px 21px 0px;">
+            A payment has failed
+        </div>
+        <div style="font-weight: bold; font-size: 15px; padding: 0 30px 5px;">
+            <p>
+                Reservation ID: {{reservationId}}
+            </p>
+        </div>
+        <div style="padding: 0 30px;">
+            {{#eq errorType "AUTHENTICATION_ERROR"}}
+            <p>	
+                A payment has failed because the <strong>credit card could not be authenticated.</strong>
+            </p>
+            {{/eq}}
+            {{#eq errorType "GENERIC_ERROR"}}
+            <p>
+                A credit card payment has failed due to an <strong>unexpected error.</strong>
+            </p>
+            {{/eq}}
+            {{#eq errorType "INVALID_CARD_DETAILS_ERROR"}}
+            <p>
+                A payment has failed because the <strong>credit card is invalid or has expired.</strong>
+            </p>
+            {{/eq}}
+            {{#eq errorType "INSUFFICIENT_FUNDS_ERROR"}}
+            <p>
+                A payment has failed because the <strong>credit card contained insufficient funds.</strong>
+            </p>
+            {{/eq}}
+            <p>
+                Please use a different credit card, or process the payment manually.                
+            </p>
+        </div>
+        <div style="padding: 0 30px 30px;">
+            {{#eq errorType "INSUFFICIENT_FUNDS_ERROR"}}
+                {{#if reservationUrl}}
+                <p>
+                    View the reservation details and click “Manage Payments” to process payments manually.
+                </p>
+                <p class="action-link">
+                    <a href="{{reservationUrl}}"><strong>View Reservation</strong></a>
+                </p>
+                {{/if}}
+            {{else}}
+                {{#if paymentDetailsUrl}}
+                <p>
+                    Click the link below to review the reservation and reattempt payment.
+                </p>
+                <p class="action-link">
+                    <a href="{{paymentDetailsUrl}}"><strong>Payment Details</strong></a>
+                </p>
+                {{/if}}
+            {{/eq}}
+        </div>
+        <div class="footer" style="width: 100%; font-size: 8px; line-height: 1.63; background-color: #00033B;">
+            <div class="footer-text" style="padding: 47px 60px; text-align: center; color: white;">
+                <div>
+                    <div>
+                        This e-mail was sent to you by SiteMinder Limited | Ground Floor, 30 Windmill Street,
+                        Millers Point, 2000 Australia
+                    </div>
+                    <div>
+                        Hammersmith Embankment, Manbre Road, London W6 9RH United Kingdom -
+                        Registered in England and Wales, registration number 07242801
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        The Colonnade, Tower 1, Suite 350 15301 North Dallas Parkway Addison TX 75001 USA
+                    </div>
+                    <div>
+                        Australia: 1300 736 198 | International: +61 2 9221 4444 | New Zealand: 0800 452 450
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

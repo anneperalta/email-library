@@ -1,0 +1,298 @@
+<!-- metadata.subject = {{property.name}} - Payment receipt for {{reservation.id}} -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="email-subject" content="{{property.name}} - Payment receipt for {{reservation.id}}">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans:400,600&display=swap" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Noto+Sans:400,600&display=swap);
+    body {
+      margin: 0;
+      font-family: 'Noto Sans', Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: #333333;
+    }
+
+    .container {
+      background-color: #EFF1F4;
+      width: 100%;
+    }
+
+    .padding-container {
+      padding: 48px 16px;
+    }
+
+    .white-container {
+      max-width: 806px;
+      background-color: #FFFFFF;
+      margin: 0 auto;
+      padding: 56px 24px;
+    }
+
+    .main-table {
+      position: relative;
+      max-width: 600px;
+      border: none;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    .property-name {
+      font-weight: 600;
+      font-size: 24px;
+      margin: 0;
+    }
+
+    .property-contacts {
+      font-size: 14px;
+      width: 100%;
+      padding-bottom: 4px;
+    }
+
+    .property-contacts-fields {
+      display: inline-block;
+      vertical-align: top;
+      width: 100%;
+      padding-bottom: 4px;
+    }
+
+    .property-contacts-fields-phone {
+      width: 100% !important
+    }
+
+    .property-contacts-img {
+      width: 15px;
+      height: 15px;
+      margin-right: 8px;
+      vertical-align: middle;
+    }
+
+    .property-contacts-text {
+      color: #006ADD;
+      text-decoration: none;
+    }
+
+    .payer-message {
+      padding: 30px 0 32px 0;
+      font-size: 16px;
+    }
+
+    .grey-container {
+      background-color: #EFF1F4;
+      padding: 24px;
+    }
+
+    .check-mark-img {
+      width: 92px;
+      height: 86px;
+    }
+
+    .confirmed {
+      font-size: 24px;
+      color: #333333;
+      margin: 12px 0 24px 0;
+      font-weight: 600;
+    }
+
+    .total-amount-paid-label {
+      font-size: 13px;
+      color: #717171;
+    }
+
+    .field-amount {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .payment-details-padding {
+      padding: 40px 0 0 0;
+    }
+
+    .payment-details-label {
+      font-size: 20px;
+      margin: 0 0 12px 0;
+    }
+
+    .readonly-field {
+      width: 100%;
+      margin-bottom: 12px;
+    }
+
+    .label {
+      color: #717171;
+      font-size: 13px;
+    }
+
+    .message {
+      font-size: 16px;
+    }
+
+    .message p {
+      color: #333333;
+    }
+
+    .message-border {
+      margin-bottom: 0px
+    }
+
+    .border-padding {
+      padding: 0;
+    }
+    .border {
+      border: none;
+      border-top: 1px solid #E0E0E0;
+      margin: 40px 0;
+    }
+
+    .lh-logo-img {
+      width: 36px;
+      height: 25px;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 10px 10px 0;
+    }
+
+    .lh-label {
+      display: inline-block;
+      margin: 0;
+      font-weight: normal;
+      margin-bottom: 10px;
+    }
+
+    .sm-details {
+      font-size: 12px;
+      margin: 0;
+      padding-bottom: 16px;
+    }
+
+    a, a:hover, a:active, a:visited {
+      color: #006ADD;
+    }
+
+    @media screen and (min-width: 680px) {
+      .white-container {
+        padding: 48px 24px;
+      }
+
+      h1, .confirmed {
+        font-size: 30px !important;
+      }
+
+      .property-contacts {
+        font-size: 14px !important;
+        margin-top: 16px;
+      }
+      
+      .property-contacts-fields-number {
+        display: inline-block !important;
+        vertical-align: top !important;
+        width: 200px !important;
+      }
+        
+      .readonly-field {
+        vertical-align: top !important;
+        max-width: 290px !important;
+      }
+
+      .primary-value {
+        font-size: 15px !important;        
+      }
+
+      .secondary-value {
+        font-size: 13px !important;
+      }
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <div class="container">
+    <div class="padding-container">
+      <div class="white-container">
+        <table class="main-table">
+          <tr>
+            <td>
+              <h1 class="property-name">{{property.name}}</h1>
+              <div>{{property.location}}</div>
+              <div class="property-contacts">
+                <div class="property-contacts-fields property-contacts-fields-phone"><a href="{{property.phone.url}}" target="_blank" class="property-contacts-text"><img src="{{assetPath}}/payment-requests/phone@2x.png" class="property-contacts-img" alt="Phone">{{property.phone.text}}</a></div>
+
+                <div class="property-contacts-fields"><a href="{{property.email.url}}" target="_blank" class="property-contacts-text"><img src="{{assetPath}}/payment-requests/email@2x.png" class="property-contacts-img" alt="E-mail">{{property.email.text}}</a></div>
+
+                <div class="property-contacts-fields"><a href="{{property.website.url}}" target="_blank" class="property-contacts-text"><img src="{{assetPath}}/payment-requests/website@2x.png" class="property-contacts-img" alt="Website">{{property.website.text}}</a></div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="payer-message">
+              <p>Hi {{payer.firstName}} {{payer.lastName}},</p>
+              <p>This email is to confirm your payment towards your reservation. We hope you have a wonderful stay.</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="grey-container">
+              <img src="{{assetPath}}/icons/check-mark-autopay.png" alt="Check mark" class="check-mark-img">
+              <div class="confirmed">Payment confirmed</div>
+              <div class="total-amount-paid-label">Total amount paid</div>
+              <div class="field-amount">{{reservation.payment.totalPaid}}</div>
+            </td>
+          </tr>
+          <tr>
+            <td class="payment-details-padding">
+              <h2 class="payment-details-label">Payment details</h2>
+              <div class="readonly-field">
+                <div class="label">Reservation ID / Reference ID</div>
+                <div class="primary-value">{{reservation.id}}</div>
+              </div>
+              <div class="readonly-field">
+                <div class="label">Payment date</div>
+                <div class="primary-value">
+                  {{reservation.payment.date}} 
+                  <br>
+                  {{property.timezone}}
+                </div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td class="message">
+              <p>If you have any questions or special requests, please don’t hesitate to reach out.</p>
+              <p class="message-border">Kind regards,<br />{{property.name}}</p>
+            </td>
+          </tr>
+          <tr>
+            <td class="border-padding">
+              <hr class="border">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div><img src="{{assetPath}}/payment-requests/pay-icon@2x.png" alt="" class="lh-logo-img">
+                <h4 class="lh-label">
+                  Little Hotelier Payments
+                </h4>
+              </div>
+              <p class="sm-details">
+                SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia.
+              </p>
+              <p class="sm-details">
+                Your booking is with {{property.name}}. SiteMinder's role is to solely facilitate the payment on behalf of {{property.name}}.
+              </p>
+              <p class="sm-details">
+                &copy; SiteMinder 2024. All rights reserved.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

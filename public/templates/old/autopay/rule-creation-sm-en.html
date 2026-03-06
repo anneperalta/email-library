@@ -1,0 +1,355 @@
+<!-- metadata.subject = Your automated payment rule was successfully created -->
+<!DOCTYPE html>
+<html style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;" xmlns="http://www.w3.org/1999/html" xmlns="http://www.w3.org/1999/html">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400" rel="stylesheet" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400&display=swap');
+    </style>
+</head>
+<body style="margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline;">
+<div class="container" style="width: 670px; margin: 0px auto; padding: 0px 0px 0px 0px; font-size: 16px;">
+    <div style="font-family: 'Noto Sans', Helvetica, SansSerif; font-size: 14px; font-weight: normal; font-stretch: normal; font-style: normal; line-height: 1.43; letter-spacing: normal; color: #333333;">
+        <div style="padding: 50px 30px 5px;">
+            <img height="27" width="157" src="{{assetPath}}/logos/siteminder-blue.png">
+        </div>
+        <div style="padding: 0 30px 5px;">
+            <p style="font-weight: 500; line-height: 35px; font-size: 26px; text-align: left; padding: 20px 0px 10px 0px; color: #0057B5;">
+                Your payment rule was successfully created
+            </p>
+        </div>
+        <div style="padding: 0 30px; font-size: 16px;">
+            <p>
+                The payment rule is now live. All new reservations from the selected rate plans and channels will have payments taken automatically.
+            </p>
+            <p style="padding-bottom: 35px;">
+                Answer to some common questions are available below the payment rule's settings.
+            </p>
+        </div>
+        <div style="padding: 0 30px;">
+            <div style="background-color: #EFF5FF; float: left; width: 100%; margin: 29px 0 20px;">
+                <div style="padding: 15px 25px;">
+                    <div>
+                        <div style="color: #006ADD; text-transform: uppercase; font-weight: 900; padding-top: 15px;">
+                            Card type
+                        </div>
+                        <div>
+                            <div style="float: left; width: 50%; padding-top: 20px;">
+                                Applies to:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 20px; padding-bottom: 20px;">
+                                {{#eq cardType "PHYSICAL"}}
+                                    Standard Credit Cards
+                                {{/eq}}
+                                {{#eq cardType "VIRTUAL"}}
+                                    Virtual Credit Cards
+                                {{/eq}}
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="color: #006ADD; text-transform: uppercase; font-weight: 900;">
+                            Rate plan and channel(s)
+                        </div>
+                        <div>
+                            <div style="float: left; width: 50%; padding-top: 20px;">
+                                Applies to:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 20px; padding-bottom: 10px;">
+                                <p>
+                                    {{ratePlan}}
+                                    <br/>
+                                    {{channel}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="color: #006ADD; text-transform: uppercase; font-weight: 900;">
+                            Payment rule
+                        </div>
+                        <div style="padding-bottom: 40px;">
+                            <div style="font-weight: 900; font-size: 15px; padding-top: 20px;">
+                                Payment action
+                            </div>
+                            <div style="float: left; width: 50%;">
+                                Type of charge:
+                            </div>
+                            <div style="float: left; width: 50%;">
+                                {{#eq actions.[0].chargeType "FIRST_NIGHT_STAY"}}
+                                    First night's stay
+                                {{/eq}}
+
+                                {{#eq actions.[0].chargeType "PERCENTAGE"}}
+                                    {{#eq actions.[0].chargeAmount 100}}
+                                        Full payment
+                                    {{else}}
+                                        {{actions.[0].chargeAmount}}%
+                                    {{/eq}}
+                                {{/eq}}
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 5px;">
+                                When to charge the payment:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 5px;">
+                                {{#eq actions.[0].triggerDate.operand "ACTIVATION_DATE"}}
+                                    Activation date
+                                    {{#eq cardType "VIRTUAL"}}
+                                        {{#if hasChannelsPlus}}
+                                            <div style="color: #717171;">
+                                                Channels Plus VCCs are processed 1 day after the activation date.
+                                            </div>
+                                        {{/if}}
+                                    {{/eq}}
+                                {{/eq}}
+
+                                {{#eq actions.[0].triggerDate.operand "TIME_OF_BOOKING"}}
+                                    Once booking is confirmed
+                                {{/eq}}
+
+                                {{#eq actions.[0].triggerDate.operand "CHECK_IN"}}
+                                    {{#eq actions.[0].triggerDate.operator "<"}}
+                                        {{#eq actions.[0].triggerDate.value 1}}
+                                            1 day prior to check-in
+                                        {{else}}
+                                            {{actions.[0].triggerDate.value}} days prior to check-in
+                                        {{/eq}}
+                                    {{else eq actions.[0].triggerDate.operator ">"}}
+                                        {{#eq actions.[0].triggerDate.value 1}}
+                                            1 day after check-in
+                                        {{else}}
+                                            {{actions.[0].triggerDate.value}} days after check-in
+                                        {{/eq}}
+                                    {{else}}
+                                        Check-in day
+                                    {{/eq}}
+                                {{/eq}}
+
+                                {{#eq actions.[0].triggerDate.operand "CHECK_OUT"}}
+                                    {{#eq actions.[0].triggerDate.operator "<"}}
+                                        {{#eq actions.[0].triggerDate.value 1}}
+                                            1 day prior to check-out
+                                        {{else}}
+                                            {{actions.[0].triggerDate.value}} days prior to check-out
+                                        {{/eq}}
+                                    {{else eq actions.[0].triggerDate.operator ">"}}
+                                        {{#eq actions.[0].triggerDate.value 1}}
+                                            1 day after check-out
+                                        {{else}}
+                                            {{actions.[0].triggerDate.value}} days after check-out
+                                        {{/eq}}
+                                    {{else}}
+                                        Check-out day
+                                    {{/eq}}
+                                {{/eq}}
+                            </div>
+                            {{#if actions.[0].triggerTime}}
+                            <div style="float: left; width: 50%; padding-top: 5px;">
+                                Time of day:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 5px; padding-bottom: 20px;">
+                                {{actions.[0].triggerTime}}
+                            </div>
+                            {{/if}}
+                        </div>
+                        {{#if actions.[1]}}
+                        <div style="margin-top: 20px;">
+                            <div style="font-weight: 900; font-size: 15px;">
+                                Second action
+                            </div>
+                            <div style="float: left; width: 50%;">
+                                Type of charge:
+                            </div>
+                            <div style="float: left; width: 50%;">
+                                {{#eq actions.[1].chargeType "REMAINDER"}}
+                                    Additional amount
+                                {{/eq}}
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 5px;">
+                                When to charge the payment:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 5px;">
+                                {{#eq actions.[1].triggerDate.operand "TIME_OF_BOOKING"}}
+                                    Once booking is confirmed
+                                {{/eq}}
+
+                                {{#eq actions.[1].triggerDate.operand "CHECK_IN"}}
+                                    {{#eq actions.[1].triggerDate.operator "<"}}
+                                        {{#eq actions.[1].triggerDate.value 1}}
+                                            1 day prior to check-in
+                                        {{else}}
+                                            {{actions.[1].triggerDate.value}} days prior to check-in
+                                        {{/eq}}
+                                    {{else eq actions.[1].triggerDate.operator ">"}}
+                                        {{#eq actions.[1].triggerDate.value 1}}
+                                            1 day after check-in
+                                        {{else}}
+                                            {{actions.[1].triggerDate.value}} days after check-in
+                                        {{/eq}}
+                                    {{else}}
+                                        Check-in day
+                                    {{/eq}}
+                                {{/eq}}
+
+                                {{#eq actions.[1].triggerDate.operand "CHECK_OUT"}}
+                                    {{#eq actions.[1].triggerDate.operator "<"}}
+                                        {{#eq actions.[1].triggerDate.value 1}}
+                                            1 day prior to check-out
+                                        {{else}}
+                                            {{actions.[1].triggerDate.value}} days prior to check-out
+                                        {{/eq}}
+                                    {{else eq actions.[1].triggerDate.operator ">"}}
+                                        {{#eq actions.[1].triggerDate.value 1}}
+                                            1 day after check-out
+                                        {{else}}
+                                            {{actions.[1].triggerDate.value}} days after check-out
+                                        {{/eq}}
+                                    {{else}}
+                                        Check-out day
+                                    {{/eq}}
+                                {{/eq}}
+                            </div>
+                            {{#if actions.[1].triggerTime}}
+                            <div style="float: left; width: 50%; padding-top: 5px;">
+                                Time of day:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 5px; padding-bottom: 20px;">
+                                {{actions.[1].triggerTime}}
+                            </div>
+                            {{/if}}
+                        </div>
+                        {{/if}}
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <div style="color: #006ADD; text-transform: uppercase; font-weight: 900;">
+                            Rule description
+                        </div>
+                        <div>
+                            <div style="float: left; width: 50%; padding-top: 20px;">
+                                Rule name:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 20px;">
+                                {{name}}
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 20px;">
+                                Rule description:
+                            </div>
+                            <div style="float: left; width: 50%; padding-top: 20px; padding-bottom: 30px;">
+                                {{description}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{#if hasDirectBooking}}
+        <div style="padding: 0 30px;">
+            <div style="background-color: #EFF5FF; float: left; width: 100%; margin: 0 0 80px;">
+                <div style="float: left; margin: 18px 12px 12px;">
+                    <img width="40px" height="40px" src="{{assetPath}}/icons/info-icon.png">
+                </div>
+                <div style="padding: 15px 25px; font-size: 16px;">
+                    <div style="padding-left: 40px; font-weight: 600; font-size: 16px; padding-bottom: 5px; color: #333333">
+                        Remember to update your payment policies
+                    </div>
+                    <div style="padding-left: 40px; font-weight: 400; font-size: 15px; padding-top: 8px; color: #333333">
+                        As payments for some direct booking rates are now automated, your Direct Booking payment policies may need updating.
+                    </div>
+                    <div style="padding-left: 40px; font-size: 15px; padding-top: 8px; padding-bottom: 8px;">
+                        <a href="{{directBookingLink}}" >
+                            Review and update payment policies
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+        <div style="padding: 0 30px;">
+            <p>
+                <a href="{{autoPayRulesLink}}" style="padding: 10px 25px; background-color: #006ADD; color: #FFFFFF; text-decoration: none; line-height: 37px;">
+                    Go to Automated Payment Rules
+                </a>
+            </p>
+        </div>
+        <div style="padding: 0 30px; width: 620px;">
+            <p style="font-weight: 500; font-size: 21px; text-align: left; padding: 20px 0px 20px 0px; color: #0057B5;">
+                FAQs
+            </p>
+            <p style="font-weight: 900; font-size: 18px;">
+                Can I edit a rule later?
+            </p>
+            <p style="padding-bottom: 35px; font-size: 16px;">
+                Payment rule names and descriptions can be edited, but their configuration cannot be changed. Instead, you'll need to archive a rule, then create and activate a replacement rule with your preferred configuration.
+            </p>
+            <p style="font-weight: 900; font-size: 18px;">
+                If I archive a rule what happens to my existing scheduled payments?
+            </p>
+            <p style="padding-bottom: 35px; font-size: 16px;">
+                Any scheduled payments will not be affected. The archived rule will not be applied to future reservations.
+            </p>
+            <p style="font-weight: 900; font-size: 18px;">
+                What happens if a payment fails?
+            </p>
+            <p style="padding-bottom: 35px; font-size: 16px;">
+                You will be notified via e-mail. You can also view all failed payments under Automated Payments tab.
+            </p>
+            <p style="font-weight: 900; font-size: 18px;">
+                Can a payment rule be applied to multiple rate plans?
+            </p>
+            <p style="padding-bottom: 35px; font-size: 16px;">
+                No. Each payment rule can only apply to one rate plan, but can be applied to multiple channels.
+            </p>
+            <p style="font-weight: 900; font-size: 18px;">
+                What happens when a card fails validation?
+            </p>
+            <p style="padding-bottom: 35px; font-size: 16px;">
+                Automated Payments won't be able to schedule payments if a supplied card fails validation. You'll need to request an alternative card and manage payments for that reservation manually.
+            </p>
+            <p style="font-weight: 900; font-size: 18px;">
+                What happens if no rule matches?
+            </p>
+            <p style="padding-bottom: 35px; font-size: 16px;">
+                Reservations that don't match any rules need payments processed manually. Reasons include when a modification or cancellation is received, or previous payments have been processed.
+                <br/><br/>
+                Automated Payments currently supports a limited number of channels. You may still need to manage some payments manually using your existing process.
+            </p>
+        </div>
+        <div style="padding: 0 30px;">
+            <div style="background-color: #E6F0FF;">
+                <div style="float: left; padding: 15px 20px;">
+                    <img width="70px" height="70px" src="{{assetPath}}/icons/help-icon.png">
+                </div>
+                <div style="padding: 15px 25px; font-size: 16px;">
+                    <div style="font-weight: 900; padding-bottom: 5px;">
+                        Need more information?
+                    </div>
+                    <div>
+                        <a href="{{helpCentreUrl}}" style="text-decoration: none; color: #0057B5;">Visit our Help Centre</a> to find everything you need to know about creating and managing payment rules.
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="padding: 40px 30px 50px;">
+            <div style="font-size: 16px; display: inline-block;">
+                <div>
+                    Thank you,
+                </div>
+                <div style="padding-top: 5px;">
+                    <span style="float: left">
+                        <img width="35px" height="35px" src="{{assetPath}}/logos/siteminder-logomark.png">
+                    </span>
+                    <span style="margin-left: 8px; margin-top: 6px; float: right;">
+                        The SiteMinder Team
+                    </span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

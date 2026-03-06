@@ -1,0 +1,163 @@
+<!-- metadata.subject = [Payment terminal] A payment terminal has been connected -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="email-subject" content="[Payment terminal] A payment terminal has been connected">
+  <title></title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet" type="text/css">
+  <style type="text/css">
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+
+    a, a:hover, a:active, a:visited {
+      color: #006DFF;
+    }
+
+    @media screen and (min-width: 600px) {
+
+      body {
+        font-family: Lato, Helvetica, sans-serif;
+        background-color: #F8F8F8; margin: 0;
+        font-size: 14px; line-height: 1.4;
+        color: #333333;
+      }
+
+      .wrapper {
+        padding: 14px 0;
+      }
+
+      .wrapper table {
+        position: relative; max-width: 600px; border: none; margin: 0 auto;
+      }
+
+      .header {
+        background-color: #FFF3EB; padding: 28px;
+      }
+
+      .header img {
+        display: block;
+        width: 155px;
+        height: 20px;
+        margin: 0 auto;
+      }
+
+      .footer {
+        background-color: #242E38;
+        color: #FFFFFF;
+        font-size: 8px;
+        padding: 42px;
+        text-align: center;
+        line-height: 1.6em;
+      }
+
+      .footer p {
+        margin: 0;
+      }
+
+      .main {
+        padding: 42px 40px 27px 40px;
+        background-color: #FFFFFF;
+      }
+
+
+      .primary-section {
+        color: #333333;
+        font-size: 20px;
+        font-weight: 800;
+        margin: 0 0 32px 0;
+      }
+
+      .primary-section img {
+        margin: auto 15px auto 0;
+        vertical-align: middle;
+        width: 36px;
+        height: 36px;
+      }
+
+      .secondary-section {
+        color: #444444;
+        font-size: 14px;
+        margin: 0 0 20px 0;
+      }
+
+      .info-section {
+        margin-bottom: 20px;
+      }
+
+      .info-box {
+        display: inline-block;
+        width: 208px;
+        min-height: 60px;
+        vertical-align: top;
+        margin: 0 0 2px 0;
+        padding: 20px 24px;
+        background-color: #F6F8FA;
+      }
+
+      .info-label {
+        color: #777777; font-size: 12px; margin-bottom: 5px;
+      }
+
+      .info-text {
+        color: #3A3A3A;
+      }
+
+      .last-section {
+        color: #333333;
+        margin: 15px 0 0 0;
+      }
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <table>
+      <tr>
+        <td class="header"><img src="{{assetPath}}/logos/littlehotelier.png" alt="Little Hotelier"></td>
+      </tr>
+      <tr>
+        <td class="main">
+          <p class="primary-section">
+            <img src="{{assetPath}}/icons/success.png">
+            Your payment terminal has been connected
+          </p>
+          <p class="secondary-section">You're now set up and ready to process your <a href="https://helpcentre.littlehotelier.com/en/articles/10070514-processing-payments-with-your-payment-terminal">first terminal payment!</a></p>
+          <div class="info-section">
+            <div class="info-box">
+              <div class="info-label">Connected date</div>
+              <div class="info-text">{{terminal.datetime}}</div>
+              <div class="info-text">({{terminal.timezone}})</div>
+            </div>
+            <div class="info-box">
+              <div class="info-label">Serial number</div>
+              <div class="info-text">{{terminal.serialNumber}}</div>
+            </div>
+            <div class="info-box">
+              <div class="info-label">Terminal label</div>
+              <div class="info-text">{{terminal.label}} {{payerLastName}}</div>
+            </div>
+            <div class="info-box">
+              <div class="info-label">Connected by</div>
+              <div class="info-text">{{terminal.connectedBy}}</div>
+            </div>
+          </div>
+          <hr color="#DDDDDD" size="1"/>
+          <p class="last-section">
+            If you have any questions please don't hesitate to e-mail our support team at <a href="mailto:support@littlehotelier.com" target="_blank">support@littlehotelier.com</a>.
+          </p>
+        </td>
+      </tr>
+      <tr>
+        <td class="footer">
+          <p>SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+</body>
+
+</html>
