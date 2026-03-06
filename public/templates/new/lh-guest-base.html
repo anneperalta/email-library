@@ -1,0 +1,243 @@
+<!-- metadata.subject = [Subject line] -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+    body { background-color: #edf0f4; }
+
+    .icon-blue { filter: invert(29%) sepia(98%) saturate(1500%) hue-rotate(215deg) brightness(100%); }
+    .icon-green { filter: invert(58%) sepia(60%) saturate(600%) hue-rotate(95deg) brightness(105%); }
+
+    @media screen and (max-width: 480px) {
+      .outer-padding { padding: 20px 12px !important; }
+      .card-body     { padding: 24px 20px 0 20px !important; }
+      .footer-body   { padding: 0 20px 32px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #edf0f4; font-family: 'Noto Sans', Arial, sans-serif; color: #1a1a1a;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="outer-padding" align="center" valign="top" style="padding: 40px 16px;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px; background-color: #ffffff; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+          <tr>
+            <td class="card-body" style="padding: 40px 40px 0 40px;">
+
+              <!-- Property header -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <h1 style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 22px; font-weight: 700; line-height: 28px; color: #1a1a1a;">{{propertyName}}</h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #6b7280;">{{propertyAddress}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 6px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block; filter: invert(29%) sepia(98%) saturate(1500%) hue-rotate(215deg) brightness(100%);" />
+                        </td>
+                        <td>
+                          <a href="tel:{{propertyPhone}}" style="font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #2563eb; text-decoration: none;">{{propertyPhone}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 6px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block; filter: invert(29%) sepia(98%) saturate(1500%) hue-rotate(215deg) brightness(100%);" />
+                        </td>
+                        <td>
+                          <a href="mailto:{{propertyEmail}}" style="font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #2563eb; text-decoration: none;">{{propertyEmail}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 32px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block; filter: invert(29%) sepia(98%) saturate(1500%) hue-rotate(215deg) brightness(100%);" />
+                        </td>
+                        <td>
+                          <a href="{{propertyWebsite}}" style="font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #2563eb; text-decoration: none;">{{propertyWebsite}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Salutation + opening -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 12px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #1a1a1a;">Hi {{guestFirstName}},</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 28px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #6b7280;">[Opening message — explain what this email is about and any attachments.]</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ==================== STATUS BOX ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 8px; margin-bottom: 28px;">
+                <tr>
+                  <td style="padding: 28px;">
+
+                    <!-- Success icon -->
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 14px;">
+                          <img src="../assets/icons/success-alt.svg" alt="" width="36" height="36" class="icon-green" style="display: block; filter: invert(58%) sepia(60%) saturate(600%) hue-rotate(95deg) brightness(105%);" />
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Status title -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <h2 style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 22px; font-weight: 700; line-height: 28px; color: #1a1a1a;">[Status title]</h2>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 2px;">
+                          <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #6b7280;">Total amount paid</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 14px;">
+                          <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 22px; font-weight: 700; line-height: 28px; color: #1a1a1a;">{{currencyCode}} {{amount}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 22px; color: #4b5563;">[Additional information here]</p>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /STATUS BOX ==================== -->
+
+              <!-- Details section -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <h3 style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 22px; color: #1a1a1a;">[Section title]</h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 14px;">
+                    <p style="margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 16px; color: #9ca3af;">[Label]</p>
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #1a1a1a;">[Value]</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 28px;">
+                    <p style="margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 16px; color: #9ca3af;">[Label]</p>
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #1a1a1a;">[Value]</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Closing -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 20px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #1a1a1a;">[Closing message paragraph]</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #1a1a1a;">Kind regards,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 700; line-height: 24px; color: #1a1a1a;">{{propertyName}}</p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+        <!-- ==================== FOOTER ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 600px;">
+          <tr>
+            <td class="footer-body" style="padding: 0 40px 40px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="border-top: 1px solid #e5e7eb; padding-top: 24px; padding-bottom: 12px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
+                        </td>
+                        <td valign="middle">
+                          <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 700; line-height: 22px; color: #1a1a1a;">SiteMinder Pay</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #6b7280;">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style="margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #9ca3af;">© SiteMinder 2026.&nbsp; All rights reserved.</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /FOOTER ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

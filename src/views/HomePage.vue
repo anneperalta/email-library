@@ -47,7 +47,7 @@ const { popup, openComments, commentCount } = useComments()
         </div>
         <div class="home__base-group">
           <span class="home__base-group-label">Guest</span>
-          <span class="home__base-btn home__base-btn--disabled">LH</span>
+          <a href="/templates/new/lh-guest-base.html" target="_blank" class="home__base-btn">LH</a>
           <span class="home__base-btn home__base-btn--disabled">SM</span>
         </div>
       </div>
