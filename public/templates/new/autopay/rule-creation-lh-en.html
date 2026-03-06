@@ -1,0 +1,282 @@
+<!-- metadata.subject = Your automated payment rule was successfully created -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+    @media screen and (max-width: 480px) {
+      .outer-padding { padding: 20px 12px !important; }
+      .card-body    { padding: 24px 20px 0 20px !important; }
+      .box-body     { padding: 20px !important; }
+      .info-body    { padding: 20px !important; }
+      .col-row      { display: block !important; }
+      .col          { width: 100% !important; display: block !important; box-sizing: border-box !important; }
+      .footer-body  { padding: 24px 20px 12px 20px !important; }
+      .footer-legal { padding: 0 20px 24px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #FFE2D7; font-family: Roboto, Arial, sans-serif; color: #333333;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #FFE2D7;">
+    <tr>
+      <td class="outer-padding" align="center" style="padding: 40px 16px;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
+          <tr>
+            <td class="card-body" style="padding: 40px 40px 0 40px;">
+
+              <!-- Header icon -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <img src="../assets/header-icon/brand=lh.svg" alt="Little Hotelier" width="60" height="60" style="display: block;" />
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Email title: Variant 1 — plain h1 -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <h1 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333;">Your payment rule was successfully created</h1>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Opening paragraph -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The payment rule is now active. All reservations that meet the criteria below will now have payments automatically processed.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ==================== PAYMENT RULE DETAILS BOX ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px;">
+                <tr>
+                  <td class="box-body" style="padding: 35px;">
+
+                    <!-- Card type -->
+                    <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px;">Card type</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
+                      <tr class="col-row">
+                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Applies to:</td>
+                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">
+                          {{#eq cardType "PHYSICAL"}}Standard Credit Cards{{/eq}}
+                          {{#eq cardType "VIRTUAL"}}Virtual Credit Cards{{/eq}}
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Settings -->
+                    <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px;">Settings</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
+                      <tr class="col-row">
+                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Channels:</td>
+                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">{{channel}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Surcharges:</td>
+                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">{{#if surchargeEnabled}}Yes, surcharges are applied{{else}}No surcharges applied{{/if}}</td>
+                      </tr>
+                    </table>
+
+                    <!-- Payment rule -->
+                    <p style="margin: 0 0 8px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px;">Payment rule</p>
+                    <p style="margin: 0 0 8px 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 20px; color: #333333;">Payment action</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr class="col-row">
+                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">When to charge the payment:</td>
+                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">
+                          {{#eq actions.[0].triggerDate.operand "ACTIVATION_DATE"}}Activation date{{#eq cardType "VIRTUAL"}}{{#if hasChannelsPlus}}<br /><span style="color: #666666; font-size: 12px;">Channels Plus VCCs are processed 1 day after the activation date.</span>{{/if}}{{/eq}}{{/eq}}
+                          {{#eq actions.[0].triggerDate.operand "TIME_OF_BOOKING"}}Once booking is confirmed{{/eq}}
+                          {{#eq actions.[0].triggerDate.operand "CHECK_IN"}}{{#eq actions.[0].triggerDate.operator "<"}}{{#eq actions.[0].triggerDate.value 1}}1 day prior to check-in{{else}}{{actions.[0].triggerDate.value}} days prior to check-in{{/eq}}{{else eq actions.[0].triggerDate.operator ">"}}{{#eq actions.[0].triggerDate.value 1}}1 day after check-in{{else}}{{actions.[0].triggerDate.value}} days after check-in{{/eq}}{{else}}Check-in day{{/eq}}{{/eq}}
+                          {{#eq actions.[0].triggerDate.operand "CHECK_OUT"}}{{#eq actions.[0].triggerDate.operator "<"}}{{#eq actions.[0].triggerDate.value 1}}1 day prior to check-out{{else}}{{actions.[0].triggerDate.value}} days prior to check-out{{/eq}}{{else eq actions.[0].triggerDate.operator ">"}}{{#eq actions.[0].triggerDate.value 1}}1 day after check-out{{else}}{{actions.[0].triggerDate.value}} days after check-out{{/eq}}{{else}}Check-out day{{/eq}}{{/eq}}
+                        </td>
+                      </tr>
+                      {{#if actions.[0].triggerTime}}
+                      <tr class="col-row">
+                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Time of day:</td>
+                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">{{actions.[0].triggerTime}}</td>
+                      </tr>
+                      {{/if}}
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /PAYMENT RULE DETAILS BOX ==================== -->
+
+              <!-- Action button -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <a href="{{autoPayRulesLink}}" style="display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px;">Go to Automated Payment Rules</a>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ==================== FAQ SECTION ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <h2 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333;">Frequently Asked Questions</h2>
+                  </td>
+                </tr>
+              </table>
+
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">What happens if a payment fails?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">You will receive email notifications regarding any failed payments. You can also view all failed payments under the Automated payments tab.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">What happens when a card fails validation?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Automated payments will be unable to schedule payments if the card supplied fails validation. In this case, you will need to request an alternate card from your guest and manage any payments for the reservation manually.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Can I edit a rule?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">A payment rule cannot be edited. You will need to archive the existing rule and create and activate a new rule with your preferred settings.</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /FAQ SECTION ==================== -->
+
+              <!-- Sign-off -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Thank you,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Your Little Hotelier Team</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Need more information? -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px;">
+                <tr>
+                  <td class="info-body" style="padding: 25px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="24" valign="top" style="padding-right: 10px;">
+                          <img src="../assets/icons/information-alt.svg" alt="" width="24" height="24" style="display: block;" />
+                        </td>
+                        <td>
+                          <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Need more information?</p>
+                          <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;"><a href="{{helpCentreUrl}}" style="color: #000FFF; text-decoration: underline;">Visit our Help Centre</a> to find everything you need to know about creating and managing payment rules.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+        <!-- ==================== FOOTER ==================== -->
+
+        <!-- Footer: logo + social -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px;">
+          <tr>
+            <td class="footer-body" style="padding: 32px 40px 16px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <img src="../assets/footer-logo/brand=lh.svg" alt="Little Hotelier by SiteMinder" width="150" style="display: block;" />
+                  </td>
+                  <td align="right" valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-left: 10px;"><a href="{{linkedinUrl}}"><img src="../assets/social-icons/Property%201=linkedin.svg" alt="LinkedIn" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{facebookUrl}}"><img src="../assets/social-icons/Property%201=facebook.svg" alt="Facebook" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{twitterUrl}}"><img src="../assets/social-icons/Property%201=twitter.svg" alt="X" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{youtubeUrl}}"><img src="../assets/social-icons/Property%201=youtube.svg" alt="YouTube" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{instagramUrl}}"><img src="../assets/social-icons/Property%201=instagram.svg" alt="Instagram" width="24" height="24" style="display: block;" /></a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Footer: legal -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px;">
+          <tr>
+            <td class="footer-legal" style="padding: 0 40px 32px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{viewOnlineUrl}}" style="color: #333333; text-decoration: underline;">View online</a></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to {{recipientEmail}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{preferencesUrl}}" style="color: #333333; text-decoration: underline;">Update Preferences</a> | <a href="{{unsubscribeUrl}}" style="color: #333333; text-decoration: underline;">Unsubscribe</a></p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /FOOTER ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

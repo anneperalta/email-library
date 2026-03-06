@@ -1,0 +1,349 @@
+<!-- metadata.subject = {{#if result}}{{#eq result "CARD_VALIDATION_FAILED"}}[AUTO PAY] Unable to schedule payments for reservation {{reservationId}}{{else}}[AUTO PAY] Payments modified for reservation {{reservationId}}{{/eq}}{{/if}} -->
+
+<!-- Preview scenario: result = CARD_VALIDATION_FAILED, cardValidationResult = DECLINED_3DS_AUTHENTICATION_REQUIRED -->
+<!-- Other result values: PROCESSING_FAILED | RESERVATION_VALIDATION_FAILED | PAYMENT_SCHEDULED | (no match = no new payments scheduled) -->
+<!-- Other cardValidationResult values: EXPIRED_CARD | EXPIRED_CARD_ON_PAYMENT_DATE | INVALID_CARD_DETAILS | (fallback) -->
+<!-- When result ≠ CARD_VALIDATION_FAILED: heading = "A reservation change has affected scheduled payments" -->
+<!-- When state = STOP_PROCESSING_DUE_TO_PAYMENT_TAKEN: payments already processed message -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+    body { background-image: linear-gradient(136deg, #CCE2FF 0%, #ECFFB3 100%); }
+
+    @media screen and (max-width: 480px) {
+      .outer-padding { padding: 20px 12px !important; }
+      .card-body    { padding: 24px 20px 0 20px !important; }
+      .box-body     { padding: 20px !important; }
+      .info-body    { padding: 20px !important; }
+      .col-row      { display: block !important; }
+      .col          { width: 100% !important; display: block !important; box-sizing: border-box !important; }
+      .footer-body  { padding: 24px 20px 12px 20px !important; }
+      .footer-legal { padding: 0 20px 24px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #CCE2FF; font-family: Roboto, Arial, sans-serif; color: #333333;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #CCE2FF; background-image: linear-gradient(136deg, #CCE2FF 0%, #ECFFB3 100%); background-repeat: no-repeat; background-size: 100% 100%;">
+    <tr>
+      <td class="outer-padding" align="center" style="padding: 40px 16px;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
+          <tr>
+            <td class="card-body" style="padding: 40px 40px 0 40px;">
+
+              <!-- Header icon -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <img src="../assets/header-icon/brand=sm.svg" alt="SiteMinder" width="60" height="60" style="display: block;" />
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Email title — conditional heading -->
+              <!-- Preview: CARD_VALIDATION_FAILED heading -->
+              {{#if result}}
+              {{#eq result "CARD_VALIDATION_FAILED"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="top" style="padding-right: 10px;">
+                          <img src="../assets/icons/alert.svg" alt="" width="24" height="24" style="display: block;" />
+                        </td>
+                        <td>
+                          <h2 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; color: #333333;">Automated payments cannot be scheduled for this reservation</h2>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="top" style="padding-right: 10px;">
+                          <img src="../assets/icons/alert.svg" alt="" width="24" height="24" style="display: block;" />
+                        </td>
+                        <td>
+                          <h2 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; color: #333333;">A reservation change has affected scheduled payments</h2>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              {{/eq}}
+              {{/if}}
+
+              <!-- Reservation ID -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Reservation ID: {{reservationId}}</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Conditional: voided scheduled payments -->
+              {{#if hasVoidedScheduledPayments}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Existing scheduled payments have been cancelled.</p>
+                  </td>
+                </tr>
+              </table>
+              {{/if}}
+
+              <!-- Conditional: body copy based on state/result -->
+              <!-- Preview scenario: result = CARD_VALIDATION_FAILED, cardValidationResult = DECLINED_3DS_AUTHENTICATION_REQUIRED -->
+              {{#eq state "STOP_PROCESSING_DUE_TO_PAYMENT_TAKEN"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Payments have already been processed. Additional payments or refunds will need to be processed manually.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
+              {{#eq result "PROCESSING_FAILED"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">An error occurred and we're unable to update the existing scheduled payments for this reservation. Please review the scheduled payments and ensure they're still correct.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else eq result "RESERVATION_VALIDATION_FAILED"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Reservation has missing details and we're unable to schedule payments. Please review the scheduled payments and ensure they're still correct.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else eq result "CARD_VALIDATION_FAILED"}}
+              {{#eq cardValidationResult "DECLINED_3DS_AUTHENTICATION_REQUIRED"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The guest's credit card requires 3D Secure authentication. We're therefore unable to process automated payments for this reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else eq cardValidationResult "EXPIRED_CARD"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The supplied credit card has expired. We're therefore unable to process automated payments for this reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else eq cardValidationResult "EXPIRED_CARD_ON_PAYMENT_DATE"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The supplied credit card will expire before the scheduled payment date. We're therefore unable to process automated payments for this reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else eq cardValidationResult "INVALID_CARD_DETAILS"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The supplied credit card details are invalid. We're therefore unable to process automated payments for this reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The supplied credit card has failed validation; automated payments cannot be scheduled for this reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{/eq}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Please contact the guest to arrange an alternative payment.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
+              {{#eq state "PAYMENT_SCHEDULED"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">New payments have been scheduled for this reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The modified reservation no longer matches your Automated Payments rules. Therefore no new payments have been scheduled.</p>
+                  </td>
+                </tr>
+              </table>
+              {{/eq}}
+              {{/eq}}
+              {{/eq}}
+
+              <!-- Action button with conditional text -->
+              {{#if reservationUrl}}
+              {{#eq result "CARD_VALIDATION_FAILED"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">To process a payment manually, open the reservation via the link below and click <strong>Manage Payments</strong>.</p>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Click the link below to review the reservation.</p>
+                  </td>
+                </tr>
+              </table>
+              {{/eq}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <a href="{{reservationUrl}}" style="display: inline-block; background-color: #1A6FE6; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 6px;">View Reservation</a>
+                  </td>
+                </tr>
+              </table>
+              {{/if}}
+
+              <!-- Sign-off -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Thank you,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Your SiteMinder Team</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Need more information? -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px;">
+                <tr>
+                  <td class="info-body" style="padding: 25px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="24" valign="top" style="padding-right: 10px;">
+                          <img src="../assets/icons/information-alt.svg" alt="" width="24" height="24" style="display: block;" />
+                        </td>
+                        <td>
+                          <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Need more information?</p>
+                          <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">If you have any questions, email our support team at <a href="mailto:support@siteminder.com" style="color: #000FFF; text-decoration: underline;">support@siteminder.com</a></p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+        <!-- ==================== FOOTER ==================== -->
+
+        <!-- Footer: logo + social -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px;">
+          <tr>
+            <td class="footer-body" style="padding: 32px 40px 16px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <img src="../assets/footer-logo/brand=sm.svg" alt="SiteMinder" width="150" style="display: block;" />
+                  </td>
+                  <td align="right" valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-left: 10px;"><a href="{{linkedinUrl}}"><img src="../assets/social-icons/Property%201=linkedin.svg" alt="LinkedIn" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{facebookUrl}}"><img src="../assets/social-icons/Property%201=facebook.svg" alt="Facebook" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{twitterUrl}}"><img src="../assets/social-icons/Property%201=twitter.svg" alt="X" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{youtubeUrl}}"><img src="../assets/social-icons/Property%201=youtube.svg" alt="YouTube" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{instagramUrl}}"><img src="../assets/social-icons/Property%201=instagram.svg" alt="Instagram" width="24" height="24" style="display: block;" /></a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Footer: legal -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px;">
+          <tr>
+            <td class="footer-legal" style="padding: 0 40px 32px 40px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{viewOnlineUrl}}" style="color: #333333; text-decoration: underline;">View online</a></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to {{recipientEmail}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{preferencesUrl}}" style="color: #333333; text-decoration: underline;">Update Preferences</a> | <a href="{{unsubscribeUrl}}" style="color: #333333; text-decoration: underline;">Unsubscribe</a></p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /FOOTER ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
