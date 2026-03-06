@@ -1,0 +1,229 @@
+<script setup>
+import { ref, computed } from 'vue'
+import { templates, statusConfig } from '../data/templates.js'
+
+const search = ref('')
+const filterCategory = ref('All')
+const filterStatus = ref('All')
+
+const categories = ['All', ...new Set(templates.map(t => t.category))].sort()
+const statuses = ['All', 'not-started', 'in-progress', 'in-review', 'done']
+
+const filtered = computed(() => templates.filter(t => {
+  const matchSearch = t.name.toLowerCase().includes(search.value.toLowerCase())
+  const matchCat = filterCategory.value === 'All' || t.category === filterCategory.value
+  const matchStatus = filterStatus.value === 'All' || t.status === filterStatus.value
+  return matchSearch && matchCat && matchStatus
+}))
+
+const total = templates.length
+const done = templates.filter(t => t.status === 'done').length
+const progress = total ? Math.round((done / total) * 100) : 0
+</script>
+
+<template>
+  <div class="home">
+    <div class="home__header">
+      <div>
+        <h1 class="home__title">Email Template Library</h1>
+        <p class="home__subtitle">{{ done }} of {{ total }} templates complete</p>
+      </div>
+      <div class="home__progress-bar">
+        <div class="home__progress-fill" :style="{ width: progress + '%' }"></div>
+      </div>
+    </div>
+
+    <div class="home__filters">
+      <input v-model="search" class="home__search" placeholder="Search templates…" />
+      <select v-model="filterCategory" class="home__select">
+        <option v-for="c in categories" :key="c">{{ c }}</option>
+      </select>
+      <select v-model="filterStatus" class="home__select">
+        <option v-for="s in statuses" :key="s" :value="s">
+          {{ s === 'All' ? 'All statuses' : statusConfig[s].label }}
+        </option>
+      </select>
+    </div>
+
+    <div v-if="filtered.length === 0" class="home__empty">No templates match your filters.</div>
+
+    <table v-else class="home__table">
+      <thead>
+        <tr>
+          <th>Template</th>
+          <th>Category</th>
+          <th>Status</th>
+          <th>Old</th>
+          <th>New</th>
+          <th>Figma</th>
+          <th>Compare</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="t in filtered" :key="t.id">
+          <td class="home__name">{{ t.name }}</td>
+          <td class="home__category">{{ t.category }}</td>
+          <td>
+            <span
+              class="home__badge"
+              :style="{ background: statusConfig[t.status]?.color ?? '#9ca3af' }"
+            >{{ statusConfig[t.status]?.label ?? t.status }}</span>
+          </td>
+          <td>
+            <router-link v-if="t.old" :to="`/preview/${t.id}/old`" class="home__link">Preview</router-link>
+            <span v-else class="home__na">—</span>
+          </td>
+          <td>
+            <router-link v-if="t.new" :to="`/preview/${t.id}/new`" class="home__link">Preview</router-link>
+            <span v-else class="home__na">—</span>
+          </td>
+          <td>
+            <a v-if="t.figma" :href="t.figma" target="_blank" class="home__link">Open ↗</a>
+            <span v-else class="home__na">—</span>
+          </td>
+          <td>
+            <router-link v-if="t.old && t.new" :to="`/compare/${t.id}`" class="home__link">Side by side</router-link>
+            <span v-else class="home__na">—</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<style scoped>
+.home {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.home__header {
+  margin-bottom: 32px;
+}
+
+.home__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 4px;
+}
+
+.home__subtitle {
+  font-size: 14px;
+  color: #6b7280;
+  margin: 0 0 12px;
+}
+
+.home__progress-bar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 99px;
+  max-width: 300px;
+}
+
+.home__progress-fill {
+  height: 100%;
+  background: #22c55e;
+  border-radius: 99px;
+  transition: width 0.3s;
+}
+
+.home__filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.home__search {
+  flex: 1;
+  min-width: 200px;
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.home__search:focus {
+  border-color: #3b82f6;
+}
+
+.home__select {
+  padding: 8px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.home__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.home__table th {
+  text-align: left;
+  padding: 10px 14px;
+  border-bottom: 2px solid #e5e7eb;
+  color: #374151;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.home__table td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f3f4f6;
+  color: #374151;
+  vertical-align: middle;
+}
+
+.home__table tr:hover td {
+  background: #f9fafb;
+}
+
+.home__name {
+  font-weight: 500;
+  color: #111 !important;
+}
+
+.home__category {
+  color: #6b7280 !important;
+}
+
+.home__badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #fff;
+  white-space: nowrap;
+}
+
+.home__link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.home__link:hover {
+  text-decoration: underline;
+}
+
+.home__na {
+  color: #d1d5db;
+}
+
+.home__empty {
+  text-align: center;
+  padding: 60px 0;
+  color: #9ca3af;
+  font-size: 15px;
+}
+</style>
