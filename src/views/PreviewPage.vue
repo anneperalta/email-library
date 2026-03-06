@@ -2,6 +2,8 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { templates, statusConfig } from '../data/templates.js'
+import { useComments } from '../composables/useComments.js'
+import CommentsPopup from '../components/CommentsPopup.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -15,6 +17,8 @@ const viewport = computed({
   get: () => route.query.viewport ?? 'desktop',
   set: val => router.replace({ query: { ...route.query, viewport: val } })
 })
+
+const { popup, openComments, commentCount } = useComments()
 </script>
 
 <template>
@@ -27,6 +31,15 @@ const viewport = computed({
           class="preview__badge"
           :style="{ background: statusConfig[template.status]?.color }"
         >{{ statusConfig[template.status]?.label }}</span>
+        <button
+          class="preview__comment-btn"
+          :class="{ 'preview__comment-btn--active': popup?.templateId === template.id, 'preview__comment-btn--has': commentCount(template.id) > 0 }"
+          @click="openComments(template.id, $event)"
+          :title="commentCount(template.id) ? `${commentCount(template.id)} comment${commentCount(template.id) > 1 ? 's' : ''}` : 'Add comment'"
+        >
+          <img src="/templates/new/assets/icons/article.svg" width="16" height="16" alt="Comments" />
+          <span v-if="commentCount(template.id) > 0" class="preview__comment-count">{{ commentCount(template.id) }}</span>
+        </button>
       </div>
       <div class="preview__bar-center">
         <button
@@ -82,6 +95,8 @@ const viewport = computed({
   </div>
 
   <div v-else class="preview__not-found">Template not found.</div>
+
+  <CommentsPopup />
 </template>
 
 <style scoped>
@@ -195,5 +210,48 @@ const viewport = computed({
   margin: auto;
   color: #9ca3af;
   font-size: 15px;
+}
+
+.preview__comment-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 4px 6px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.preview__comment-btn:hover,
+.preview__comment-btn--active {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.preview__comment-btn--has {
+  color: #2563eb;
+}
+
+.preview__comment-btn img {
+  opacity: 0.5;
+  display: block;
+}
+
+.preview__comment-btn:hover img,
+.preview__comment-btn--active img,
+.preview__comment-btn--has img {
+  opacity: 1;
+}
+
+.preview__comment-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563eb;
+  line-height: 1;
 }
 </style>
