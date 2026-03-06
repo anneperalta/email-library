@@ -34,6 +34,7 @@ const loadComments = () => {
 
 const allComments = ref(loadComments())
 const popup = ref(null)   // { templateId, top, left }
+const newName = ref(localStorage.getItem('pay-email-library-author') || '')
 const newText = ref('')
 
 const POPUP_W = 300
@@ -59,10 +60,13 @@ function openComments(templateId, e) {
 function addComment() {
   const text = newText.value.trim()
   if (!text || !popup.value) return
+  const name = newName.value.trim()
+  localStorage.setItem('pay-email-library-author', newName.value.trim())
   const { templateId } = popup.value
   if (!allComments.value[templateId]) allComments.value[templateId] = []
   allComments.value[templateId].push({
     id: Date.now(),
+    name: name || 'Anonymous',
     text,
     timestamp: new Date().toLocaleString('en-AU', {
       day: 'numeric', month: 'short', year: 'numeric',
@@ -200,6 +204,7 @@ function commentCount(templateId) {
           class="comment-item"
         >
           <div class="comment-item__meta">
+            <span class="comment-item__author">{{ c.name }}</span>
             <span class="comment-item__time">{{ c.timestamp }}</span>
             <button class="comment-item__delete" @click="deleteComment(popup.templateId, c.id)" title="Delete">✕</button>
           </div>
@@ -208,6 +213,11 @@ function commentCount(templateId) {
       </div>
 
       <div class="comment-popup__footer">
+        <input
+          v-model="newName"
+          class="comment-popup__name"
+          placeholder="Your name"
+        />
         <textarea
           v-model="newText"
           class="comment-popup__input"
@@ -554,6 +564,32 @@ function commentCount(templateId) {
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+.comment-popup__name {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 12px;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin-bottom: 6px;
+}
+
+.comment-popup__name:focus {
+  outline: none;
+  border-color: #3b82f6;
+}
+
+.comment-popup__name::placeholder {
+  color: #9ca3af;
+}
+
+.comment-item__author {
+  font-weight: 600;
+  font-size: 12px;
+  color: #111;
 }
 
 .comment-popup__input {
