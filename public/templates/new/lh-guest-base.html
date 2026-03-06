@@ -73,6 +73,7 @@
     .spec-mode       [data-spec]       { outline: 1.5px dashed rgba(180, 0, 243, 0.6) !important; cursor: crosshair !important; }
     .spacing-mode    [data-spacing]    { outline: 1.5px dashed rgba(243, 0, 180, 0.6) !important; cursor: crosshair !important; }
     .typography-mode [data-typography] { outline: 1.5px dashed rgba(0, 180, 243, 0.7) !important; cursor: crosshair !important; }
+    .assets-mode     [data-assets]     { outline: 1.5px dashed rgba(243, 180, 0, 0.7)  !important; cursor: crosshair !important; }
 
     #spec-tooltip {
       position: fixed;
@@ -90,6 +91,7 @@
     #spec-tooltip.mode-spec        { background: #1a0022; color: #e8b4ff; }
     #spec-tooltip.mode-spacing     { background: #220011; color: #ffb4e8; }
     #spec-tooltip.mode-typography  { background: #001622; color: #b4e8ff; }
+    #spec-tooltip.mode-assets      { background: #221800; color: #ffe8b4; }
 
     #spec-controls {
       position: fixed;
@@ -115,6 +117,7 @@
     #spec-toggle.active        { background: #B400F3; }
     #spacing-toggle.active     { background: #F300B4; }
     #typography-toggle.active  { background: #00B4F3; }
+    #assets-toggle.active      { background: #F3B400; }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #eff1f4; font-family: 'Noto Sans', Arial, sans-serif; color: #333333;">
@@ -156,7 +159,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-assets="phone.svg&#10;16 × 16px&#10;#006ADD" />
                         </td>
                         <td>
                           <a class="contact-phone" href="tel:{{propertyPhone}}"
@@ -172,7 +176,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-assets="email.svg&#10;16 × 16px&#10;#006ADD" />
                         </td>
                         <td>
                           <a class="contact-email" href="mailto:{{propertyEmail}}"
@@ -188,7 +193,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-assets="website.svg&#10;16 × 16px&#10;#006ADD" />
                         </td>
                         <td>
                           <a class="contact-website" href="{{propertyWebsite}}"
@@ -233,7 +239,8 @@
                       <tr>
                         <td style="padding-bottom: 12px;"
                             data-spacing="status icon&#10;↓ 12px">
-                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;" />
+                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;"
+                               data-assets="success-alt.svg&#10;40 × 40px&#10;#1B7B3E" />
                         </td>
                       </tr>
                     </table>
@@ -337,7 +344,8 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img class="footer-brand-icon" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
+                          <img class="footer-brand-icon" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;"
+                               data-assets="check-icon.svg&#10;22 × 22px&#10;natural SVG color" />
                         </td>
                         <td valign="middle">
                           <p class="footer-brand-name"
@@ -374,6 +382,7 @@
 
   <!-- ==================== SPEC ANNOTATIONS ==================== -->
   <div id="spec-controls">
+    <button id="assets-toggle">Assets</button>
     <button id="typography-toggle">Type</button>
     <button id="spacing-toggle">Spacing</button>
     <button id="spec-toggle">Containers</button>
@@ -383,8 +392,9 @@
     const specToggle       = document.getElementById('spec-toggle');
     const spacingToggle    = document.getElementById('spacing-toggle');
     const typographyToggle = document.getElementById('typography-toggle');
+    const assetsToggle     = document.getElementById('assets-toggle');
     const tooltip          = document.getElementById('spec-tooltip');
-    let specActive = false, spacingActive = false, typographyActive = false;
+    let specActive = false, spacingActive = false, typographyActive = false, assetsActive = false;
 
     function positionTooltip(e) {
       const x = e.clientX + 16, y = e.clientY + 16;
@@ -416,10 +426,28 @@
       if (!typographyActive) tooltip.style.display = 'none';
     });
 
-    document.addEventListener('mousemove', (e) => {
-      if (!specActive && !spacingActive && !typographyActive) return;
+    assetsToggle.addEventListener('click', () => {
+      assetsActive = !assetsActive;
+      document.body.classList.toggle('assets-mode', assetsActive);
+      assetsToggle.classList.toggle('active', assetsActive);
+      assetsToggle.textContent = assetsActive ? 'Assets on' : 'Assets';
+      if (!assetsActive) tooltip.style.display = 'none';
+    });
 
-      // Priority: typography > spacing > containers
+    document.addEventListener('mousemove', (e) => {
+      if (!specActive && !spacingActive && !typographyActive && !assetsActive) return;
+
+      // Priority: assets > typography > spacing > containers
+      if (assetsActive) {
+        const el = e.target.closest('[data-assets]');
+        if (el) {
+          tooltip.className = 'mode-assets';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.assets;
+          positionTooltip(e);
+          return;
+        }
+      }
       if (typographyActive) {
         const el = e.target.closest('[data-typography]');
         if (el) {
