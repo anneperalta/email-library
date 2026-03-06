@@ -59,8 +59,8 @@ const progress = total ? Math.round((done / total) * 100) : 0
       <thead>
         <tr>
           <th>Template</th>
-          <th>Category</th>
           <th>Product</th>
+          <th>Category</th>
           <th>Status</th>
           <th>Old</th>
           <th>New</th>
@@ -71,13 +71,13 @@ const progress = total ? Math.round((done / total) * 100) : 0
       <tbody>
         <tr v-for="t in filtered" :key="t.id">
           <td class="home__name">{{ t.name }}</td>
-          <td class="home__category">{{ t.category }}</td>
           <td>
             <span
               class="home__badge"
               :style="{ background: productConfig[t.product]?.color ?? '#9ca3af' }"
             >{{ productConfig[t.product]?.label ?? t.product }}</span>
           </td>
+          <td class="home__category">{{ t.category }}</td>
           <td>
             <span
               class="home__badge"
