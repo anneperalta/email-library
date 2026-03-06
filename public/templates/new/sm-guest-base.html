@@ -25,9 +25,10 @@
     .icon-success { filter: invert(27%) sepia(89%) saturate(700%) hue-rotate(121deg) brightness(86%); }  /* #1B7B3E */
     .icon-alert   { filter: invert(68%) sepia(99%) saturate(580%) hue-rotate(0deg) brightness(105%); }   /* #FFAB00 */
     .icon-error   { filter: invert(15%) sepia(100%) saturate(4000%) hue-rotate(353deg) brightness(86%); } /* #D11D1D */
+    .icon-dark    { filter: invert(20%); }                                                                /* #333333 */
 
     /* ── Property header ─────────────────────────────────────────── */
-    .property-name    { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 38px; color: #333333; }
+    .property-name    { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
     .property-address { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
     .contact-phone,
     .contact-email,
@@ -35,39 +36,89 @@
 
     /* ── Opening ──────────────────────────────────────────────────── */
     .opening-salutation,
-    .opening-body     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
+    .opening-body     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
 
     /* ── Status box ───────────────────────────────────────────────── */
-    .status-title        { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 38px; color: #333333; }
+    .status-title        { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
     .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 18px; color: #717171; }
     .status-amount       { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
-    .status-info         { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
+    .status-info         { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
 
     /* ── Details ──────────────────────────────────────────────────── */
     .details-title { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 20px; font-weight: 600; line-height: 26px; color: #333333; }
-    .details-label { margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 16px; color: #717171; }
+    .details-label { margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
     .details-value { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
 
     /* ── Closing ──────────────────────────────────────────────────── */
-    .closing-body { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
-    .closing-sign { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 26px; color: #333333; }
-    .closing-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 26px; color: #333333; }
+    .closing-body { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .closing-sign { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .closing-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 24px; color: #333333; }
 
     /* ── Footer ───────────────────────────────────────────────────── */
     .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 22px; color: #333333; }
-    .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+    .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 20px; color: #333333; }
     .footer-copyright  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
 
     /* ── Responsive ───────────────────────────────────────────────── */
     @media screen and (max-width: 480px) {
       .outer-padding        { padding: 20px 12px !important; }
-      .card-body            { padding: 24px 20px 0 20px !important; }
+      .card-body            { padding: 24px 20px !important; }
       .status-box-inner     { padding: 24px 20px !important; }
       .property-name        { font-size: 22px !important; line-height: 30px !important; }
       .status-title         { font-size: 22px !important; line-height: 30px !important; }
       .status-amount        { font-size: 20px !important; line-height: 26px !important; }
       .details-title        { font-size: 18px !important; line-height: 24px !important; }
     }
+
+    /* ── Spec annotations ─────────────────────────────────────────── */
+    .spec-mode       [data-spec]       { outline: 1.5px dashed rgba(180, 0, 243, 0.6) !important; cursor: crosshair !important; }
+    .spacing-mode    [data-spacing]    { outline: 1.5px dashed rgba(243, 0, 180, 0.6) !important; cursor: crosshair !important; }
+    .typography-mode [data-typography] { outline: 1.5px dashed rgba(0, 180, 243, 0.7) !important; cursor: crosshair !important; }
+    .assets-mode     [data-assets]     { outline: 1.5px dashed rgba(243, 180, 0, 0.7)  !important; cursor: crosshair !important; }
+
+    #spec-tooltip {
+      position: fixed;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 11px;
+      line-height: 1.7;
+      padding: 7px 11px;
+      border-radius: 6px;
+      pointer-events: none;
+      z-index: 99999;
+      display: none;
+      white-space: pre;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+    #spec-tooltip.mode-spec        { background: #1a0022; color: #e8b4ff; }
+    #spec-tooltip.mode-spacing     { background: #220011; color: #ffb4e8; }
+    #spec-tooltip.mode-typography  { background: #001622; color: #b4e8ff; }
+    #spec-tooltip.mode-assets      { background: #221800; color: #ffe8b4; }
+
+    #spec-controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 99999;
+    }
+    #spec-controls button {
+      background: #333333;
+      color: #ffffff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: 'Noto Sans', Arial, sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #spec-toggle.active        { background: #B400F3; }
+    #spacing-toggle.active     { background: #F300B4; }
+    #typography-toggle.active  { background: #00B4F3; }
+    #assets-toggle.active      { background: #F3B400; }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #eff1f4; font-family: 'Noto Sans', Arial, sans-serif; color: #333333;">
@@ -75,62 +126,80 @@
   <!-- ==================== OUTER WRAPPER ==================== -->
   <table width="100%" cellpadding="0" cellspacing="0" border="0">
     <tr>
-      <td class="outer-padding" align="center" valign="top" style="padding: 40px 16px;">
+      <td class="outer-padding" align="center" valign="top" style="padding: 24px 16px;"
+          data-spec="width: 100%&#10;padding: 24px 16px&#10;(mobile: 20px 12px)"
+          data-spacing="outer wrapper&#10;padding: 24px 16px&#10;(mobile: 20px 12px)">
 
         <!-- ==================== EMAIL CARD ==================== -->
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;"
+               data-spec="max-width: 734px&#10;background: #ffffff&#10;border-radius: 16px">
           <tr>
-            <td class="card-body" style="padding: 56px 56px 0 56px;">
+            <td class="card-body" style="padding: 56px;"
+                data-spec="padding: 56px (all sides)&#10;(mobile: 24px 20px)"
+                data-spacing="card body&#10;padding: 56px (all sides)&#10;(mobile: 24px 20px)">
 
               <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
               <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <h1 class="property-name">{{propertyName}}</h1>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="property-name&#10;↓ 4px">
+                    <h1 class="property-name"
+                        data-typography=".property-name&#10;Noto Sans · 30px · 600&#10;line-height: 36px · #333333&#10;(mobile: 22px / 30px)">{{propertyName}}</h1>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="property-address">{{propertyAddress}}</p>
+                  <td style="padding-bottom: 16px;"
+                      data-spacing="property-address&#10;↓ 16px">
+                    <p class="property-address"
+                       data-typography=".property-address&#10;Noto Sans · 15px · 400&#10;line-height: 22px · #333333">{{propertyAddress}}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="contact-phone row&#10;↓ 4px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-assets="phone.svg&#10;16 × 16px&#10;#006ADD" />
                         </td>
                         <td>
-                          <a class="contact-phone" href="tel:{{propertyPhone}}">{{propertyPhone}}</a>
+                          <a class="contact-phone" href="tel:{{propertyPhone}}"
+                             data-typography=".contact-phone&#10;Noto Sans · 14px · 400&#10;color: #006ADD · no underline">{{propertyPhone}}</a>
                         </td>
                       </tr>
                     </table>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="contact-email row&#10;↓ 4px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-assets="email.svg&#10;16 × 16px&#10;#006ADD" />
                         </td>
                         <td>
-                          <a class="contact-email" href="mailto:{{propertyEmail}}">{{propertyEmail}}</a>
+                          <a class="contact-email" href="mailto:{{propertyEmail}}"
+                             data-typography=".contact-email&#10;Noto Sans · 14px · 400&#10;color: #006ADD · no underline">{{propertyEmail}}</a>
                         </td>
                       </tr>
                     </table>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 40px;">
+                  <td style="padding-bottom: 40px;"
+                      data-spacing="contact-website row&#10;↓ 40px (section gap)">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
+                               data-assets="website.svg&#10;16 × 16px&#10;#006ADD" />
                         </td>
                         <td>
-                          <a class="contact-website" href="{{propertyWebsite}}">{{propertyWebsite}}</a>
+                          <a class="contact-website" href="{{propertyWebsite}}"
+                             data-typography=".contact-website&#10;Noto Sans · 14px · 400&#10;color: #006ADD · no underline">{{propertyWebsite}}</a>
                         </td>
                       </tr>
                     </table>
@@ -142,50 +211,67 @@
               <!-- ==================== SECTION: OPENING ==================== -->
               <table class="section-opening" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 12px;">
-                    <p class="opening-salutation">Hi {{guestFirstName}},</p>
+                  <td style="padding-bottom: 12px;"
+                      data-spacing="salutation&#10;↓ 12px">
+                    <p class="opening-salutation"
+                       data-typography=".opening-salutation&#10;Noto Sans · 16px · 400&#10;line-height: 24px · #333333">Hi {{guestFirstName}},</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 40px;">
-                    <p class="opening-body">[Opening message — explain what this email is about and any attachments.]</p>
+                  <td style="padding-bottom: 40px;"
+                      data-spacing="opening body&#10;↓ 40px (section gap)">
+                    <p class="opening-body"
+                       data-typography=".opening-body&#10;Noto Sans · 16px · 400&#10;line-height: 24px · #333333">[Opening message — explain what this email is about and any attachments.]</p>
                   </td>
                 </tr>
               </table>
               <!-- ==================== /SECTION: OPENING ==================== -->
 
               <!-- ==================== SECTION: STATUS BOX ==================== -->
-              <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;">
+              <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;"
+                     data-spec="section-status&#10;width: 100%&#10;background: #f7f8fa&#10;border-radius: 10px&#10;margin-bottom: 40px"
+                     data-spacing="section-status&#10;margin-bottom: 40px (section gap)">
                 <tr>
-                  <td class="status-box-inner" style="padding: 35px;">
+                  <td class="status-box-inner" style="padding: 35px;"
+                      data-spec="padding: 35px&#10;(mobile: 24px 20px)"
+                      data-spacing="status box inner&#10;padding: 35px&#10;(mobile: 24px 20px)">
 
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td style="padding-bottom: 12px;">
-                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;" />
+                        <td style="padding-bottom: 12px;"
+                            data-spacing="status icon&#10;↓ 12px">
+                          <img class="status-icon icon-success" src="assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;"
+                               data-assets="success-alt.svg&#10;40 × 40px&#10;#1B7B3E" />
                         </td>
                       </tr>
                     </table>
 
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td style="padding-bottom: 24px;">
-                          <h1 class="status-title">[Status title]</h1>
+                        <td style="padding-bottom: 24px;"
+                            data-spacing="status title&#10;↓ 24px">
+                          <h1 class="status-title"
+                              data-typography=".status-title&#10;Noto Sans · 30px · 600&#10;line-height: 36px · #333333&#10;(mobile: 22px / 30px)">[Status title]</h1>
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 2px;">
-                          <p class="status-amount-label">Total amount paid</p>
+                        <td style="padding-bottom: 2px;"
+                            data-spacing="amount label&#10;↓ 2px">
+                          <p class="status-amount-label"
+                             data-typography=".status-amount-label&#10;Noto Sans · 13px · 400&#10;line-height: 18px · #717171">Total amount paid</p>
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 24px;">
-                          <p class="status-amount">{{currencyCode}} {{amount}}</p>
+                        <td style="padding-bottom: 24px;"
+                            data-spacing="amount&#10;↓ 24px">
+                          <p class="status-amount"
+                             data-typography=".status-amount&#10;Noto Sans · 24px · 600&#10;line-height: 30px · #333333&#10;(mobile: 20px / 26px)">{{currencyCode}} {{amount}}</p>
                         </td>
                       </tr>
                       <tr>
-                        <td>
-                          <p class="status-info">[Additional information here]</p>
+                        <td data-spacing="status info&#10;(no bottom spacing)">
+                          <p class="status-info"
+                             data-typography=".status-info&#10;Noto Sans · 16px · 400&#10;line-height: 24px · #333333">[Additional information here]</p>
                         </td>
                       </tr>
                     </table>
@@ -198,20 +284,28 @@
               <!-- ==================== SECTION: DETAILS ==================== -->
               <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 24px;">
-                    <h3 class="details-title">[Section title]</h3>
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="section title&#10;↓ 24px">
+                    <h3 class="details-title"
+                        data-typography=".details-title&#10;Noto Sans · 20px · 600&#10;line-height: 26px · #333333&#10;(mobile: 18px / 24px)">[Section title]</h3>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 14px;">
-                    <p class="details-label">[Label]</p>
-                    <p class="details-value">[Value]</p>
+                  <td style="padding-bottom: 16px;"
+                      data-spacing="detail row&#10;↓ 16px">
+                    <p class="details-label"
+                       data-typography=".details-label&#10;Noto Sans · 12px · 400&#10;line-height: 18px · #717171&#10;margin-bottom: 2px">[Label]</p>
+                    <p class="details-value"
+                       data-typography=".details-value&#10;Noto Sans · 15px · 400&#10;line-height: 22px · #333333">[Value]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 24px;">
-                    <p class="details-label">[Label]</p>
-                    <p class="details-value">[Value]</p>
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="detail row (last)&#10;↓ 24px (section gap)">
+                    <p class="details-label"
+                       data-typography=".details-label&#10;Noto Sans · 12px · 400&#10;line-height: 18px · #717171&#10;margin-bottom: 2px">[Label]</p>
+                    <p class="details-value"
+                       data-typography=".details-value&#10;Noto Sans · 15px · 400&#10;line-height: 22px · #333333">[Value]</p>
                   </td>
                 </tr>
               </table>
@@ -220,18 +314,24 @@
               <!-- ==================== SECTION: CLOSING ==================== -->
               <table class="section-closing" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 24px;">
-                    <p class="closing-body">[Closing message paragraph]</p>
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="closing body&#10;↓ 24px">
+                    <p class="closing-body"
+                       data-typography=".closing-body&#10;Noto Sans · 16px · 400&#10;line-height: 24px · #333333">[Closing message paragraph]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p class="closing-sign">Kind regards,</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="closing sign&#10;↓ 4px">
+                    <p class="closing-sign"
+                       data-typography=".closing-sign&#10;Noto Sans · 16px · 400&#10;line-height: 24px · #333333">Kind regards,</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 40px;">
-                    <p class="closing-name">{{propertyName}}</p>
+                  <td style="padding-bottom: 40px;"
+                      data-spacing="closing name&#10;↓ 40px (section gap)">
+                    <p class="closing-name"
+                       data-typography=".closing-name&#10;Noto Sans · 16px · 600&#10;line-height: 24px · #333333">{{propertyName}}</p>
                   </td>
                 </tr>
               </table>
@@ -240,27 +340,33 @@
               <!-- ==================== SECTION: FOOTER ==================== -->
               <table class="section-footer" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;">
+                  <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;"
+                      data-spacing="footer brand row&#10;padding-top: 40px · ↓ 12px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img class="footer-brand-icon" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
+                          <img class="footer-brand-icon icon-dark" src="assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;"
+                               data-assets="check-icon.svg&#10;22 × 22px&#10;#333333" />
                         </td>
                         <td valign="middle">
-                          <p class="footer-brand-name">SiteMinder Pay</p>
+                          <p class="footer-brand-name"
+                             data-typography=".footer-brand-name&#10;Noto Sans · 15px · 600&#10;line-height: 22px · #333333">SiteMinder Pay</p>
                         </td>
                       </tr>
                     </table>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 8px;">
-                    <p class="footer-legal">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
+                  <td style="padding-bottom: 8px;"
+                      data-spacing="footer legal&#10;↓ 8px">
+                    <p class="footer-legal"
+                       data-typography=".footer-legal&#10;Noto Sans · 12px · 400&#10;line-height: 20px · #333333">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 56px;">
-                    <p class="footer-copyright">© SiteMinder 2026.&nbsp; All rights reserved.</p>
+                  <td data-spacing="footer copyright&#10;(no bottom padding — card body handles it)">
+                    <p class="footer-copyright"
+                       data-typography=".footer-copyright&#10;Noto Sans · 12px · 400&#10;line-height: 18px · #333333">© SiteMinder 2026.&nbsp; All rights reserved.</p>
                   </td>
                 </tr>
               </table>
@@ -274,6 +380,110 @@
       </td>
     </tr>
   </table>
+
+  <!-- ==================== SPEC ANNOTATIONS ==================== -->
+  <div id="spec-controls">
+    <button id="assets-toggle">Assets</button>
+    <button id="typography-toggle">Type</button>
+    <button id="spacing-toggle">Spacing</button>
+    <button id="spec-toggle">Containers</button>
+  </div>
+  <div id="spec-tooltip"></div>
+  <script>
+    const specToggle       = document.getElementById('spec-toggle');
+    const spacingToggle    = document.getElementById('spacing-toggle');
+    const typographyToggle = document.getElementById('typography-toggle');
+    const assetsToggle     = document.getElementById('assets-toggle');
+    const tooltip          = document.getElementById('spec-tooltip');
+    let specActive = false, spacingActive = false, typographyActive = false, assetsActive = false;
+
+    function positionTooltip(e) {
+      const x = e.clientX + 16, y = e.clientY + 16;
+      tooltip.style.left = (x + tooltip.offsetWidth  > window.innerWidth  ? x - tooltip.offsetWidth  - 32 : x) + 'px';
+      tooltip.style.top  = (y + tooltip.offsetHeight > window.innerHeight ? y - tooltip.offsetHeight - 32 : y) + 'px';
+    }
+
+    specToggle.addEventListener('click', () => {
+      specActive = !specActive;
+      document.body.classList.toggle('spec-mode', specActive);
+      specToggle.classList.toggle('active', specActive);
+      specToggle.textContent = specActive ? 'Containers on' : 'Containers';
+      if (!specActive) tooltip.style.display = 'none';
+    });
+
+    spacingToggle.addEventListener('click', () => {
+      spacingActive = !spacingActive;
+      document.body.classList.toggle('spacing-mode', spacingActive);
+      spacingToggle.classList.toggle('active', spacingActive);
+      spacingToggle.textContent = spacingActive ? 'Spacing on' : 'Spacing';
+      if (!spacingActive) tooltip.style.display = 'none';
+    });
+
+    typographyToggle.addEventListener('click', () => {
+      typographyActive = !typographyActive;
+      document.body.classList.toggle('typography-mode', typographyActive);
+      typographyToggle.classList.toggle('active', typographyActive);
+      typographyToggle.textContent = typographyActive ? 'Type on' : 'Type';
+      if (!typographyActive) tooltip.style.display = 'none';
+    });
+
+    assetsToggle.addEventListener('click', () => {
+      assetsActive = !assetsActive;
+      document.body.classList.toggle('assets-mode', assetsActive);
+      assetsToggle.classList.toggle('active', assetsActive);
+      assetsToggle.textContent = assetsActive ? 'Assets on' : 'Assets';
+      if (!assetsActive) tooltip.style.display = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!specActive && !spacingActive && !typographyActive && !assetsActive) return;
+
+      // Priority: assets > typography > spacing > containers
+      if (assetsActive) {
+        const el = e.target.closest('[data-assets]');
+        if (el) {
+          tooltip.className = 'mode-assets';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.assets;
+          positionTooltip(e);
+          return;
+        }
+      }
+      if (typographyActive) {
+        const el = e.target.closest('[data-typography]');
+        if (el) {
+          tooltip.className = 'mode-typography';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.typography;
+          positionTooltip(e);
+          return;
+        }
+      }
+      if (spacingActive) {
+        const el = e.target.closest('[data-spacing]');
+        if (el) {
+          tooltip.className = 'mode-spacing';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.spacing;
+          positionTooltip(e);
+          return;
+        }
+      }
+      if (specActive) {
+        const el = e.target.closest('[data-spec]');
+        if (el) {
+          tooltip.className = 'mode-spec';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.spec;
+          positionTooltip(e);
+          return;
+        }
+      }
+
+      tooltip.style.display = 'none';
+    });
+  </script>
+  <!-- ==================== /SPEC ANNOTATIONS ==================== -->
 
 </body>
 </html>
