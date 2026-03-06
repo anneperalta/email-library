@@ -2,11 +2,15 @@
 import { computed } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { templates, statusConfig } from '../data/templates.js'
+import { useComments } from '../composables/useComments.js'
+import CommentsPopup from '../components/CommentsPopup.vue'
 
 const route = useRoute()
 const router = useRouter()
 
 const template = computed(() => templates.find(t => t.id === route.params.id))
+
+const { popup, openComments, commentCount } = useComments()
 </script>
 
 <template>
@@ -19,6 +23,15 @@ const template = computed(() => templates.find(t => t.id === route.params.id))
           class="compare__badge"
           :style="{ background: statusConfig[template.status]?.color }"
         >{{ statusConfig[template.status]?.label }}</span>
+        <button
+          class="compare__comment-btn"
+          :class="{ 'compare__comment-btn--active': popup?.templateId === template.id, 'compare__comment-btn--has': commentCount(template.id) > 0 }"
+          @click="openComments(template.id, $event)"
+          :title="commentCount(template.id) ? `${commentCount(template.id)} comment${commentCount(template.id) > 1 ? 's' : ''}` : 'Add comment'"
+        >
+          <img src="/templates/new/assets/icons/article.svg" width="16" height="16" alt="Comments" />
+          <span v-if="commentCount(template.id) > 0" class="compare__comment-count">{{ commentCount(template.id) }}</span>
+        </button>
       </div>
       <div class="compare__bar-right">
         <router-link :to="`/preview/${template.id}/new`" class="compare__action-btn">Full preview</router-link>
@@ -52,6 +65,8 @@ const template = computed(() => templates.find(t => t.id === route.params.id))
   </div>
 
   <div v-else class="compare__not-found">Template not found.</div>
+
+  <CommentsPopup />
 </template>
 
 <style scoped>
@@ -158,5 +173,41 @@ const template = computed(() => templates.find(t => t.id === route.params.id))
   margin: auto;
   color: #9ca3af;
   font-size: 15px;
+}
+
+.compare__comment-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 4px 6px;
+  cursor: pointer;
+  color: #9ca3af;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.compare__comment-btn:hover,
+.compare__comment-btn--active {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #374151;
+}
+
+.compare__comment-btn--has { color: #2563eb; }
+
+.compare__comment-btn img { opacity: 0.5; display: block; }
+
+.compare__comment-btn:hover img,
+.compare__comment-btn--active img,
+.compare__comment-btn--has img { opacity: 1; }
+
+.compare__comment-count {
+  font-size: 11px;
+  font-weight: 600;
+  color: #2563eb;
+  line-height: 1;
 }
 </style>
