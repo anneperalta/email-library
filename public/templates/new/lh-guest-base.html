@@ -374,7 +374,7 @@
 
   <!-- ==================== SPEC ANNOTATIONS ==================== -->
   <div id="spec-controls">
-    <button id="typography-toggle">Typography</button>
+    <button id="typography-toggle">Type</button>
     <button id="spacing-toggle">Spacing</button>
     <button id="spec-toggle">Containers</button>
   </div>
@@ -412,7 +412,7 @@
       typographyActive = !typographyActive;
       document.body.classList.toggle('typography-mode', typographyActive);
       typographyToggle.classList.toggle('active', typographyActive);
-      typographyToggle.textContent = typographyActive ? 'Typography on' : 'Typography';
+      typographyToggle.textContent = typographyActive ? 'Type on' : 'Type';
       if (!typographyActive) tooltip.style.display = 'none';
     });
 
