@@ -28,7 +28,7 @@ const progress = total ? Math.round((done / total) * 100) : 0
   <div class="home">
     <div class="home__header">
       <div>
-        <h1 class="home__title">Email Template Library</h1>
+        <h1 class="home__title">Pay Email Template Library</h1>
         <p class="home__subtitle">{{ done }} of {{ total }} templates complete</p>
       </div>
       <div class="home__progress-bar">
@@ -38,17 +38,17 @@ const progress = total ? Math.round((done / total) * 100) : 0
 
     <div class="home__filters">
       <input v-model="search" class="home__search" placeholder="Search templates…" />
+      <select v-model="filterProduct" class="home__select">
+        <option v-for="p in products" :key="p" :value="p">
+          {{ p === 'All' ? 'All products' : productConfig[p].label }}
+        </option>
+      </select>
       <select v-model="filterCategory" class="home__select">
         <option v-for="c in categories" :key="c">{{ c }}</option>
       </select>
       <select v-model="filterStatus" class="home__select">
         <option v-for="s in statuses" :key="s" :value="s">
           {{ s === 'All' ? 'All statuses' : statusConfig[s].label }}
-        </option>
-      </select>
-      <select v-model="filterProduct" class="home__select">
-        <option v-for="p in products" :key="p" :value="p">
-          {{ p === 'All' ? 'All products' : productConfig[p].label }}
         </option>
       </select>
     </div>

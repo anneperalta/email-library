@@ -641,6 +641,6 @@ export const statusConfig = {
 }
 
 export const productConfig = {
-  'LH': { label: 'Little Hotelier', color: '#7c3aed' },
-  'SM': { label: 'SiteMinder',      color: '#0369a1' },
+  'LH': { label: 'LH', color: '#FF6842' },
+  'SM': { label: 'SM', color: '#006DFF' },
 }
