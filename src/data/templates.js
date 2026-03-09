@@ -4,48 +4,6 @@
 
 export const templates = [
 
-  // ── Base Templates ─────────────────────────────────────────────
-  {
-    id: 'base-guest-lh',
-    name: 'Guest Base (LH)',
-    category: 'Base Templates',
-    product: 'LH',
-    figma: null,
-    status: 'in-review',
-    old: null,
-    new: '/templates/new/lh-guest-base.html',
-  },
-  {
-    id: 'base-guest-sm',
-    name: 'Guest Base (SM)',
-    category: 'Base Templates',
-    product: 'SM',
-    figma: null,
-    status: 'in-review',
-    old: null,
-    new: '/templates/new/sm-guest-base.html',
-  },
-  {
-    id: 'base-property-lh',
-    name: 'Property Base (LH)',
-    category: 'Base Templates',
-    product: 'LH',
-    figma: null,
-    status: 'in-review',
-    old: null,
-    new: '/templates/new/lh-base.html',
-  },
-  {
-    id: 'base-property-sm',
-    name: 'Property Base (SM)',
-    category: 'Base Templates',
-    product: 'SM',
-    figma: null,
-    status: 'in-review',
-    old: null,
-    new: '/templates/new/sm-base.html',
-  },
-
   // ── Autopay ────────────────────────────────────────────────────
   {
     id: 'autopay-card-validation-failed-lh',
