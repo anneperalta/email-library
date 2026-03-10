@@ -9,11 +9,13 @@ const filterCategory = ref('All')
 const filterStatus = ref('All')
 const filterProduct = ref('All')
 
-const categories = ['All', ...new Set(templates.map(t => t.category))].sort()
+const tableTemplates = templates.filter(t => t.category !== 'Base Templates')
+
+const categories = ['All', ...new Set(tableTemplates.map(t => t.category))].sort()
 const statuses = ['All', 'not-started', 'in-review', 'done']
 const products = ['All', 'LH', 'SM']
 
-const filtered = computed(() => templates.filter(t => {
+const filtered = computed(() => tableTemplates.filter(t => {
   const matchSearch = t.name.toLowerCase().includes(search.value.toLowerCase())
   const matchCat = filterCategory.value === 'All' || t.category === filterCategory.value
   const matchStatus = filterStatus.value === 'All' || t.status === filterStatus.value
@@ -21,8 +23,8 @@ const filtered = computed(() => templates.filter(t => {
   return matchSearch && matchCat && matchStatus && matchProduct
 }))
 
-const total = templates.length
-const done = templates.filter(t => t.status === 'done').length
+const total = tableTemplates.length
+const done = tableTemplates.filter(t => t.status === 'done').length
 const progress = total ? Math.round((done / total) * 100) : 0
 
 const { popup, openComments, commentCount } = useComments()

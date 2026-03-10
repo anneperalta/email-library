@@ -32,7 +32,7 @@
     .property-address { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
     .contact-phone,
     .contact-email,
-    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #006ADD; text-decoration: none; }
+    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
 
     /* ── Opening ──────────────────────────────────────────────────── */
     .opening-salutation,
@@ -40,7 +40,7 @@
 
     /* ── Status box ───────────────────────────────────────────────── */
     .status-title        { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
-    .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 18px; color: #717171; }
+    .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #717171; }
     .status-amount       { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
 
     /* ── Details ──────────────────────────────────────────────────── */
@@ -61,6 +61,10 @@
     .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 22px; color: #333333; }
     .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 20px; color: #333333; }
     .footer-copyright  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+
+    /* ── Structural ───────────────────────────────────────────────── */
+    .section-status-box { background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px; }
+    .footer-divider     { border-top: 1px solid #e0e0e0; }
 
     /* ── Responsive ───────────────────────────────────────────────── */
     @media screen and (max-width: 480px) {
@@ -89,7 +93,7 @@
               <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
               <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 4px;">
+                  <td style="padding-bottom: 0px;">
                     <h1 class="property-name">{{propertyName}}</h1>
                   </td>
                 </tr>
@@ -103,7 +107,7 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="../assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="../assets/icons/phone.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
                         </td>
                         <td>
                           <a class="contact-phone" href="tel:{{propertyPhone}}">{{propertyPhone}}</a>
@@ -117,7 +121,7 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="../assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="../assets/icons/email.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
                         </td>
                         <td>
                           <a class="contact-email" href="mailto:{{propertyEmail}}">{{propertyEmail}}</a>
@@ -131,7 +135,7 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="../assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;" />
+                          <img src="../assets/icons/website.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
                         </td>
                         <td>
                           <a class="contact-website" href="{{propertyWebsite}}">{{propertyWebsite}}</a>
@@ -159,7 +163,7 @@
               <!-- ==================== /SECTION: OPENING ==================== -->
 
               <!-- ==================== SECTION: STATUS BOX ==================== -->
-              <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;">
+              <table class="section-status section-status-box" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="status-box-inner" style="padding: 35px;">
 
@@ -178,7 +182,7 @@
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 2px;">
+                        <td style="padding-bottom: 0px;">
                           <p class="status-amount-label">Total amount paid</p>
                         </td>
                       </tr>
@@ -197,7 +201,7 @@
               <!-- ==================== SECTION: BOOKING DETAILS ==================== -->
               <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 40px;">
                 <tr>
-                  <td style="padding-bottom: 24px;">
+                  <td style="padding-bottom: 16px;">
                     <h3 class="details-title">Your booking information</h3>
                   </td>
                 </tr>
@@ -290,7 +294,7 @@
               <!-- ==================== SECTION: FOOTER ==================== -->
               <table class="section-footer" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;">
+                  <td class="footer-divider" style="padding-top: 40px; padding-bottom: 12px;">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">

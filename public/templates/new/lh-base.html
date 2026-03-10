@@ -22,9 +22,23 @@
     .details-box    { background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px; }
     .footer-section { max-width: 630px; }
 
+    /* ── Typography ──────────────────────────────────────────── */
+    .email-title    { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333; }
+    .email-subtitle { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; color: #333333; }
+    .body-text      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .body-bold      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
+    .box-heading    { margin: 0 0 16px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px; color: #333333; }
+    .detail-text    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333; }
+    .detail-bold    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 17px; color: #333333; }
+    .label-tag      { margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px; }
+    .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
+    .link           { color: #000FFF; text-decoration: underline; }
+    .footer-link    { color: #333333; text-decoration: underline; }
+    .btn            { display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px; }
+
     @media screen and (max-width: 480px) {
       .outer-padding { padding: 20px 12px !important; }
-      .card-body    { padding: 24px 20px 0 20px !important; }
+      .card-body    { padding: 24px 20px !important; }
       .box-body     { padding: 20px !important; }
       .info-body    { padding: 20px !important; }
       .col-row      { display: block !important; }
@@ -32,6 +46,56 @@
       .footer-body  { padding: 24px 20px 12px 20px !important; }
       .footer-legal { padding: 0 20px 24px 20px !important; }
     }
+
+    /* ── Spec annotations ─────────────────────────────────────────── */
+    .spec-mode       [data-spec]       { outline: 1.5px dashed rgba(180, 0, 243, 0.6) !important; cursor: crosshair !important; }
+    .spacing-mode    [data-spacing]    { outline: 1.5px dashed rgba(243, 0, 180, 0.6) !important; cursor: crosshair !important; }
+    .typography-mode [data-typography] { outline: 1.5px dashed rgba(0, 180, 243, 0.7) !important; cursor: crosshair !important; }
+    .assets-mode     [data-assets]     { outline: 1.5px dashed rgba(243, 180, 0, 0.7)  !important; cursor: crosshair !important; }
+
+    #spec-tooltip {
+      position: fixed;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 11px;
+      line-height: 1.7;
+      padding: 7px 11px;
+      border-radius: 6px;
+      pointer-events: none;
+      z-index: 99999;
+      display: none;
+      white-space: pre;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+    }
+    #spec-tooltip.mode-spec        { background: #1a0022; color: #e8b4ff; }
+    #spec-tooltip.mode-spacing     { background: #220011; color: #ffb4e8; }
+    #spec-tooltip.mode-typography  { background: #001622; color: #b4e8ff; }
+    #spec-tooltip.mode-assets      { background: #221800; color: #ffe8b4; }
+
+    #spec-controls {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+      z-index: 99999;
+    }
+    #spec-controls button {
+      background: #333333;
+      color: #ffffff;
+      border: none;
+      padding: 7px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-family: Roboto, Arial, sans-serif;
+      font-weight: 700;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #spec-toggle.active        { background: #B400F3; }
+    #spacing-toggle.active     { background: #F300B4; }
+    #typography-toggle.active  { background: #00B4F3; }
+    #assets-toggle.active      { background: #F3B400; }
   </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #FFE2D7; font-family: Roboto, Arial, sans-serif; color: #333333;">
@@ -39,18 +103,23 @@
   <!-- ==================== OUTER WRAPPER ==================== -->
   <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #FFE2D7;">
     <tr>
-      <td class="outer-padding" align="center" style="padding: 25px 16px 40px 16px;">
+      <td class="outer-padding" align="center" style="padding: 25px 16px 40px 16px;"
+          data-spacing="outer wrapper&#10;padding: 25px 16px 40px 16px&#10;(mobile: 20px 12px)">
 
         <!-- ==================== EMAIL CARD ==================== -->
-        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;"
+               data-spec="email card&#10;max-width: 630px&#10;background: #FFFFFF&#10;border-radius: 15px">
           <tr>
-            <td class="card-body" style="padding: 50px 50px 0 50px;">
+            <td class="card-body" style="padding: 50px;"
+                data-spacing="card body&#10;padding: 50px (all sides)&#10;(mobile: 24px 20px)">
 
               <!-- Header icon -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="header-icon">
-                    <img src="./assets/header-icon/brand=lh.svg" alt="Little Hotelier" width="60" height="60" style="display: block;" />
+                  <td class="header-icon"
+                      data-spacing="header icon&#10;↓ 35px">
+                    <img src="./assets/header-icon/brand=lh.svg" alt="Little Hotelier" width="60" height="60" style="display: block;"
+                         data-assets="brand=lh.svg&#10;60 × 60px" />
                   </td>
                 </tr>
               </table>
@@ -61,8 +130,10 @@
               <!-- VARIANT 1: Plain h1, no icon -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td class="title">
-                    <h1 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333;">[Email title]</h1>
+                  <td class="title"
+                      data-spacing="email title&#10;↓ 35px">
+                    <h1 class="email-title"
+                        data-typography="Roboto · 24px · 700&#10;line-height: 28px · #333333">[Email title]</h1>
                   </td>
                 </tr>
               </table>
@@ -72,14 +143,17 @@
               <!--
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 35px;">
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="email title&#10;↓ 35px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="top" style="padding-right: 10px;">
-                          <img src="./assets/icons/[icon-name].svg" alt="" width="24" height="24" style="display: block;" />
+                          <img src="./assets/icons/[icon-name].svg" alt="" width="24" height="24" style="display: block;"
+                               data-assets="[icon-name].svg&#10;24 × 24px" />
                         </td>
                         <td>
-                          <h2 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; color: #333333;">[Email title]</h2>
+                          <h2 class="email-subtitle"
+                              data-typography="Roboto · 20px · 700&#10;line-height: 24px · #333333">[Email title]</h2>
                         </td>
                       </tr>
                     </table>
@@ -92,8 +166,10 @@
               <!-- Greeting -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 8px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Hi {{recipientName}},</p>
+                  <td style="padding-bottom: 8px;"
+                      data-spacing="greeting&#10;↓ 8px">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">Hi {{recipientName}},</p>
                   </td>
                 </tr>
               </table>
@@ -101,40 +177,57 @@
               <!-- Opening paragraph — explain the purpose of the email -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">[Opening paragraph]</p>
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="opening paragraph&#10;↓ 35px (section gap)">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">[Opening paragraph]</p>
                   </td>
                 </tr>
               </table>
 
               <!-- ==================== DETAILS BOX ==================== -->
               <!-- Optional: duplicate or remove this block as needed   -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" class="details-box">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" class="details-box"
+                     data-spec="details-box&#10;background: #F7FAFA&#10;border-radius: 10px&#10;margin-bottom: 35px">
                 <tr>
-                  <td class="box-body" style="padding: 35px;">
+                  <td class="box-body" style="padding: 35px;"
+                      data-spacing="box body&#10;padding: 35px&#10;(mobile: 20px)">
 
                     <!-- Box heading — replace with section title -->
-                    <p style="margin: 0 0 16px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px; color: #333333;">[Section heading]</p>
+                    <p class="box-heading"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 20px · #333333"
+                       data-spacing="box heading&#10;↓ 16px">[Section heading]</p>
 
                     <!-- Label / Value rows — add or remove rows as needed -->
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <!-- Standard row -->
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333;">[Label]:</td>
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333;">[Value]</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;"
+                            data-typography="Roboto · 14px · 400&#10;line-height: 17px · #333333"
+                            data-spacing="detail row&#10;↓ 8px">[Label]:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;"
+                            data-typography="Roboto · 14px · 400&#10;line-height: 17px · #333333">[Value]</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333;">[Label]:</td>
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333;">[Value]</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;"
+                            data-typography="Roboto · 14px · 400&#10;line-height: 17px · #333333"
+                            data-spacing="detail row&#10;↓ 8px">[Label]:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;"
+                            data-typography="Roboto · 14px · 400&#10;line-height: 17px · #333333">[Value]</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333;">[Label]:</td>
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333;">[Value]</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;"
+                            data-typography="Roboto · 14px · 400&#10;line-height: 17px · #333333"
+                            data-spacing="detail row&#10;↓ 8px">[Label]:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;"
+                            data-typography="Roboto · 14px · 400&#10;line-height: 17px · #333333">[Value]</td>
                       </tr>
                       <!-- Bold row — use for totals or emphasis -->
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 17px; color: #333333;">[Label]:</td>
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 17px; color: #333333;">[Value]</td>
+                        <td class="col detail-bold" width="50%" style="padding-bottom: 0;"
+                            data-typography="Roboto · 14px · 700&#10;line-height: 17px · #333333">[Label]:</td>
+                        <td class="col detail-bold" width="50%" style="padding-bottom: 0;"
+                            data-typography="Roboto · 14px · 700&#10;line-height: 17px · #333333">[Value]</td>
                       </tr>
                     </table>
 
@@ -146,8 +239,10 @@
               <!-- Action button — replace href and label; remove if not needed -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <a href="{{actionUrl}}" style="display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px;">[Button label]</a>
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="action button&#10;↓ 35px (section gap)">
+                    <a href="{{actionUrl}}" class="btn"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 18px · #FFFFFF&#10;bg: #FF6842 · radius: 100px">[Button label]</a>
                   </td>
                 </tr>
               </table>
@@ -158,8 +253,10 @@
               <!-- Section heading — replace with FAQ or content section title -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <h2 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333;">[Section heading]</h2>
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="FAQ section heading&#10;↓ 35px">
+                    <h2 class="email-title"
+                        data-typography="Roboto · 24px · 700&#10;line-height: 28px · #333333">[Section heading]</h2>
                   </td>
                 </tr>
               </table>
@@ -167,33 +264,45 @@
               <!-- FAQ pairs — add or remove pairs as needed -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">[Question or subheading]</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="FAQ question&#10;↓ 4px">
+                    <p class="body-bold"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 24px · #333333">[Question or subheading]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">[Answer or supporting text]</p>
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="FAQ answer&#10;↓ 24px">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">[Answer or supporting text]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">[Question or subheading]</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="FAQ question&#10;↓ 4px">
+                    <p class="body-bold"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 24px · #333333">[Question or subheading]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">[Answer or supporting text]</p>
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="FAQ answer&#10;↓ 24px">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">[Answer or supporting text]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">[Question or subheading]</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="FAQ question&#10;↓ 4px">
+                    <p class="body-bold"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 24px · #333333">[Question or subheading]</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">[Answer or supporting text]</p>
+                  <td style="padding-bottom: 24px;"
+                      data-spacing="FAQ answer (last)&#10;↓ 24px">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">[Answer or supporting text]</p>
                   </td>
                 </tr>
               </table>
@@ -202,8 +311,10 @@
               <!-- Outro paragraph — optional; remove if not needed -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">[Outro paragraph]</p>
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="outro paragraph&#10;↓ 35px (section gap)">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">[Outro paragraph]</p>
                   </td>
                 </tr>
               </table>
@@ -211,29 +322,39 @@
               <!-- Sign-off -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Thank you,</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="sign-off&#10;↓ 4px">
+                    <p class="body-text"
+                       data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333">Thank you,</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Your Little Hotelier Team</p>
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="sign-off name&#10;↓ 35px (section gap)">
+                    <p class="body-bold"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 24px · #333333">Your Little Hotelier Team</p>
                   </td>
                 </tr>
               </table>
 
               <!-- Need more information? — replace help centre link text -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; border-radius: 10px;"
+                     data-spec="info-box&#10;background: #F7FAFA&#10;border-radius: 10px">
                 <tr>
-                  <td class="info-body" style="padding: 25px;">
+                  <td class="info-body" style="padding: 25px;"
+                      data-spacing="info body&#10;padding: 25px&#10;(mobile: 20px)">
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td width="24" valign="top" style="padding-right: 10px;">
-                          <img src="./assets/icons/information-alt.svg" alt="" width="24" height="24" style="display: block;" />
+                          <img src="./assets/icons/information-alt.svg" alt="" width="24" height="24" style="display: block;"
+                               data-assets="information-alt.svg&#10;24 × 24px" />
                         </td>
                         <td>
-                          <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Need more information?</p>
-                          <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;"><a href="{{helpCentreUrl}}" style="color: #000FFF; text-decoration: underline;">Visit our Help Centre</a> [replace with context-appropriate help text].</p>
+                          <p class="body-bold" style="margin-bottom: 4px;"
+                             data-typography="Roboto · 16px · 700&#10;line-height: 24px · #333333"
+                             data-spacing="info heading&#10;↓ 4px">Need more information?</p>
+                          <p class="body-text"
+                             data-typography="Roboto · 16px · 400&#10;line-height: 24px · #333333"><a href="{{helpCentreUrl}}" class="link">Visit our Help Centre</a> [replace with context-appropriate help text].</p>
                         </td>
                       </tr>
                     </table>
@@ -251,20 +372,27 @@
         <!-- Footer: logo + social -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-section">
           <tr>
-            <td class="footer-body" style="padding: 40px 50px 16px 50px;">
+            <td class="footer-body" style="padding: 40px 50px 16px 50px;"
+                data-spacing="footer body&#10;padding: 40px 50px 16px 50px&#10;(mobile: 24px 20px 12px 20px)">
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td valign="middle">
-                    <img src="./assets/footer-logo/brand=lh.svg" alt="Little Hotelier by SiteMinder" width="150" style="display: block;" />
+                    <img src="./assets/footer-logo/brand=lh.svg" alt="Little Hotelier by SiteMinder" width="150" style="display: block;"
+                         data-assets="brand=lh.svg&#10;150px wide" />
                   </td>
                   <td align="right" valign="middle">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td style="padding-left: 10px;"><a href="{{linkedinUrl}}"><img src="./assets/social-icons/Property%201=linkedin.svg" alt="LinkedIn" width="24" height="24" style="display: block;" /></a></td>
-                        <td style="padding-left: 10px;"><a href="{{facebookUrl}}"><img src="./assets/social-icons/Property%201=facebook.svg" alt="Facebook" width="24" height="24" style="display: block;" /></a></td>
-                        <td style="padding-left: 10px;"><a href="{{twitterUrl}}"><img src="./assets/social-icons/Property%201=twitter.svg" alt="X" width="24" height="24" style="display: block;" /></a></td>
-                        <td style="padding-left: 10px;"><a href="{{youtubeUrl}}"><img src="./assets/social-icons/Property%201=youtube.svg" alt="YouTube" width="24" height="24" style="display: block;" /></a></td>
-                        <td style="padding-left: 10px;"><a href="{{instagramUrl}}"><img src="./assets/social-icons/Property%201=instagram.svg" alt="Instagram" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{linkedinUrl}}"><img src="./assets/social-icons/Property%201=linkedin.svg" alt="LinkedIn" width="24" height="24" style="display: block;"
+                             data-assets="Property 1=linkedin.svg&#10;24 × 24px" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{facebookUrl}}"><img src="./assets/social-icons/Property%201=facebook.svg" alt="Facebook" width="24" height="24" style="display: block;"
+                             data-assets="Property 1=facebook.svg&#10;24 × 24px" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{twitterUrl}}"><img src="./assets/social-icons/Property%201=twitter.svg" alt="X" width="24" height="24" style="display: block;"
+                             data-assets="Property 1=twitter.svg&#10;24 × 24px" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{youtubeUrl}}"><img src="./assets/social-icons/Property%201=youtube.svg" alt="YouTube" width="24" height="24" style="display: block;"
+                             data-assets="Property 1=youtube.svg&#10;24 × 24px" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{instagramUrl}}"><img src="./assets/social-icons/Property%201=instagram.svg" alt="Instagram" width="24" height="24" style="display: block;"
+                             data-assets="Property 1=instagram.svg&#10;24 × 24px" /></a></td>
                       </tr>
                     </table>
                   </td>
@@ -277,26 +405,34 @@
         <!-- Footer: legal -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-section">
           <tr>
-            <td class="footer-legal" style="padding: 0 50px 32px 50px;">
+            <td class="footer-legal" style="padding: 0 50px 32px 50px;"
+                data-spacing="footer legal&#10;padding: 0 50px 32px 50px&#10;(mobile: 0 20px 24px 20px)">
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 8px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{viewOnlineUrl}}" style="color: #333333; text-decoration: underline;">View online</a></p>
+                  <td style="padding-bottom: 8px;"
+                      data-spacing="view online&#10;↓ 8px">
+                    <p class="legal-text"
+                       data-typography="Roboto · 10px · 400&#10;line-height: 16px · #333333"><a href="{{viewOnlineUrl}}" class="footer-link">View online</a></p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="legal address&#10;↓ 4px">
+                    <p class="legal-text"
+                       data-typography="Roboto · 10px · 400&#10;line-height: 16px · #333333">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to {{recipientEmail}}</p>
+                  <td style="padding-bottom: 4px;"
+                      data-spacing="legal recipient&#10;↓ 4px">
+                    <p class="legal-text"
+                       data-typography="Roboto · 10px · 400&#10;line-height: 16px · #333333">This email was sent to {{recipientEmail}}</p>
                   </td>
                 </tr>
                 <tr>
-                  <td>
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{preferencesUrl}}" style="color: #333333; text-decoration: underline;">Update Preferences</a> | <a href="{{unsubscribeUrl}}" style="color: #333333; text-decoration: underline;">Unsubscribe</a></p>
+                  <td data-spacing="legal links&#10;(no bottom spacing)">
+                    <p class="legal-text"
+                       data-typography="Roboto · 10px · 400&#10;line-height: 16px · #333333"><a href="{{preferencesUrl}}" class="footer-link">Update Preferences</a> | <a href="{{unsubscribeUrl}}" class="footer-link">Unsubscribe</a></p>
                   </td>
                 </tr>
               </table>
@@ -308,6 +444,110 @@
       </td>
     </tr>
   </table>
+
+  <!-- ==================== SPEC ANNOTATIONS ==================== -->
+  <div id="spec-controls">
+    <button id="typography-toggle">Type</button>
+    <button id="assets-toggle">Assets</button>
+    <button id="spacing-toggle">Spacing</button>
+    <button id="spec-toggle">Containers</button>
+  </div>
+  <div id="spec-tooltip"></div>
+  <script>
+    const specToggle       = document.getElementById('spec-toggle');
+    const spacingToggle    = document.getElementById('spacing-toggle');
+    const typographyToggle = document.getElementById('typography-toggle');
+    const assetsToggle     = document.getElementById('assets-toggle');
+    const tooltip          = document.getElementById('spec-tooltip');
+    let specActive = false, spacingActive = false, typographyActive = false, assetsActive = false;
+
+    function positionTooltip(e) {
+      const x = e.clientX + 16, y = e.clientY + 16;
+      tooltip.style.left = (x + tooltip.offsetWidth  > window.innerWidth  ? x - tooltip.offsetWidth  - 32 : x) + 'px';
+      tooltip.style.top  = (y + tooltip.offsetHeight > window.innerHeight ? y - tooltip.offsetHeight - 32 : y) + 'px';
+    }
+
+    specToggle.addEventListener('click', () => {
+      specActive = !specActive;
+      document.body.classList.toggle('spec-mode', specActive);
+      specToggle.classList.toggle('active', specActive);
+      specToggle.textContent = specActive ? 'Containers on' : 'Containers';
+      if (!specActive) tooltip.style.display = 'none';
+    });
+
+    spacingToggle.addEventListener('click', () => {
+      spacingActive = !spacingActive;
+      document.body.classList.toggle('spacing-mode', spacingActive);
+      spacingToggle.classList.toggle('active', spacingActive);
+      spacingToggle.textContent = spacingActive ? 'Spacing on' : 'Spacing';
+      if (!spacingActive) tooltip.style.display = 'none';
+    });
+
+    typographyToggle.addEventListener('click', () => {
+      typographyActive = !typographyActive;
+      document.body.classList.toggle('typography-mode', typographyActive);
+      typographyToggle.classList.toggle('active', typographyActive);
+      typographyToggle.textContent = typographyActive ? 'Type on' : 'Type';
+      if (!typographyActive) tooltip.style.display = 'none';
+    });
+
+    assetsToggle.addEventListener('click', () => {
+      assetsActive = !assetsActive;
+      document.body.classList.toggle('assets-mode', assetsActive);
+      assetsToggle.classList.toggle('active', assetsActive);
+      assetsToggle.textContent = assetsActive ? 'Assets on' : 'Assets';
+      if (!assetsActive) tooltip.style.display = 'none';
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (!specActive && !spacingActive && !typographyActive && !assetsActive) return;
+
+      // Priority: assets > typography > spacing > containers
+      if (assetsActive) {
+        const el = e.target.closest('[data-assets]');
+        if (el) {
+          tooltip.className = 'mode-assets';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.assets;
+          positionTooltip(e);
+          return;
+        }
+      }
+      if (typographyActive) {
+        const el = e.target.closest('[data-typography]');
+        if (el) {
+          tooltip.className = 'mode-typography';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.typography;
+          positionTooltip(e);
+          return;
+        }
+      }
+      if (spacingActive) {
+        const el = e.target.closest('[data-spacing]');
+        if (el) {
+          tooltip.className = 'mode-spacing';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.spacing;
+          positionTooltip(e);
+          return;
+        }
+      }
+      if (specActive) {
+        const el = e.target.closest('[data-spec]');
+        if (el) {
+          tooltip.className = 'mode-spec';
+          tooltip.style.display = 'block';
+          tooltip.textContent = el.dataset.spec;
+          positionTooltip(e);
+          return;
+        }
+      }
+
+      tooltip.style.display = 'none';
+    });
+  </script>
+  <!-- ==================== /SPEC ANNOTATIONS ==================== -->
 
 </body>
 </html>

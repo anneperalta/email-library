@@ -32,7 +32,7 @@
     .property-address { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
     .contact-phone,
     .contact-email,
-    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 14px; font-weight: 400; color: #006ADD; text-decoration: none; }
+    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
 
     /* ── Opening ──────────────────────────────────────────────────── */
     .opening-salutation,
@@ -40,7 +40,7 @@
 
     /* ── Status box ───────────────────────────────────────────────── */
     .status-title        { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
-    .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 18px; color: #717171; }
+    .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #717171; }
     .status-amount       { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
     .status-info         { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
 
@@ -58,6 +58,10 @@
     .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 22px; color: #333333; }
     .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 20px; color: #333333; }
     .footer-copyright  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+
+    /* ── Structural ───────────────────────────────────────────────── */
+    .section-status-box { background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px; }
+    .footer-divider     { border-top: 1px solid #e0e0e0; }
 
     /* ── Responsive ───────────────────────────────────────────────── */
     @media screen and (max-width: 480px) {
@@ -141,8 +145,8 @@
               <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
               <table class="section-property" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 4px;"
-                      data-spacing="property-name&#10;↓ 4px">
+                  <td style="padding-bottom: 0px;"
+                      data-spacing="property-name&#10;↓ 0px">
                     <h1 class="property-name"
                         data-typography="Noto Sans · 30px · 600&#10;line-height: 36px · #333333&#10;(mobile: 22px / 30px)">{{propertyName}}</h1>
                   </td>
@@ -160,12 +164,12 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/phone.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
-                               data-assets="phone.svg&#10;16 × 16px&#10;#006ADD" />
+                          <img src="assets/icons/phone.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;"
+                               data-assets="phone.svg&#10;15 × 15px&#10;#006ADD" />
                         </td>
                         <td>
                           <a class="contact-phone" href="tel:{{propertyPhone}}"
-                             data-typography="Noto Sans · 14px · 400&#10;color: #006ADD · no underline">{{propertyPhone}}</a>
+                             data-typography="Noto Sans · 15px · 400&#10;line-height: 22px · #006ADD · no underline">{{propertyPhone}}</a>
                         </td>
                       </tr>
                     </table>
@@ -177,12 +181,12 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/email.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
-                               data-assets="email.svg&#10;16 × 16px&#10;#006ADD" />
+                          <img src="assets/icons/email.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;"
+                               data-assets="email.svg&#10;15 × 15px&#10;#006ADD" />
                         </td>
                         <td>
                           <a class="contact-email" href="mailto:{{propertyEmail}}"
-                             data-typography="Noto Sans · 14px · 400&#10;color: #006ADD · no underline">{{propertyEmail}}</a>
+                             data-typography="Noto Sans · 15px · 400&#10;line-height: 22px · #006ADD · no underline">{{propertyEmail}}</a>
                         </td>
                       </tr>
                     </table>
@@ -194,12 +198,12 @@
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td valign="middle" style="padding-right: 8px;">
-                          <img src="assets/icons/website.svg" alt="" width="16" height="16" class="icon-blue" style="display: block;"
-                               data-assets="website.svg&#10;16 × 16px&#10;#006ADD" />
+                          <img src="assets/icons/website.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;"
+                               data-assets="website.svg&#10;15 × 15px&#10;#006ADD" />
                         </td>
                         <td>
                           <a class="contact-website" href="{{propertyWebsite}}"
-                             data-typography="Noto Sans · 14px · 400&#10;color: #006ADD · no underline">{{propertyWebsite}}</a>
+                             data-typography="Noto Sans · 15px · 400&#10;line-height: 22px · #006ADD · no underline">{{propertyWebsite}}</a>
                         </td>
                       </tr>
                     </table>
@@ -228,7 +232,7 @@
               <!-- ==================== /SECTION: OPENING ==================== -->
 
               <!-- ==================== SECTION: STATUS BOX ==================== -->
-              <table class="section-status" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px;"
+              <table class="section-status section-status-box" width="100%" cellpadding="0" cellspacing="0" border="0"
                      data-spec="section-status&#10;width: 100%&#10;background: #f7f8fa&#10;border-radius: 10px&#10;margin-bottom: 40px"
                      data-spacing="section-status&#10;margin-bottom: 40px (section gap)">
                 <tr>
@@ -255,10 +259,10 @@
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 2px;"
-                            data-spacing="amount label&#10;↓ 2px">
+                        <td style="padding-bottom: 0px;"
+                            data-spacing="amount label&#10;↓ 0px">
                           <p class="status-amount-label"
-                             data-typography="Noto Sans · 13px · 400&#10;line-height: 18px · #717171">Total amount paid</p>
+                             data-typography="Noto Sans · 13px · 400&#10;line-height: 20px · #717171">Total amount paid</p>
                         </td>
                       </tr>
                       <tr>
@@ -284,8 +288,8 @@
               <!-- ==================== SECTION: DETAILS ==================== -->
               <table class="section-details" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 24px;"
-                      data-spacing="section title&#10;↓ 24px">
+                  <td style="padding-bottom: 16px;"
+                      data-spacing="section title&#10;↓ 16px">
                     <h3 class="details-title"
                         data-typography="Noto Sans · 20px · 600&#10;line-height: 26px · #333333&#10;(mobile: 18px / 24px)">[Section title]</h3>
                   </td>
@@ -340,7 +344,7 @@
               <!-- ==================== SECTION: FOOTER ==================== -->
               <table class="section-footer" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="border-top: 1px solid #e0e0e0; padding-top: 40px; padding-bottom: 12px;"
+                  <td class="footer-divider" style="padding-top: 40px; padding-bottom: 12px;"
                       data-spacing="footer brand row&#10;padding-top: 40px · ↓ 12px">
                     <table cellpadding="0" cellspacing="0" border="0">
                       <tr>

@@ -22,9 +22,23 @@
     .details-box    { background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px; }
     .footer-section { max-width: 630px; }
 
+    /* ── Typography ──────────────────────────────────────────── */
+    .email-title    { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333; }
+    .email-subtitle { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; color: #333333; }
+    .body-text      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .body-bold      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
+    .box-heading    { margin: 0 0 16px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px; color: #333333; }
+    .detail-text    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333; }
+    .detail-bold    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 17px; color: #333333; }
+    .label-tag      { margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px; }
+    .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
+    .link           { color: #000FFF; text-decoration: underline; }
+    .footer-link    { color: #333333; text-decoration: underline; }
+    .btn            { display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px; }
+
     @media screen and (max-width: 480px) {
       .outer-padding { padding: 20px 12px !important; }
-      .card-body    { padding: 24px 20px 0 20px !important; }
+      .card-body    { padding: 24px 20px !important; }
       .box-body     { padding: 20px !important; }
       .info-body    { padding: 20px !important; }
       .col-row      { display: block !important; }
@@ -44,7 +58,7 @@
         <!-- ==================== EMAIL CARD ==================== -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
           <tr>
-            <td class="card-body" style="padding: 50px 50px 0 50px;">
+            <td class="card-body" style="padding: 50px;">
 
               <!-- Header icon -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -59,7 +73,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="title">
-                    <h1 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333;">Your payment rule was successfully created</h1>
+                    <h1 class="email-title">Your payment rule was successfully created</h1>
                   </td>
                 </tr>
               </table>
@@ -68,7 +82,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">The payment rule is now active. All reservations that meet the criteria below will now have payments automatically processed.</p>
+                    <p class="body-text">The payment rule is now active. All reservations that meet the criteria below will now have payments automatically processed.</p>
                   </td>
                 </tr>
               </table>
@@ -79,11 +93,11 @@
                   <td class="box-body" style="padding: 35px;">
 
                     <!-- Card type -->
-                    <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px;">Card type</p>
+                    <p class="label-tag">Card type</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Applies to:</td>
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">
+                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Applies to:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">
                           {{#eq cardType "PHYSICAL"}}Standard Credit Cards{{/eq}}
                           {{#eq cardType "VIRTUAL"}}Virtual Credit Cards{{/eq}}
                         </td>
@@ -91,25 +105,25 @@
                     </table>
 
                     <!-- Settings -->
-                    <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px;">Settings</p>
+                    <p class="label-tag">Settings</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Channels:</td>
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">{{channel}}</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">Channels:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">{{channel}}</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Surcharges:</td>
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">{{#if surchargeEnabled}}Yes, surcharges are applied{{else}}No surcharges applied{{/if}}</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Surcharges:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{#if surchargeEnabled}}Yes, surcharges are applied{{else}}No surcharges applied{{/if}}</td>
                       </tr>
                     </table>
 
                     <!-- Payment rule -->
-                    <p style="margin: 0 0 8px 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 700; line-height: 16px; color: #FF6842; text-transform: uppercase; letter-spacing: 0.5px;">Payment rule</p>
-                    <p style="margin: 0 0 8px 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 20px; color: #333333;">Payment action</p>
+                    <p class="label-tag" style="margin-bottom: 8px;">Payment rule</p>
+                    <p class="detail-bold" style="margin: 0 0 8px 0;">Payment action</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">When to charge the payment:</td>
-                        <td class="col" width="50%" style="padding-bottom: 8px; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">When to charge the payment:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">
                           {{#eq actions.[0].triggerDate.operand "ACTIVATION_DATE"}}Activation date{{#eq cardType "VIRTUAL"}}{{#if hasChannelsPlus}}<br /><span style="color: #666666; font-size: 12px;">Channels Plus VCCs are processed 1 day after the activation date.</span>{{/if}}{{/eq}}{{/eq}}
                           {{#eq actions.[0].triggerDate.operand "TIME_OF_BOOKING"}}Once booking is confirmed{{/eq}}
                           {{#eq actions.[0].triggerDate.operand "CHECK_IN"}}{{#eq actions.[0].triggerDate.operator "<"}}{{#eq actions.[0].triggerDate.value 1}}1 day prior to check-in{{else}}{{actions.[0].triggerDate.value}} days prior to check-in{{/eq}}{{else eq actions.[0].triggerDate.operator ">"}}{{#eq actions.[0].triggerDate.value 1}}1 day after check-in{{else}}{{actions.[0].triggerDate.value}} days after check-in{{/eq}}{{else}}Check-in day{{/eq}}{{/eq}}
@@ -118,8 +132,8 @@
                       </tr>
                       {{#if actions.[0].triggerTime}}
                       <tr class="col-row">
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">Time of day:</td>
-                        <td class="col" width="50%" style="padding-bottom: 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 20px; color: #333333;">{{actions.[0].triggerTime}}</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Time of day:</td>
+                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{actions.[0].triggerTime}}</td>
                       </tr>
                       {{/if}}
                     </table>
@@ -133,7 +147,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <a href="{{autoPayRulesLink}}" style="display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px;">Go to Automated Payment Rules</a>
+                    <a href="{{autoPayRulesLink}}" class="btn">Go to Automated Payment Rules</a>
                   </td>
                 </tr>
               </table>
@@ -142,7 +156,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <h2 style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333;">Frequently Asked Questions</h2>
+                    <h2 class="email-title">Frequently Asked Questions</h2>
                   </td>
                 </tr>
               </table>
@@ -150,32 +164,32 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">What happens if a payment fails?</p>
+                    <p class="body-bold">What happens if a payment fails?</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">You will receive email notifications regarding any failed payments. You can also view all failed payments under the Automated payments tab.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">What happens when a card fails validation?</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Automated payments will be unable to schedule payments if the card supplied fails validation. In this case, you will need to request an alternate card from your guest and manage any payments for the reservation manually.</p>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">You will receive email notifications regarding any failed payments. You can also view all failed payments under the Automated payments tab.</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Can I edit a rule?</p>
+                    <p class="body-bold">What happens when a card fails validation?</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">A payment rule cannot be edited. You will need to archive the existing rule and create and activate a new rule with your preferred settings.</p>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">Automated payments will be unable to schedule payments if the card supplied fails validation. In this case, you will need to request an alternate card from your guest and manage any payments for the reservation manually.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Can I edit a rule?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">A payment rule cannot be edited. You will need to archive the existing rule and create and activate a new rule with your preferred settings.</p>
                   </td>
                 </tr>
               </table>
@@ -185,18 +199,18 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;">Thank you,</p>
+                    <p class="body-text">Thank you,</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Your Little Hotelier Team</p>
+                    <p class="body-bold">Your Little Hotelier Team</p>
                   </td>
                 </tr>
               </table>
 
               <!-- Need more information? -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; border-radius: 10px;">
                 <tr>
                   <td class="info-body" style="padding: 25px;">
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -205,8 +219,8 @@
                           <img src="../assets/icons/information-alt.svg" alt="" width="24" height="24" style="display: block;" />
                         </td>
                         <td>
-                          <p style="margin: 0 0 4px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333;">Need more information?</p>
-                          <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333;"><a href="{{helpCentreUrl}}" style="color: #000FFF; text-decoration: underline;">Visit our Help Centre</a> to find everything you need to know about creating and managing payment rules.</p>
+                          <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
+                          <p class="body-text"><a href="{{helpCentreUrl}}" class="link">Visit our Help Centre</a> to find everything you need to know about creating and managing payment rules.</p>
                         </td>
                       </tr>
                     </table>
@@ -254,22 +268,22 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 8px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{viewOnlineUrl}}" style="color: #333333; text-decoration: underline;">View online</a></p>
+                    <p class="legal-text"><a href="{{viewOnlineUrl}}" class="footer-link">View online</a></p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
+                    <p class="legal-text">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding-bottom: 4px;">
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;">This email was sent to {{recipientEmail}}</p>
+                    <p class="legal-text">This email was sent to {{recipientEmail}}</p>
                   </td>
                 </tr>
                 <tr>
                   <td>
-                    <p style="margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333;"><a href="{{preferencesUrl}}" style="color: #333333; text-decoration: underline;">Update Preferences</a> | <a href="{{unsubscribeUrl}}" style="color: #333333; text-decoration: underline;">Unsubscribe</a></p>
+                    <p class="legal-text"><a href="{{preferencesUrl}}" class="footer-link">Update Preferences</a> | <a href="{{unsubscribeUrl}}" class="footer-link">Unsubscribe</a></p>
                   </td>
                 </tr>
               </table>
