@@ -1,0 +1,280 @@
+<!-- metadata.subject = Little Hotelier Pay is now active -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    .header-icon    { padding-bottom: 35px; }
+    .title          { padding-bottom: 35px; }
+    .footer-section { max-width: 630px; }
+
+    /* ── Typography ──────────────────────────────────────────── */
+    .email-subtitle { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 20px; font-weight: 700; line-height: 24px; color: #333333; }
+    .body-text      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .body-bold      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
+    .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
+    .link           { color: #000FFF; text-decoration: underline; }
+    .footer-link    { color: #333333; text-decoration: underline; }
+    .btn            { display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px; }
+
+    @media screen and (max-width: 480px) {
+      .outer-padding { padding: 20px 12px !important; }
+      .card-body    { padding: 24px 20px !important; }
+      .footer-body  { padding: 24px 20px 12px 20px !important; }
+      .footer-legal { padding: 0 20px 24px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #FFE2D7; font-family: Roboto, Arial, sans-serif; color: #333333;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #FFE2D7;">
+    <tr>
+      <td class="outer-padding" align="center" style="padding: 25px 16px 40px 16px;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
+          <tr>
+            <td class="card-body" style="padding: 50px;">
+
+              <!-- Header icon -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="header-icon">
+                    <img src="../assets/header-icon/brand=lh.svg" alt="Little Hotelier" width="60" height="60" style="display: block;" />
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Email title: icon + h2 -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="title">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="top" style="padding-right: 10px;">
+                          <img src="../assets/icons/success-alt.svg" alt="" width="24" height="24" style="display: block;" />
+                        </td>
+                        <td>
+                          <h2 class="email-subtitle">Congrats, you're now ready to go!</h2>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Greeting -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Hi {{representativeName}},</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Your quick, easy and secure Payments feature for {{propertyName}} is now ready to use.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text">Here's some helpful information to get you started.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- hasTBB conditional section -->
+              {{#eq hasTBB "true"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Start taking payments in your Booking Engine.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Payments are automatically taken at the time of booking, if deposit settings are configured in the Booking Engine.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text"><a href="{{smFAQLink}}" class="link">Learn more</a></p>
+                  </td>
+                </tr>
+              </table>
+
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Set up automated deposits.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Set up automated deposits and start benefiting from all payments made for your direct reservations to be automatically processed.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text"><a href="{{tbbPaymentsLearnMoreLink}}" class="link">Learn more</a></p>
+                  </td>
+                </tr>
+              </table>
+              {{/eq}}
+
+              <!-- Start taking payments in Little Hotelier (always shown) -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Start taking payments in Little Hotelier.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Whenever you take guest payments, go directly to your Little Hotelier reservation and select 'Process Payment'. That's it! No need for a physical terminal or double-handling of guest payment details.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text"><a href="{{lhPaymentsLearnMoreLink}}" class="link">Learn more</a></p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- FAQ: How do I see all Payment transactions? (always shown) -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">How do I see all Payment transactions?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text">In your dashboard, select the 'My Apps' tab in the top-right header and select 'Payments' from the dropdown menu. This will give you access to: a full list of your transactions through Little Hotelier Pay; payout information for deposits into your bank account; access to your online payment terminal.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- countryRequiresDDA conditional section -->
+              {{#eq countryRequiresDDA "true"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Looking for the easiest way to manage your account balance?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Auto Top Up automatically resolves negative balances on your account. It ensures you can receive payments from guests, receive payouts to your bank account and process refunds with no interruptions.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text">Follow the steps on your first login to the Payments Dashboard and simply accept the Direct Debit Authority to activate Auto Top Up.</p>
+                  </td>
+                </tr>
+              </table>
+              {{/eq}}
+
+              <!-- Sign-off -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">We hope you enjoy your new, streamlined payment feature.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-text">Thank you,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="body-bold">Your Little Hotelier Team</p>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+        <!-- ==================== FOOTER ==================== -->
+
+        <!-- Footer: logo + social -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-section">
+          <tr>
+            <td class="footer-body" style="padding: 40px 50px 16px 50px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <img src="../assets/footer-logo/brand=lh.svg" alt="Little Hotelier by SiteMinder" width="150" style="display: block;" />
+                  </td>
+                  <td align="right" valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-left: 10px;"><a href="{{linkedinUrl}}"><img src="../assets/social-icons/Property%201=linkedin.svg" alt="LinkedIn" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{facebookUrl}}"><img src="../assets/social-icons/Property%201=facebook.svg" alt="Facebook" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{twitterUrl}}"><img src="../assets/social-icons/Property%201=twitter.svg" alt="X" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{youtubeUrl}}"><img src="../assets/social-icons/Property%201=youtube.svg" alt="YouTube" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{instagramUrl}}"><img src="../assets/social-icons/Property%201=instagram.svg" alt="Instagram" width="24" height="24" style="display: block;" /></a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Footer: legal -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-section">
+          <tr>
+            <td class="footer-legal" style="padding: 0 50px 32px 50px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p class="legal-text"><a href="{{viewOnlineUrl}}" class="footer-link">View online</a></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="legal-text">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="legal-text">This email was sent to {{recipientEmail}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="legal-text"><a href="{{preferencesUrl}}" class="footer-link">Update Preferences</a> | <a href="{{unsubscribeUrl}}" class="footer-link">Unsubscribe</a></p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /FOOTER ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

@@ -1,0 +1,222 @@
+<!-- metadata.subject = Upcoming direct debit - account in negative balance -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+    .header-icon    { padding-bottom: 35px; }
+    .title          { padding-bottom: 35px; }
+    .details-box    { background-color: #F7FAFA; margin-bottom: 35px; border-radius: 10px; }
+    .footer-section { max-width: 630px; }
+
+    /* ── Typography ──────────────────────────────────────────── */
+    .email-title    { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 24px; font-weight: 700; line-height: 28px; color: #333333; }
+    .body-text      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .body-bold      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
+    .details-title  { margin: 0 0 16px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px; color: #333333; }
+    .detail-text    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333; }
+    .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
+    .link           { color: #000FFF; text-decoration: underline; }
+    .footer-link    { color: #333333; text-decoration: underline; }
+
+    body { background-image: linear-gradient(136deg, #CCE2FF 0%, #ECFFB3 100%); background-repeat: no-repeat; background-size: 100% 100%; min-height: 100vh; }
+
+    @media screen and (max-width: 480px) {
+      .outer-padding { padding: 20px 12px !important; }
+      .card-body    { padding: 24px 20px !important; }
+      .box-body     { padding: 20px !important; }
+      .info-body    { padding: 20px !important; }
+      .col-row      { display: block !important; }
+      .col          { width: 100% !important; display: block !important; box-sizing: border-box !important; }
+      .footer-body  { padding: 24px 20px 12px 20px !important; }
+      .footer-legal { padding: 0 20px 24px 20px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #CCE2FF; font-family: Roboto, Arial, sans-serif; color: #333333;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="min-height: 100vh; background-color: #CCE2FF; background-image: linear-gradient(136deg, #CCE2FF 0%, #ECFFB3 100%); background-repeat: no-repeat; background-size: 100% 100%;">
+    <tr>
+      <td class="outer-padding" align="center" valign="top" style="padding: 25px 16px 40px 16px; vertical-align: top;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
+          <tr>
+            <td class="card-body" style="padding: 50px;">
+
+              <!-- Header icon -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="header-icon">
+                    <img src="../assets/header-icon/brand=sm.svg" alt="SiteMinder" width="60" height="60" style="display: block;" />
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Email title -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="title">
+                    <h1 class="email-title">SiteMinder direct debit initiated</h1>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Opening paragraph -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text">We're writing to let you know that a direct debit will be collected from the linked bank account on SiteMinder for the purposes of covering a negative balance on your account. This is likely due to refunds or disputes that have been processed. Details of the upcoming debit are below:</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- ==================== DETAILS BOX ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" class="details-box">
+                <tr>
+                  <td class="box-body" style="padding: 35px;">
+                    <p class="details-title">Debit details</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Date (on or after):</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{createdAt}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Amount:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{amount}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Property:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{#if propertyName}}{{propertyName}}{{else}}-{{/if}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Account number:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{bankName}} &bull;&bull;&bull;&bull; {{bankLast4}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Associated payout:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;"><a href="{{associatedPayoutLink}}" class="link">{{associatedPayoutName}}</a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /DETAILS BOX ==================== -->
+
+              <!-- Sign-off -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-text">Thank you,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-bold">Your SiteMinder Team</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Need more information? -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #F7FAFA; border-radius: 10px;">
+                <tr>
+                  <td class="info-body" style="padding: 25px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="24" valign="top" style="padding-right: 10px;">
+                          <img src="../assets/icons/information-alt.svg" alt="" width="24" height="24" style="display: block;" />
+                        </td>
+                        <td>
+                          <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
+                          <p class="body-text"><a href="{{helpLink}}" class="link">Visit our Help Centre</a> to find everything you need to know about refunds and direct debits, or contact <a href="mailto:{{supportEmail}}" class="link">{{supportEmail}}</a>.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+        <!-- ==================== FOOTER ==================== -->
+
+        <!-- Footer: logo + social -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-section">
+          <tr>
+            <td class="footer-body" style="padding: 40px 50px 16px 50px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td valign="middle">
+                    <img src="../assets/footer-logo/brand=sm.svg" alt="SiteMinder" width="150" style="display: block;" />
+                  </td>
+                  <td align="right" valign="middle">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-left: 10px;"><a href="{{linkedinUrl}}"><img src="../assets/social-icons/Property%201=linkedin.svg" alt="LinkedIn" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{facebookUrl}}"><img src="../assets/social-icons/Property%201=facebook.svg" alt="Facebook" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{twitterUrl}}"><img src="../assets/social-icons/Property%201=twitter.svg" alt="X" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{youtubeUrl}}"><img src="../assets/social-icons/Property%201=youtube.svg" alt="YouTube" width="24" height="24" style="display: block;" /></a></td>
+                        <td style="padding-left: 10px;"><a href="{{instagramUrl}}"><img src="../assets/social-icons/Property%201=instagram.svg" alt="Instagram" width="24" height="24" style="display: block;" /></a></td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- Footer: legal -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="footer-section">
+          <tr>
+            <td class="footer-legal" style="padding: 0 50px 32px 50px;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p class="legal-text"><a href="{{viewOnlineUrl}}" class="footer-link">View online</a></p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="legal-text">This email was sent to you by SiteMinder | Bond Store 3, 30 Windmill Street, Millers Point, NSW 2000 Australia</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="legal-text">This email was sent to {{recipientEmail}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="legal-text"><a href="{{preferencesUrl}}" class="footer-link">Update Preferences</a> | <a href="{{unsubscribeUrl}}" class="footer-link">Unsubscribe</a></p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /FOOTER ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
