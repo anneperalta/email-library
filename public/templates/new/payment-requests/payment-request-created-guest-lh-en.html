@@ -44,14 +44,12 @@
     .payment-amount  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
 
     /* ── CTA ──────────────────────────────────────────────────────── */
-    .btn             { display: inline-block; background-color: #006ADD; color: #FFFFFF; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; text-decoration: none; padding: 10px 24px; border-radius: 4px; }
     .expiry-note     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #717171; text-align: center; }
 
     /* ── Closing ──────────────────────────────────────────────────── */
     .closing-body { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
     .closing-sign { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
     .closing-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 24px; color: #333333; }
-    .contact-link { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
 
     /* ── Footer ───────────────────────────────────────────────────── */
     .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 22px; color: #333333; }
@@ -141,7 +139,7 @@
               </table>
               <!-- ==================== /SECTION: PROPERTY HEADER ==================== -->
 
-              <!-- ==================== SECTION: DUE DATE ==================== -->
+              <!-- ==================== SECTION: DUE DATE + OPENING ==================== -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 16px;">
@@ -159,71 +157,59 @@
                   </td>
                 </tr>
               </table>
-              <!-- ==================== /SECTION: DUE DATE ==================== -->
+              <!-- ==================== /SECTION: DUE DATE + OPENING ==================== -->
 
-              <!-- ==================== SECTION: DETAILS BOX ==================== -->
+              <!-- ==================== SECTION: RESERVATION DETAILS ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <h3 class="details-title">Reservation details</h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Reservation ID / Reference ID</p>
+                    <p class="details-value">{{reservationId}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Booking channel</p>
+                    <p class="details-value">{{bookingChannel}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Reservation dates</p>
+                    <p class="details-value">{{checkInDate}} – {{checkOutDate}}</p>
+                    {{#if bookingDuration}}
+                    <p class="details-value-sub">
+                      {{#eq bookingDuration "1"}}{{bookingDuration}} night{{else}}{{bookingDuration}} nights{{/eq}}
+                    </p>
+                    {{/if}}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <p class="details-label">Room details</p>
+                    {{#each rooms}}
+                    <p class="details-value" style="margin-bottom: 4px;">{{roomTypeName}}</p>
+                    {{#if numberOfGuests}}
+                    <p class="details-value-sub">
+                      {{#eq numberOfGuests "1"}}{{numberOfGuests}} guest{{else}}{{numberOfGuests}} guests{{/eq}}
+                    </p>
+                    {{/if}}
+                    {{/each}}
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: RESERVATION DETAILS ==================== -->
+
+              <!-- ==================== SECTION: PAYMENT DETAILS BOX ==================== -->
               <table class="details-box" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="box-inner" style="padding: 35px;">
 
-                    <!-- Reservation details -->
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="padding-bottom: 20px;">
-                          <h3 class="details-title">Reservation details</h3>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">First name</p>
-                          <p class="details-value">{{payerFirstName}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">Last name</p>
-                          <p class="details-value">{{payerLastName}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">Reservation ID / Reference ID</p>
-                          <p class="details-value">{{reservationId}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">Booking channel</p>
-                          <p class="details-value">{{bookingChannel}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">Reservation dates</p>
-                          <p class="details-value">{{checkInDate}} – {{checkOutDate}}</p>
-                          {{#if bookingDuration}}
-                          <p class="details-value-sub">
-                            {{#eq bookingDuration "1"}}{{bookingDuration}} night{{else}}{{bookingDuration}} nights{{/eq}}
-                          </p>
-                          {{/if}}
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 32px;">
-                          <p class="details-label">Room details</p>
-                          {{#each rooms}}
-                          <p class="details-value" style="margin-bottom: 4px;">{{roomTypeName}}</p>
-                          {{#if numberOfGuests}}
-                          <p class="details-value-sub">
-                            {{#eq numberOfGuests "1"}}{{numberOfGuests}} guest{{else}}{{numberOfGuests}} guests{{/eq}}
-                          </p>
-                          {{/if}}
-                          {{/each}}
-                        </td>
-                      </tr>
-                    </table>
-
-                    <!-- Payment details -->
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
                         <td style="padding-bottom: 20px;">
@@ -243,21 +229,14 @@
                         </td>
                       </tr>
                       <tr>
-                        <td style="padding-bottom: 32px;">
+                        <td style="padding-bottom: 24px;">
                           <p class="details-label">Amount</p>
                           <p class="payment-amount">{{paymentCurrencyString}} {{paymentAmount}}</p>
                         </td>
                       </tr>
-                    </table>
-
-                    <!-- CTA button -->
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr>
-                        <td align="center" style="padding-bottom: 16px;">
-                          <a href="{{paymentUrl}}" class="btn">
-                            <img src="../assets/icons/lock-icon.svg" alt="" width="11" height="15" style="display: inline-block; vertical-align: middle; margin-right: 8px;" />
-                            Pay securely now
-                          </a>
+                        <td style="padding-bottom: 12px;">
+                          <a href="{{paymentUrl}}" style="display: block; text-align: center; padding: 10px 24px; background-color: #006ADD; border-radius: 4px; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #FFFFFF; text-decoration: none;">Pay securely now</a>
                         </td>
                       </tr>
                       <tr>
@@ -277,7 +256,7 @@
                   </td>
                 </tr>
               </table>
-              <!-- ==================== /SECTION: DETAILS BOX ==================== -->
+              <!-- ==================== /SECTION: PAYMENT DETAILS BOX ==================== -->
 
               <!-- ==================== SECTION: CLOSING ==================== -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -292,23 +271,8 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 4px;">
-                    <p class="closing-name">{{propertyName}}</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 4px;">
-                    <a class="contact-link" href="{{propertyPhone.url}}">{{propertyPhone.text}}</a>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 4px;">
-                    <a class="contact-link" href="{{propertyEmail.url}}">{{propertyEmail.text}}</a>
-                  </td>
-                </tr>
-                <tr>
                   <td style="padding-bottom: 40px;">
-                    <a class="contact-link" href="{{propertyWebsite.url}}">{{propertyWebsite.text}}</a>
+                    <p class="closing-name">{{propertyName}}</p>
                   </td>
                 </tr>
               </table>
