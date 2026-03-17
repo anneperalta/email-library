@@ -1,4 +1,4 @@
-<!-- metadata.subject = [AUTO PAY] Unable to schedule payment for reservation {{reservationId}} -->
+<!-- metadata.subject = {{#if reservationId}}{{reservationId}} has a disputed payment{{else}}You have a disputed payment{{/if}} -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -33,7 +33,9 @@
     .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
     .link           { color: #000FFF; text-decoration: underline; }
     .footer-link    { color: #333333; text-decoration: underline; }
-    .btn            { display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px; }
+    .btn            { display: inline-block; background-color: #006DFF; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 6px; }
+
+    body { background-image: linear-gradient(136deg, #CCE2FF 0%, #ECFFB3 100%); background-repeat: no-repeat; background-size: 100% 100%; min-height: 100vh; }
 
     @media screen and (max-width: 480px) {
       .outer-padding { padding: 20px 12px !important; }
@@ -47,12 +49,12 @@
     }
   </style>
 </head>
-<body style="margin: 0; padding: 0; background-color: #FFE2D7; font-family: Roboto, Arial, sans-serif; color: #333333;">
+<body style="margin: 0; padding: 0; background-color: #CCE2FF; font-family: Roboto, Arial, sans-serif; color: #333333;">
 
   <!-- ==================== OUTER WRAPPER ==================== -->
-  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #FFE2D7;">
+  <table width="100%" cellpadding="0" cellspacing="0" border="0" style="min-height: 100vh; background-color: #CCE2FF; background-image: linear-gradient(136deg, #CCE2FF 0%, #ECFFB3 100%); background-repeat: no-repeat; background-size: 100% 100%;">
     <tr>
-      <td class="outer-padding" align="center" style="padding: 25px 16px 40px 16px;">
+      <td class="outer-padding" align="center" valign="top" style="padding: 25px 16px 40px 16px; vertical-align: top;">
 
         <!-- ==================== EMAIL CARD ==================== -->
         <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 630px; background-color: #FFFFFF; border-radius: 15px;">
@@ -63,7 +65,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td class="header-icon">
-                    <img src="../assets/header-icon/brand=lh.svg" alt="Little Hotelier" width="60" height="60" style="display: block;" />
+                    <img src="../assets/header-icon/brand=sm.svg" alt="SiteMinder" width="60" height="60" style="display: block;" />
                   </td>
                 </tr>
               </table>
@@ -78,7 +80,7 @@
                           <img src="../assets/icons/alert.svg" alt="" width="24" height="24" style="display: block;" />
                         </td>
                         <td>
-                          <h2 class="email-subtitle">Automated payments cannot be scheduled for this reservation</h2>
+                          <h2 class="email-subtitle">A payment has been disputed</h2>
                         </td>
                       </tr>
                     </table>
@@ -86,31 +88,20 @@
                 </tr>
               </table>
 
+              <!-- Greeting -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">Hi {{recipientName}},</p>
+                  </td>
+                </tr>
+              </table>
+
               <!-- Opening paragraph -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-text">The supplied credit card has failed validation. Automated payments cannot be scheduled for this reservation.</p>
-                  </td>
-                </tr>
-              </table>
-
-              <!-- Conditional: 3DS error reason -->
-              {{#eq errorCode "DECLINED_3DS_AUTHENTICATION_REQUIRED"}}
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-text">Reason: Your guest's credit card requires 3D Secure authentication.</p>
-                  </td>
-                </tr>
-              </table>
-              {{/eq}}
-
-              <!-- Follow-up paragraph -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
                   <td style="padding-bottom: 35px;">
-                    <p class="body-text">Please send a payment request or contact the guest to process a manual payment.</p>
+                    <p class="body-text">A cardholder has initiated a dispute of the payment of {{disputedAmount}} with their bank or card issuer.</p>
                   </td>
                 </tr>
               </table>
@@ -119,15 +110,35 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0" class="details-box">
                 <tr>
                   <td class="box-body" style="padding: 35px;">
-                    <p class="details-title">Reservation details</p>
+                    <p class="details-title">Transaction details</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Reservation ID / Reference ID:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Booking reference:</td>
                         <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{reservationId}}</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Amount:</td>
-                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{amount}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Description:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{description}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Cardholder name:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{cardHolderName}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Card number:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">•••• {{cardLast4}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Card expiry:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{cardExpiryMonth}} / {{cardExpiryYear}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Charge description:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{statementDescription}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-bold" width="50%" valign="top" style="padding-bottom: 0;">Disputed amount:</td>
+                        <td class="col detail-bold" width="50%" valign="top" style="padding-bottom: 0;">{{disputedAmount}}</td>
                       </tr>
                     </table>
                   </td>
@@ -135,28 +146,76 @@
               </table>
               <!-- ==================== /DETAILS BOX ==================== -->
 
-              <!-- Steps -->
+              <!-- Next steps -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 8px;">
-                    <p class="body-bold">Steps to process a payment request:</p>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Next steps</p>
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 35px;">
-                    <ol class="body-text" style="margin: 8px 0 0 0; padding-left: 20px;">
-                      <li style="margin-bottom: 8px;">Access the <strong>View Reservation</strong> link below</li>
-                      <li>Click on <strong>Send a payment request</strong></li>
-                    </ol>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">The card issuer may have already deducted the dispute amount from your account balance. Common reasons for chargebacks include unrecognised charges, services not rendered, or duplicate charges.</p>
                   </td>
                 </tr>
               </table>
 
-              <!-- Action button -->
+              <!-- Contact the cardholder -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Contact the cardholder</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">We recommend contacting the cardholder directly to resolve the dispute amicably. If they agree to withdraw the dispute, ask them to contact their card issuer.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Challenge the dispute -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Challenge the dispute</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">To challenge the dispute, reply to this email with any relevant evidence. We'll submit it to the card issuer on your behalf.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Types of evidence -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">Types of evidence</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">Relevant evidence may include: correspondence (emails, texts), evidence of supply of goods or services, or identification collected at check-in.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Evidence deadline -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <a href="{{reservationUrl}}" class="btn">View reservation</a>
+                    <p class="body-text">Your evidence is required by {{dueDate}}. Card issuers generally take 60–75 days to reach a decision. If no evidence is submitted, the dispute is unlikely to be resolved in your favour.</p>
+                  </td>
+                </tr>
+              </table>
+
+              <!-- Closing paragraph -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text">We're here to help. Reply to this email if you have any questions or to submit evidence.</p>
                   </td>
                 </tr>
               </table>
@@ -170,7 +229,7 @@
                 </tr>
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <p class="body-bold">Your Little Hotelier Team</p>
+                    <p class="body-bold">Your SiteMinder Team</p>
                   </td>
                 </tr>
               </table>
@@ -186,7 +245,7 @@
                         </td>
                         <td>
                           <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
-                          <p class="body-text">If you have any questions, please don't hesitate to e-mail our support team at <a href="mailto:support@littlehotelier.com" class="link">support@littlehotelier.com</a></p>
+                          <p class="body-text"><a href="{{helpCentreUrl}}" class="link">Visit our Help Centre</a> to find everything you need to know about managing disputes.</p>
                         </td>
                       </tr>
                     </table>
@@ -208,7 +267,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td valign="middle">
-                    <img src="../assets/footer-logo/brand=lh.svg" alt="Little Hotelier by SiteMinder" width="150" style="display: block;" />
+                    <img src="../assets/footer-logo/brand=sm.svg" alt="SiteMinder" width="150" style="display: block;" />
                   </td>
                   <td align="right" valign="middle">
                     <table cellpadding="0" cellspacing="0" border="0">

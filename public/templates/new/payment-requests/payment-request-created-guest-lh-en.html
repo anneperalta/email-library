@@ -32,16 +32,16 @@
     .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
 
     /* ── Opening ──────────────────────────────────────────────────── */
-    .due-date         { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 26px; font-weight: 400; line-height: 35px; color: #333333; }
     .opening-salutation,
     .opening-body     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
 
     /* ── Details ──────────────────────────────────────────────────── */
+    .status-title    { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
     .details-title   { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 20px; font-weight: 600; line-height: 26px; color: #333333; }
     .details-label   { margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
     .details-value   { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
     .details-value-sub { margin: 2px 0 0 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
-    .payment-amount  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
+    .status-amount   { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
 
     /* ── CTA ──────────────────────────────────────────────────────── */
     .expiry-note     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #717171; text-align: center; }
@@ -66,7 +66,9 @@
       .card-body      { padding: 24px 20px !important; }
       .box-inner      { padding: 24px 20px !important; }
       .property-name  { font-size: 22px !important; line-height: 30px !important; }
-      .due-date       { font-size: 20px !important; line-height: 28px !important; }
+      .status-title   { font-size: 24px !important; line-height: 30px !important; }
+      .status-amount  { font-size: 20px !important; line-height: 26px !important; }
+      .details-title  { font-size: 16px !important; line-height: 24px !important; }
     }
   </style>
 </head>
@@ -139,13 +141,8 @@
               </table>
               <!-- ==================== /SECTION: PROPERTY HEADER ==================== -->
 
-              <!-- ==================== SECTION: DUE DATE + OPENING ==================== -->
+              <!-- ==================== SECTION: OPENING ==================== -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="due-date">Your payment is due on {{paymentDueDate}}.</p>
-                  </td>
-                </tr>
                 <tr>
                   <td style="padding-bottom: 12px;">
                     <p class="opening-salutation">Hi {{payerFirstName}} {{payerLastName}},</p>
@@ -157,7 +154,60 @@
                   </td>
                 </tr>
               </table>
-              <!-- ==================== /SECTION: DUE DATE + OPENING ==================== -->
+              <!-- ==================== /SECTION: OPENING ==================== -->
+
+              <!-- ==================== SECTION: PAYMENT DETAILS BOX ==================== -->
+              <table class="details-box" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="box-inner" style="padding: 35px;">
+
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 20px;">
+                          <h3 class="status-title">Your payment is due on {{paymentDueDate}}.</h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Reason for payment request</p>
+                          <p class="details-value">{{paymentRequestReason}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Date of payment request</p>
+                          <p class="details-value">{{paymentRequestDate}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 24px;">
+                          <p class="details-label">Amount</p>
+                          <p class="status-amount">{{paymentCurrencyString}} {{paymentAmount}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 12px;">
+                          <a href="{{paymentUrl}}" style="display: block; text-align: center; padding: 10px 24px; background-color: #006ADD; border-radius: 4px; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #FFFFFF; text-decoration: none;"><img src="../assets/icons/lock.svg" alt="" width="16" height="16" style="display: inline-block; vertical-align: middle; margin-right: 10px; filter: brightness(0) invert(1);" /><span style="vertical-align: middle;">Pay securely now</span></a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="padding-bottom: 16px;">
+                          <p class="expiry-note">This link will expire in 48 hrs.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center">
+                          <img src="../assets/payment-badges/mastercard-id-check.png" alt="Mastercard ID Check" width="95" height="16" style="vertical-align: middle; margin-right: 20px;" />
+                          <img src="../assets/payment-badges/visa-secure.png" alt="Visa Secure" width="48" height="48" style="vertical-align: middle; margin-right: 20px;" />
+                          <img src="../assets/payment-badges/pci-dss-compliant.png" alt="PCI DSS Compliant" width="62" height="24" style="vertical-align: middle;" />
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: PAYMENT DETAILS BOX ==================== -->
 
               <!-- ==================== SECTION: RESERVATION DETAILS ==================== -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -204,59 +254,6 @@
                 </tr>
               </table>
               <!-- ==================== /SECTION: RESERVATION DETAILS ==================== -->
-
-              <!-- ==================== SECTION: PAYMENT DETAILS BOX ==================== -->
-              <table class="details-box" width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td class="box-inner" style="padding: 35px;">
-
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="padding-bottom: 20px;">
-                          <h3 class="details-title">Payment details</h3>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">Reason for payment request</p>
-                          <p class="details-value">{{paymentRequestReason}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 16px;">
-                          <p class="details-label">Date of payment request</p>
-                          <p class="details-value">{{paymentRequestDate}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 24px;">
-                          <p class="details-label">Amount</p>
-                          <p class="payment-amount">{{paymentCurrencyString}} {{paymentAmount}}</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="padding-bottom: 12px;">
-                          <a href="{{paymentUrl}}" style="display: block; text-align: center; padding: 10px 24px; background-color: #006ADD; border-radius: 4px; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; color: #FFFFFF; text-decoration: none;">Pay securely now</a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center" style="padding-bottom: 16px;">
-                          <p class="expiry-note">This link will expire in 48 hrs.</p>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td align="center">
-                          <img src="../assets/payment-badges/mastercard-id-check.png" alt="Mastercard ID Check" width="95" height="16" style="vertical-align: middle; margin-right: 20px;" />
-                          <img src="../assets/payment-badges/visa-secure.png" alt="Visa Secure" width="48" height="48" style="vertical-align: middle; margin-right: 20px;" />
-                          <img src="../assets/payment-badges/pci-dss-compliant.png" alt="PCI DSS Compliant" width="62" height="24" style="vertical-align: middle;" />
-                        </td>
-                      </tr>
-                    </table>
-
-                  </td>
-                </tr>
-              </table>
-              <!-- ==================== /SECTION: PAYMENT DETAILS BOX ==================== -->
 
               <!-- ==================== SECTION: CLOSING ==================== -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
