@@ -20,7 +20,7 @@ const { allComments, popup, newName, newText, addComment, deleteComment, resolve
         <div v-if="!allComments[popup.templateId]?.length" class="cp__empty">
           No comments yet.
         </div>
-        <div v-for="c in allComments[popup.templateId]" :key="c.id" class="cp-item">
+        <div v-for="c in allComments[popup.templateId]" :key="c._docId" class="cp-item">
           <div class="cp-item__meta">
             <div class="cp-item__info">
               <span class="cp-item__author">{{ c.name }}</span>
@@ -30,10 +30,10 @@ const { allComments, popup, newName, newText, addComment, deleteComment, resolve
               <button
                 class="cp-item__resolve"
                 :class="{ 'cp-item__resolve--done': c.resolved }"
-                @click="resolveComment(popup.templateId, c.id)"
+                @click="resolveComment(popup.templateId, c._docId)"
                 :title="c.resolved ? 'Unresolve' : 'Resolve'"
               >✓</button>
-              <button class="cp-item__delete" @click="deleteComment(popup.templateId, c.id)" title="Delete">✕</button>
+              <button class="cp-item__delete" @click="deleteComment(popup.templateId, c._docId)" title="Delete">✕</button>
             </div>
           </div>
           <p class="cp-item__text" :class="{ 'cp-item__text--resolved': c.resolved }">{{ c.text }}</p>

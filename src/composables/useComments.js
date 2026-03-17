@@ -1,33 +1,33 @@
 import { ref } from 'vue'
+import { db } from '../firebase'
+import {
+  collection,
+  doc,
+  addDoc,
+  deleteDoc,
+  updateDoc,
+  onSnapshot,
+  serverTimestamp,
+  orderBy,
+  query,
+} from 'firebase/firestore'
 
-const STORAGE_KEY = 'pay-email-library-comments'
-const AUDIT_KEY   = 'pay-email-library-audit'
-
-function loadComments() {
-  try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}') }
-  catch { return {} }
-}
-
-function audit(action, templateId, comment) {
-  try {
-    const log = JSON.parse(localStorage.getItem(AUDIT_KEY) || '[]')
-    log.push({
-      action,
-      templateId,
-      commentId: comment.id,
-      name: comment.name,
-      text: comment.text,
-      at: new Date().toISOString(),
-    })
-    localStorage.setItem(AUDIT_KEY, JSON.stringify(log))
-  } catch {}
-}
-
-// Module-level state so it's shared across all component instances
-const allComments = ref(loadComments())
+const allComments = ref({})
 const newName = ref(localStorage.getItem('pay-email-library-author') || '')
 const popup   = ref(null)
 const newText = ref('')
+
+// Listen to all comments in real time
+const q = query(collection(db, 'comments'), orderBy('createdAt', 'asc'))
+onSnapshot(q, (snapshot) => {
+  const grouped = {}
+  snapshot.forEach((docSnap) => {
+    const data = { ...docSnap.data(), _docId: docSnap.id }
+    if (!grouped[data.templateId]) grouped[data.templateId] = []
+    grouped[data.templateId].push(data)
+  })
+  allComments.value = grouped
+})
 
 export function useComments() {
   const POPUP_W = 300
@@ -50,42 +50,36 @@ export function useComments() {
     newText.value = ''
   }
 
-  function addComment() {
+  async function addComment() {
     const text = newText.value.trim()
     if (!text || !popup.value) return
     const name = newName.value.trim()
     localStorage.setItem('pay-email-library-author', name)
     const { templateId } = popup.value
-    if (!allComments.value[templateId]) allComments.value[templateId] = []
-    const comment = {
-      id: Date.now(),
+
+    await addDoc(collection(db, 'comments'), {
+      templateId,
       name: name || 'Anonymous',
       text,
       timestamp: new Date().toLocaleString('en-AU', {
         day: 'numeric', month: 'short', year: 'numeric',
         hour: '2-digit', minute: '2-digit',
       }),
-    }
-    allComments.value[templateId].push(comment)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
-    audit('added', templateId, comment)
+      resolved: false,
+      createdAt: serverTimestamp(),
+    })
+
     newText.value = ''
   }
 
-  function deleteComment(templateId, id) {
-    const comment = allComments.value[templateId]?.find(c => c.id === id)
-    if (comment) audit('deleted', templateId, comment)
-    allComments.value[templateId] = allComments.value[templateId].filter(c => c.id !== id)
-    if (!allComments.value[templateId].length) delete allComments.value[templateId]
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
+  async function deleteComment(templateId, _docId) {
+    await deleteDoc(doc(db, 'comments', _docId))
   }
 
-  function resolveComment(templateId, id) {
-    const comment = allComments.value[templateId]?.find(c => c.id === id)
+  async function resolveComment(templateId, _docId) {
+    const comment = allComments.value[templateId]?.find(c => c._docId === _docId)
     if (!comment) return
-    comment.resolved = !comment.resolved
-    audit(comment.resolved ? 'resolved' : 'unresolved', templateId, comment)
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(allComments.value))
+    await updateDoc(doc(db, 'comments', _docId), { resolved: !comment.resolved })
   }
 
   function commentCount(templateId) {
