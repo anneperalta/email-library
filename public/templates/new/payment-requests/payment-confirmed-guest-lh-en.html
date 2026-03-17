@@ -1,0 +1,317 @@
+<!-- metadata.subject = Thank you, your payment has been received - {{{propertyName}}} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+    body { background-color: #eff1f4; }
+
+    /* ── Icon colour filters ──────────────────────────────────────── */
+    .icon-blue    { filter: invert(26%) sepia(100%) saturate(2500%) hue-rotate(205deg) brightness(88%); }
+    .icon-success { filter: invert(27%) sepia(89%) saturate(700%) hue-rotate(121deg) brightness(86%); }
+    .icon-dark    { filter: invert(20%); }
+
+    /* ── Property header ─────────────────────────────────────────── */
+    .property-name    { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
+    .property-address { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
+    .contact-phone,
+    .contact-email,
+    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
+
+    /* ── Opening ──────────────────────────────────────────────────── */
+    .opening-salutation,
+    .opening-body     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+
+    /* ── Status box ───────────────────────────────────────────────── */
+    .status-title        { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
+    .status-amount-label { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #717171; }
+    .status-amount       { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
+
+    /* ── Details ──────────────────────────────────────────────────── */
+    .details-title { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 20px; font-weight: 600; line-height: 26px; color: #333333; }
+    .details-label { margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
+    .details-value { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
+    .details-value-sub { margin: 2px 0 0 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
+
+    /* ── Closing ──────────────────────────────────────────────────── */
+    .closing-body { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .closing-sign { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .closing-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 24px; color: #333333; }
+    .contact-link { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 22px; color: #333333; }
+    .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 20px; color: #333333; }
+    .footer-copyright  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+
+    /* ── Structural ───────────────────────────────────────────────── */
+    .section-status-box { background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px; }
+    .footer-divider     { border-top: 1px solid #e0e0e0; }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media screen and (max-width: 480px) {
+      .outer-padding    { padding: 20px 12px !important; }
+      .card-body        { padding: 24px 20px !important; }
+      .status-box-inner { padding: 24px 20px !important; }
+      .property-name    { font-size: 22px !important; line-height: 30px !important; }
+      .status-title     { font-size: 22px !important; line-height: 30px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #eff1f4; font-family: 'Noto Sans', Arial, sans-serif; color: #333333;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="outer-padding" align="center" valign="top" style="padding: 24px 16px;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;">
+          <tr>
+            <td class="card-body" style="padding: 56px;">
+
+              <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 0;">
+                    <h1 class="property-name">{{propertyName}}</h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="property-address">{{propertyLocation}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/phone.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
+                        </td>
+                        <td>
+                          <a class="contact-phone" href="{{propertyPhone.url}}">{{propertyPhone.text}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/email.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
+                        </td>
+                        <td>
+                          <a class="contact-email" href="{{propertyEmail.url}}">{{propertyEmail.text}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/website.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
+                        </td>
+                        <td>
+                          <a class="contact-website" href="{{propertyWebsite.url}}">{{propertyWebsite.text}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: PROPERTY HEADER ==================== -->
+
+              <!-- ==================== SECTION: OPENING ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 12px;">
+                    <p class="opening-salutation">Hi {{payerFirstName}} {{payerLastName}},</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <p class="opening-body">Thank you. Your payment has been received.</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: OPENING ==================== -->
+
+              <!-- ==================== SECTION: STATUS BOX ==================== -->
+              <table class="section-status-box" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="status-box-inner" style="padding: 35px;">
+
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 12px;">
+                          <img class="icon-success" src="../assets/icons/success-alt.svg" alt="" width="40" height="40" style="display: block;" />
+                        </td>
+                      </tr>
+                    </table>
+
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 24px;">
+                          <h2 class="status-title">Payment confirmed</h2>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 0;">
+                          <p class="status-amount-label">Total amount paid</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p class="status-amount">{{totalPaid}}</p>
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: STATUS BOX ==================== -->
+
+              <!-- ==================== SECTION: BOOKING DETAILS ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <h3 class="details-title">Your booking information</h3>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Reservation ID / Reference ID</p>
+                    <p class="details-value">{{reservationId}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Reservation dates</p>
+                    <p class="details-value">{{reservationDates}}</p>
+                    {{#if numberOfNights}}
+                    <p class="details-value-sub">
+                      {{#eq numberOfNights "1"}}{{numberOfNights}} night{{else}}{{numberOfNights}} nights{{/eq}}
+                    </p>
+                    {{/if}}
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Room details</p>
+                    {{#each rooms}}
+                    <p class="details-value" style="margin-bottom: 4px;">{{roomTypeName}}</p>
+                    {{#if numberOfGuests}}
+                    <p class="details-value-sub">
+                      {{#eq numberOfGuests "1"}}{{numberOfGuests}} guest{{else}}{{numberOfGuests}} guests{{/eq}}
+                    </p>
+                    {{/if}}
+                    {{/each}}
+                  </td>
+                </tr>
+                {{#if checkInTime}}
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="details-label">Arrival time</p>
+                    <p class="details-value">{{checkInTime}}</p>
+                  </td>
+                </tr>
+                {{/if}}
+              </table>
+              <!-- ==================== /SECTION: BOOKING DETAILS ==================== -->
+
+              <!-- ==================== SECTION: CLOSING ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="closing-body">We look forward to welcoming you on {{checkInDate}}. Please contact us if you have any questions.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="closing-sign">Kind regards,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="closing-name">{{propertyName}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <a class="contact-link" href="{{propertyPhone.url}}">{{propertyPhone.text}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <a class="contact-link" href="{{propertyEmail.url}}">{{propertyEmail.text}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <a class="contact-link" href="{{propertyWebsite.url}}">{{propertyWebsite.text}}</a>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: CLOSING ==================== -->
+
+              <!-- ==================== SECTION: FOOTER ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="footer-divider" style="padding-top: 40px; padding-bottom: 12px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img class="icon-dark" src="../assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
+                        </td>
+                        <td valign="middle">
+                          <p class="footer-brand-name">Little Hotelier Pay</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p class="footer-legal">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="footer-copyright">&copy; SiteMinder 2026.&nbsp; All rights reserved.</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: FOOTER ==================== -->
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

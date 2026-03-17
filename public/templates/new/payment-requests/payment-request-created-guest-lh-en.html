@@ -1,0 +1,356 @@
+<!-- metadata.subject = Payment required for your booking - {{{propertyName}}} -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&display=swap" rel="stylesheet" />
+  <!--[if mso]>
+  <style>
+    body, table, td { font-family: Arial, Helvetica, sans-serif !important; }
+  </style>
+  <![endif]-->
+  <style type="text/css">
+    body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+    table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+    img { -ms-interpolation-mode: bicubic; border: 0; outline: none; text-decoration: none; }
+
+    body { background-color: #eff1f4; }
+
+    /* ── Icon colour filters ──────────────────────────────────────── */
+    .icon-blue    { filter: invert(26%) sepia(100%) saturate(2500%) hue-rotate(205deg) brightness(88%); }
+    .icon-dark    { filter: invert(20%); }
+
+    /* ── Property header ─────────────────────────────────────────── */
+    .property-name    { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 30px; font-weight: 600; line-height: 36px; color: #333333; }
+    .property-address { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
+    .contact-phone,
+    .contact-email,
+    .contact-website  { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
+
+    /* ── Opening ──────────────────────────────────────────────────── */
+    .due-date         { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 26px; font-weight: 400; line-height: 35px; color: #333333; }
+    .opening-salutation,
+    .opening-body     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+
+    /* ── Details ──────────────────────────────────────────────────── */
+    .details-title   { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 20px; font-weight: 600; line-height: 26px; color: #333333; }
+    .details-label   { margin: 0 0 2px 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
+    .details-value   { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #333333; }
+    .details-value-sub { margin: 2px 0 0 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #717171; }
+    .payment-amount  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 24px; font-weight: 600; line-height: 30px; color: #333333; }
+
+    /* ── CTA ──────────────────────────────────────────────────────── */
+    .btn             { display: inline-block; background-color: #006ADD; color: #FFFFFF; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; text-decoration: none; padding: 10px 24px; border-radius: 4px; }
+    .expiry-note     { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 13px; font-weight: 400; line-height: 20px; color: #717171; text-align: center; }
+
+    /* ── Closing ──────────────────────────────────────────────────── */
+    .closing-body { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .closing-sign { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 400; line-height: 24px; color: #333333; }
+    .closing-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 16px; font-weight: 600; line-height: 24px; color: #333333; }
+    .contact-link { font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 400; line-height: 22px; color: #006ADD; text-decoration: none; }
+
+    /* ── Footer ───────────────────────────────────────────────────── */
+    .footer-brand-name { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 15px; font-weight: 600; line-height: 22px; color: #333333; }
+    .footer-legal      { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 20px; color: #333333; }
+    .footer-copyright  { margin: 0; font-family: 'Noto Sans', Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
+
+    /* ── Structural ───────────────────────────────────────────────── */
+    .details-box    { background-color: #f7f8fa; border-radius: 10px; margin-bottom: 40px; }
+    .footer-divider { border-top: 1px solid #e0e0e0; }
+
+    /* ── Responsive ───────────────────────────────────────────────── */
+    @media screen and (max-width: 480px) {
+      .outer-padding  { padding: 20px 12px !important; }
+      .card-body      { padding: 24px 20px !important; }
+      .box-inner      { padding: 24px 20px !important; }
+      .property-name  { font-size: 22px !important; line-height: 30px !important; }
+      .due-date       { font-size: 20px !important; line-height: 28px !important; }
+    }
+  </style>
+</head>
+<body style="margin: 0; padding: 0; background-color: #eff1f4; font-family: 'Noto Sans', Arial, sans-serif; color: #333333;">
+
+  <!-- ==================== OUTER WRAPPER ==================== -->
+  <table width="100%" cellpadding="0" cellspacing="0" border="0">
+    <tr>
+      <td class="outer-padding" align="center" valign="top" style="padding: 24px 16px;">
+
+        <!-- ==================== EMAIL CARD ==================== -->
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width: 734px; background-color: #ffffff; border-radius: 16px;">
+          <tr>
+            <td class="card-body" style="padding: 56px;">
+
+              <!-- ==================== SECTION: PROPERTY HEADER ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 0;">
+                    <h1 class="property-name">{{propertyName}}</h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="property-address">{{propertyLocation}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/phone.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
+                        </td>
+                        <td>
+                          <a class="contact-phone" href="{{propertyPhone.url}}">{{propertyPhone.text}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/email.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
+                        </td>
+                        <td>
+                          <a class="contact-email" href="{{propertyEmail.url}}">{{propertyEmail.text}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img src="../assets/icons/website.svg" alt="" width="15" height="15" class="icon-blue" style="display: block;" />
+                        </td>
+                        <td>
+                          <a class="contact-website" href="{{propertyWebsite.url}}">{{propertyWebsite.text}}</a>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: PROPERTY HEADER ==================== -->
+
+              <!-- ==================== SECTION: DUE DATE ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="due-date">Your payment is due on {{paymentDueDate}}.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 12px;">
+                    <p class="opening-salutation">Hi {{payerFirstName}} {{payerLastName}},</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <p class="opening-body">{{paymentRequestReasonDescription}}</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: DUE DATE ==================== -->
+
+              <!-- ==================== SECTION: DETAILS BOX ==================== -->
+              <table class="details-box" width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="box-inner" style="padding: 35px;">
+
+                    <!-- Reservation details -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 20px;">
+                          <h3 class="details-title">Reservation details</h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">First name</p>
+                          <p class="details-value">{{payerFirstName}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Last name</p>
+                          <p class="details-value">{{payerLastName}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Reservation ID / Reference ID</p>
+                          <p class="details-value">{{reservationId}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Booking channel</p>
+                          <p class="details-value">{{bookingChannel}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Reservation dates</p>
+                          <p class="details-value">{{checkInDate}} – {{checkOutDate}}</p>
+                          {{#if bookingDuration}}
+                          <p class="details-value-sub">
+                            {{#eq bookingDuration "1"}}{{bookingDuration}} night{{else}}{{bookingDuration}} nights{{/eq}}
+                          </p>
+                          {{/if}}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 32px;">
+                          <p class="details-label">Room details</p>
+                          {{#each rooms}}
+                          <p class="details-value" style="margin-bottom: 4px;">{{roomTypeName}}</p>
+                          {{#if numberOfGuests}}
+                          <p class="details-value-sub">
+                            {{#eq numberOfGuests "1"}}{{numberOfGuests}} guest{{else}}{{numberOfGuests}} guests{{/eq}}
+                          </p>
+                          {{/if}}
+                          {{/each}}
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- Payment details -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td style="padding-bottom: 20px;">
+                          <h3 class="details-title">Payment details</h3>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Reason for payment request</p>
+                          <p class="details-value">{{paymentRequestReason}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 16px;">
+                          <p class="details-label">Date of payment request</p>
+                          <p class="details-value">{{paymentRequestDate}}</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td style="padding-bottom: 32px;">
+                          <p class="details-label">Amount</p>
+                          <p class="payment-amount">{{paymentCurrencyString}} {{paymentAmount}}</p>
+                        </td>
+                      </tr>
+                    </table>
+
+                    <!-- CTA button -->
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td align="center" style="padding-bottom: 16px;">
+                          <a href="{{paymentUrl}}" class="btn">
+                            <img src="../assets/icons/lock-icon.svg" alt="" width="11" height="15" style="display: inline-block; vertical-align: middle; margin-right: 8px;" />
+                            Pay securely now
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center" style="padding-bottom: 16px;">
+                          <p class="expiry-note">This link will expire in 48 hrs.</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td align="center">
+                          <img src="../assets/payment-badges/mastercard-id-check.png" alt="Mastercard ID Check" width="95" height="16" style="vertical-align: middle; margin-right: 20px;" />
+                          <img src="../assets/payment-badges/visa-secure.png" alt="Visa Secure" width="48" height="48" style="vertical-align: middle; margin-right: 20px;" />
+                          <img src="../assets/payment-badges/pci-dss-compliant.png" alt="PCI DSS Compliant" width="62" height="24" style="vertical-align: middle;" />
+                        </td>
+                      </tr>
+                    </table>
+
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: DETAILS BOX ==================== -->
+
+              <!-- ==================== SECTION: CLOSING ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="closing-body">We look forward to welcoming you on {{formattedCheckInDate}}. Please contact us if you have any questions.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="closing-sign">Kind regards,</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="closing-name">{{propertyName}}</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <a class="contact-link" href="{{propertyPhone.url}}">{{propertyPhone.text}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <a class="contact-link" href="{{propertyEmail.url}}">{{propertyEmail.text}}</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 40px;">
+                    <a class="contact-link" href="{{propertyWebsite.url}}">{{propertyWebsite.text}}</a>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: CLOSING ==================== -->
+
+              <!-- ==================== SECTION: FOOTER ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td class="footer-divider" style="padding-top: 40px; padding-bottom: 12px;">
+                    <table cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle" style="padding-right: 8px;">
+                          <img class="icon-dark" src="../assets/icons/check-icon.svg" alt="" width="22" height="22" style="display: block;" />
+                        </td>
+                        <td valign="middle">
+                          <p class="footer-brand-name">Little Hotelier Pay</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <p class="footer-legal">SiteMinder Limited (ACN 121 931 744) of Bond Store 3, 30 Windmill Street, Millers Point NSW 2000, Australia. Your booking is with {{propertyName}}. SiteMinder's role is to solely facilitate the payment on behalf of {{propertyName}}.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <p class="footer-copyright">&copy; SiteMinder 2026.&nbsp; All rights reserved.</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /SECTION: FOOTER ==================== -->
+
+            </td>
+          </tr>
+        </table>
+        <!-- ==================== /EMAIL CARD ==================== -->
+
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>
