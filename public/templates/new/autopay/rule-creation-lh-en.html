@@ -93,11 +93,11 @@
                   <td class="box-body" style="padding: 35px;">
 
                     <!-- Card type -->
-                    <p class="label-tag">Card type</p>
+                    <p class="details-title">Card type</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Applies to:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Applies to:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">
                           {{#eq cardType "PHYSICAL"}}Standard Credit Cards{{/eq}}
                           {{#eq cardType "VIRTUAL"}}Virtual Credit Cards{{/eq}}
                         </td>
@@ -105,25 +105,25 @@
                     </table>
 
                     <!-- Settings -->
-                    <p class="label-tag">Settings</p>
+                    <p class="details-title">Settings</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">Channels:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">{{channel}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Channels:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{channel}}</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Surcharges:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{#if surchargeEnabled}}Yes, surcharges are applied{{else}}No surcharges applied{{/if}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Surcharges:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{#if surchargeEnabled}}Yes, surcharges are applied{{else}}No surcharges applied{{/if}}</td>
                       </tr>
                     </table>
 
                     <!-- Payment rule -->
-                    <p class="label-tag" style="margin-bottom: 8px;">Payment rule</p>
+                    <p class="details-title">Payment rule</p>
                     <p class="detail-bold" style="margin: 0 0 8px 0;">Payment action</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">When to charge the payment:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">When to charge the payment:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">
                           {{#eq actions.[0].triggerDate.operand "ACTIVATION_DATE"}}Activation date{{#eq cardType "VIRTUAL"}}{{#if hasChannelsPlus}}<br /><span style="color: #666666; font-size: 12px;">Channels Plus VCCs are processed 1 day after the activation date.</span>{{/if}}{{/eq}}{{/eq}}
                           {{#eq actions.[0].triggerDate.operand "TIME_OF_BOOKING"}}Once booking is confirmed{{/eq}}
                           {{#eq actions.[0].triggerDate.operand "CHECK_IN"}}{{#eq actions.[0].triggerDate.operator "<"}}{{#eq actions.[0].triggerDate.value 1}}1 day prior to check-in{{else}}{{actions.[0].triggerDate.value}} days prior to check-in{{/eq}}{{else eq actions.[0].triggerDate.operator ">"}}{{#eq actions.[0].triggerDate.value 1}}1 day after check-in{{else}}{{actions.[0].triggerDate.value}} days after check-in{{/eq}}{{else}}Check-in day{{/eq}}{{/eq}}
@@ -132,8 +132,8 @@
                       </tr>
                       {{#if actions.[0].triggerTime}}
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Time of day:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{actions.[0].triggerTime}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Time of day:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{actions.[0].triggerTime}}</td>
                       </tr>
                       {{/if}}
                     </table>

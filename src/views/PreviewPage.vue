@@ -1,9 +1,10 @@
 <script setup>
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import { templates, statusConfig } from '../data/templates.js'
 import { useComments } from '../composables/useComments.js'
 import CommentsPopup from '../components/CommentsPopup.vue'
+import { processScenario, cleanTemplate } from '../utils/processScenario.js'
 
 const route = useRoute()
 const router = useRouter()
@@ -19,6 +20,33 @@ const viewport = computed({
 })
 
 const { popup, openComments, commentCount } = useComments()
+
+// ── Scenario toggles ─────────────────────────────────────────────
+const scenario = ref(null)
+
+watch([template, version], () => {
+  scenario.value = template.value?.scenarios?.length
+    ? template.value.scenarios[0]
+    : null
+}, { immediate: true })
+
+const iframeSrcdoc = ref(null)
+
+watch([scenario, template, version], async () => {
+  if (version.value === 'old') {
+    iframeSrcdoc.value = null
+    return
+  }
+  const filePath = template.value?.new
+  if (!filePath) {
+    iframeSrcdoc.value = null
+    return
+  }
+  const html = await fetch(filePath).then(r => r.text())
+  iframeSrcdoc.value = scenario.value
+    ? processScenario(html, scenario.value, filePath)
+    : cleanTemplate(html, filePath)
+}, { immediate: true })
 </script>
 
 <template>
@@ -80,9 +108,26 @@ const { popup, openComments, commentCount } = useComments()
       </div>
     </div>
 
+    <div v-if="version === 'new' && template.scenarios?.length" class="preview__scenario-bar">
+      <button
+        v-for="s in template.scenarios"
+        :key="s.key"
+        class="preview__scenario-btn"
+        :class="{ 'preview__scenario-btn--active': scenario?.key === s.key }"
+        @click="scenario = s"
+      >{{ s.label }}</button>
+    </div>
+
     <div class="preview__stage" :class="{ 'preview__stage--mobile': viewport === 'mobile' }">
       <iframe
-        v-if="src"
+        v-if="iframeSrcdoc"
+        :srcdoc="iframeSrcdoc"
+        class="preview__iframe"
+        :style="viewport === 'mobile' ? { width: '430px', flex: 'none' } : { width: '100%' }"
+        sandbox="allow-same-origin"
+      ></iframe>
+      <iframe
+        v-else-if="src"
         :src="src"
         class="preview__iframe"
         :style="viewport === 'mobile' ? { width: '430px', flex: 'none' } : { width: '100%' }"
@@ -186,6 +231,33 @@ const { popup, openComments, commentCount } = useComments()
 
 .preview__action-btn:hover {
   background: #eff6ff;
+}
+
+.preview__scenario-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.preview__scenario-btn {
+  padding: 3px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #374151;
+}
+
+.preview__scenario-btn--active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
 }
 
 .preview__stage {

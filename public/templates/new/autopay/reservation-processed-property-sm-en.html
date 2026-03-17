@@ -118,15 +118,6 @@
               {{/eq}}
               {{/if}}
 
-              <!-- Reservation ID -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-bold">Reservation ID: {{reservationId}}</p>
-                  </td>
-                </tr>
-              </table>
-
               <!-- Conditional: voided scheduled payments -->
               {{#if hasVoidedScheduledPayments}}
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -234,6 +225,21 @@
               {{/eq}}
               {{/eq}}
               {{/eq}}
+
+              <!-- Reservation ID -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" class="details-box">
+                <tr>
+                  <td class="box-body" style="padding: 35px;">
+                    <p class="details-title">Reservation details</p>
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Reservation ID:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{reservationId}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
 
               <!-- Action button with conditional text -->
               {{#if reservationUrl}}

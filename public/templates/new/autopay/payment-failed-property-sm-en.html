@@ -90,12 +90,14 @@
                 </tr>
               </table>
 
-              <!-- Error reason — previewing: AUTHENTICATION_ERROR -->
-              <!-- Other scenarios: GENERIC_ERROR | INVALID_CARD_DETAILS_ERROR | INSUFFICIENT_FUNDS_ERROR -->
+              <!-- Error reason — scenarios: AUTHENTICATION_ERROR | GENERIC_ERROR | INVALID_CARD_DETAILS_ERROR | INSUFFICIENT_FUNDS_ERROR -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 16px;">
-                    <p class="body-text">A payment has failed because the <strong>credit card could not be authenticated.</strong></p>
+                    {{#eq errorType "AUTHENTICATION_ERROR"}}<p class="body-text">A payment has failed because the <strong>credit card could not be authenticated.</strong></p>{{/eq}}
+                    {{#eq errorType "GENERIC_ERROR"}}<p class="body-text">A credit card payment has failed due to an <strong>unexpected error.</strong></p>{{/eq}}
+                    {{#eq errorType "INVALID_CARD_DETAILS_ERROR"}}<p class="body-text">A payment has failed because the <strong>credit card is invalid or has expired.</strong></p>{{/eq}}
+                    {{#eq errorType "INSUFFICIENT_FUNDS_ERROR"}}<p class="body-text">A payment has failed because the <strong>credit card contained insufficient funds.</strong></p>{{/eq}}
                   </td>
                 </tr>
               </table>
@@ -116,8 +118,8 @@
                     <p class="details-title">Reservation details</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Reservation ID:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{reservationId}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Reservation ID:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{reservationId}}</td>
                       </tr>
                     </table>
                   </td>
@@ -125,8 +127,22 @@
               </table>
               <!-- ==================== /DETAILS BOX ==================== -->
 
-              <!-- Action — previewing: non-INSUFFICIENT_FUNDS path -->
-              <!-- Other scenario (INSUFFICIENT_FUNDS_ERROR): "View reservation" button → {{reservationUrl}} -->
+              {{#eq errorType "INSUFFICIENT_FUNDS_ERROR"}}
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">View the reservation details and click "Manage Payments" to process payments manually.</p>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <a href="{{reservationUrl}}" class="btn">View reservation</a>
+                  </td>
+                </tr>
+              </table>
+              {{else}}
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 16px;">
@@ -141,6 +157,7 @@
                   </td>
                 </tr>
               </table>
+              {{/eq}}
 
               <!-- Sign-off -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">

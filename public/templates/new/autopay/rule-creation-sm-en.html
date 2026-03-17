@@ -101,11 +101,11 @@
                   <td class="box-body" style="padding: 35px;">
 
                     <!-- Card type -->
-                    <p class="label-tag">Card type</p>
+                    <p class="details-title">Card type</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Applies to:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Applies to:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">
                           {{#eq cardType "PHYSICAL"}}Standard Credit Cards{{/eq}}
                           {{#eq cardType "VIRTUAL"}}Virtual Credit Cards{{/eq}}
                         </td>
@@ -113,28 +113,28 @@
                     </table>
 
                     <!-- Rate plan and channel(s) -->
-                    <p class="label-tag">Rate plan and channel(s)</p>
+                    <p class="details-title">Rate plan and channel(s)</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 20px;">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">Applies to:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">{{ratePlan}}<br />{{channel}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Applies to:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{ratePlan}}<br />{{channel}}</td>
                       </tr>
                     </table>
 
                     <!-- Payment rule -->
-                    <p class="label-tag" style="margin-bottom: 8px;">Payment rule</p>
+                    <p class="details-title">Payment rule</p>
                     <p class="detail-bold" style="margin: 0 0 8px 0;">Payment action</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 16px;">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">Type of charge:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Type of charge:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">
                           {{#eq actions.[0].chargeType "FIRST_NIGHT_STAY"}}First night's stay{{/eq}}
                           {{#eq actions.[0].chargeType "PERCENTAGE"}}{{#eq actions.[0].chargeAmount 100}}Full payment{{else}}{{actions.[0].chargeAmount}}%{{/eq}}{{/eq}}
                         </td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">When to charge:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">When to charge:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">
                           {{#eq actions.[0].triggerDate.operand "ACTIVATION_DATE"}}Activation date{{#eq cardType "VIRTUAL"}}{{#if hasChannelsPlus}}<br /><span class="meta-text">Channels Plus VCCs are processed 1 day after the activation date.</span>{{/if}}{{/eq}}{{/eq}}
                           {{#eq actions.[0].triggerDate.operand "TIME_OF_BOOKING"}}Once booking is confirmed{{/eq}}
                           {{#eq actions.[0].triggerDate.operand "CHECK_IN"}}{{#eq actions.[0].triggerDate.operator "<"}}{{#eq actions.[0].triggerDate.value 1}}1 day prior to check-in{{else}}{{actions.[0].triggerDate.value}} days prior to check-in{{/eq}}{{else eq actions.[0].triggerDate.operator ">"}}{{#eq actions.[0].triggerDate.value 1}}1 day after check-in{{else}}{{actions.[0].triggerDate.value}} days after check-in{{/eq}}{{else}}Check-in day{{/eq}}{{/eq}}
@@ -143,8 +143,8 @@
                       </tr>
                       {{#if actions.[0].triggerTime}}
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Time of day:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{actions.[0].triggerTime}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Time of day:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{actions.[0].triggerTime}}</td>
                       </tr>
                       {{/if}}
                     </table>
@@ -154,12 +154,12 @@
                     <p class="detail-bold" style="margin: 0 0 8px 0;">Second action</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom: 16px;">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">Type of charge:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">{{#eq actions.[1].chargeType "REMAINDER"}}Additional amount{{/eq}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Type of charge:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{#eq actions.[1].chargeType "REMAINDER"}}Additional amount{{/eq}}</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">When to charge:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">When to charge:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">
                           {{#eq actions.[1].triggerDate.operand "TIME_OF_BOOKING"}}Once booking is confirmed{{/eq}}
                           {{#eq actions.[1].triggerDate.operand "CHECK_IN"}}{{#eq actions.[1].triggerDate.operator "<"}}{{#eq actions.[1].triggerDate.value 1}}1 day prior to check-in{{else}}{{actions.[1].triggerDate.value}} days prior to check-in{{/eq}}{{else eq actions.[1].triggerDate.operator ">"}}{{#eq actions.[1].triggerDate.value 1}}1 day after check-in{{else}}{{actions.[1].triggerDate.value}} days after check-in{{/eq}}{{else}}Check-in day{{/eq}}{{/eq}}
                           {{#eq actions.[1].triggerDate.operand "CHECK_OUT"}}{{#eq actions.[1].triggerDate.operator "<"}}{{#eq actions.[1].triggerDate.value 1}}1 day prior to check-out{{else}}{{actions.[1].triggerDate.value}} days prior to check-out{{/eq}}{{else eq actions.[1].triggerDate.operator ">"}}{{#eq actions.[1].triggerDate.value 1}}1 day after check-out{{else}}{{actions.[1].triggerDate.value}} days after check-out{{/eq}}{{else}}Check-out day{{/eq}}{{/eq}}
@@ -167,23 +167,23 @@
                       </tr>
                       {{#if actions.[1].triggerTime}}
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Time of day:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{actions.[1].triggerTime}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Time of day:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{actions.[1].triggerTime}}</td>
                       </tr>
                       {{/if}}
                     </table>
                     {{/if}}
 
                     <!-- Rule description -->
-                    <p class="label-tag">Rule description</p>
+                    <p class="details-title">Rule description</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">Rule name:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 8px;">{{name}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Rule name:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{name}}</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">Rule description:</td>
-                        <td class="col detail-text" width="50%" style="padding-bottom: 0;">{{description}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Rule description:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{description}}</td>
                       </tr>
                     </table>
 
@@ -204,8 +204,8 @@
                         </td>
                         <td>
                           <p class="body-bold" style="margin-bottom: 4px;">Remember to update your payment policies</p>
-                          <p style="margin: 0 0 8px 0; font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 22px; color: #333333;">As payments for some direct booking rates are now automated, your Direct Booking payment policies may need updating.</p>
-                          <p style="margin: 0;"><a href="{{directBookingLink}}" class="link" style="font-family: Roboto, Arial, sans-serif; font-size: 14px;">Review and update payment policies</a></p>
+                          <p class="detail-text" style="margin: 0 0 8px 0;">As payments for some direct booking rates are now automated, your Direct Booking payment policies may need updating.</p>
+                          <p style="margin: 0;"><a href="{{directBookingLink}}" class="link">Review and update payment policies</a></p>
                         </td>
                       </tr>
                     </table>

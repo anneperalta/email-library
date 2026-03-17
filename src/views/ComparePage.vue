@@ -1,16 +1,40 @@
 <script setup>
-import { computed } from 'vue'
-import { useRoute, useRouter } from 'vue-router'
+import { computed, ref, watch } from 'vue'
+import { useRoute } from 'vue-router'
 import { templates, statusConfig } from '../data/templates.js'
 import { useComments } from '../composables/useComments.js'
 import CommentsPopup from '../components/CommentsPopup.vue'
+import { processScenario, cleanTemplate } from '../utils/processScenario.js'
 
 const route = useRoute()
-const router = useRouter()
 
 const template = computed(() => templates.find(t => t.id === route.params.id))
 
 const { popup, openComments, commentCount } = useComments()
+
+// ── Scenario toggles ─────────────────────────────────────────────
+const scenario = ref(null)
+
+watch(template, () => {
+  scenario.value = template.value?.scenarios?.[0] ?? null
+}, { immediate: true })
+
+const iframeSrcdocNew = ref(null)
+const iframeSrcdocOld = ref(null)
+
+watch([scenario, template], async () => {
+  if (!template.value) {
+    iframeSrcdocNew.value = null
+    iframeSrcdocOld.value = null
+    return
+  }
+  const newHtml = template.value?.new ? await fetch(template.value.new).then(r => r.text()) : null
+  const process = (html, path) => scenario.value
+    ? processScenario(html, scenario.value, path)
+    : cleanTemplate(html, path)
+  iframeSrcdocNew.value = newHtml ? process(newHtml, template.value.new) : null
+  iframeSrcdocOld.value = null // old pane always uses src directly
+}, { immediate: true })
 </script>
 
 <template>
@@ -39,11 +63,27 @@ const { popup, openComments, commentCount } = useComments()
       </div>
     </div>
 
+    <div v-if="template.scenarios?.length" class="compare__scenario-bar">
+      <button
+        v-for="s in template.scenarios"
+        :key="s.key"
+        class="compare__scenario-btn"
+        :class="{ 'compare__scenario-btn--active': scenario?.key === s.key }"
+        @click="scenario = s"
+      >{{ s.label }}</button>
+    </div>
+
     <div class="compare__stage">
       <div class="compare__pane">
         <div class="compare__pane-label">Old</div>
         <iframe
-          v-if="template.old"
+          v-if="iframeSrcdocOld"
+          :srcdoc="iframeSrcdocOld"
+          class="compare__iframe"
+          sandbox="allow-same-origin"
+        ></iframe>
+        <iframe
+          v-else-if="template.old"
           :src="template.old"
           class="compare__iframe"
           sandbox="allow-same-origin"
@@ -54,7 +94,13 @@ const { popup, openComments, commentCount } = useComments()
       <div class="compare__pane">
         <div class="compare__pane-label">New</div>
         <iframe
-          v-if="template.new"
+          v-if="iframeSrcdocNew"
+          :srcdoc="iframeSrcdocNew"
+          class="compare__iframe"
+          sandbox="allow-same-origin"
+        ></iframe>
+        <iframe
+          v-else-if="template.new"
           :src="template.new"
           class="compare__iframe"
           sandbox="allow-same-origin"
@@ -129,6 +175,33 @@ const { popup, openComments, commentCount } = useComments()
 
 .compare__action-btn:hover {
   background: #eff6ff;
+}
+
+.compare__scenario-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 20px;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.compare__scenario-btn {
+  padding: 3px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 5px;
+  background: #fff;
+  font-size: 12px;
+  cursor: pointer;
+  color: #374151;
+}
+
+.compare__scenario-btn--active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
 }
 
 .compare__stage {
