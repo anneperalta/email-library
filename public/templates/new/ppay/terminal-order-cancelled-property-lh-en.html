@@ -28,11 +28,12 @@
     .body-bold      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
     .details-title  { margin: 0 0 16px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px; color: #333333; }
     .detail-text    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333; }
+    .detail-bold    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 17px; color: #333333; }
+    .order-note     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
     .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
     .link           { color: #000FFF; text-decoration: underline; }
     .footer-link    { color: #333333; text-decoration: underline; }
     .btn            { display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px; }
-    .payment-total  { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
 
     @media screen and (max-width: 480px) {
       .outer-padding { padding: 20px 12px !important; }
@@ -165,43 +166,49 @@
                     {{/eq}}
                     <!-- ==================== /CONDITIONAL ==================== -->
 
-                    <!-- Subtotal + shipping -->
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="border-top: 1px solid #e0e0e0; padding-top: 16px; padding-bottom: 8px;">
-                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                            <tr>
-                              <td class="detail-text" style="padding-bottom: 8px;">Subtotal:</td>
-                              <td class="detail-text" style="padding-bottom: 8px; text-align: right;">{{terminalOrder.itemSubTotal}}</td>
-                            </tr>
-                            <tr>
-                              <td class="detail-text">Shipping:</td>
-                              <td class="detail-text" style="text-align: right;">{{terminalOrder.shipping.amount}}</td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-
-                    <!-- Total -->
-                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                      <tr>
-                        <td style="border-top: 1px solid #e0e0e0; padding-top: 12px; padding-bottom: 8px;">
-                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                            <tr>
-                              <td class="payment-total">Total (excl. tax):</td>
-                              <td class="payment-total" style="text-align: right;">{{terminalOrder.totalAmountWithoutTax}}</td>
-                            </tr>
-                          </table>
-                        </td>
-                      </tr>
-                    </table>
-                    <p class="detail-text" style="font-style: italic; margin-top: 8px;">If applicable, tax will be added to your invoice.</p>
-
                   </td>
                 </tr>
               </table>
               <!-- ==================== /DETAILS BOX ==================== -->
+
+              <!-- ==================== ORDER TOTAL ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-top: 35px; padding-bottom: 4px;">
+                    <p class="details-title">Order total</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 8px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="detail-text" style="padding-bottom: 8px;">Subtotal:</td>
+                        <td class="detail-text" style="padding-bottom: 8px; text-align: right;">{{terminalOrder.itemSubTotal}}</td>
+                      </tr>
+                      <tr>
+                        <td class="detail-text">Shipping:</td>
+                        <td class="detail-text" style="text-align: right;">{{terminalOrder.shipping.amount}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="border-top: 1px solid #e0e0e0; padding-top: 12px; padding-bottom: 8px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="detail-bold">Total (excl. tax):</td>
+                        <td class="detail-bold" style="text-align: right;">{{terminalOrder.totalAmountWithoutTax}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="order-note">If applicable, tax will be added to your invoice.</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /ORDER TOTAL ==================== -->
 
               <!-- CTA button -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
