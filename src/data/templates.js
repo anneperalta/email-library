@@ -568,7 +568,7 @@ export const templates = [
     category: 'Property Pay',
     product: 'LH',
     figma: null,
-    status: 'in-review',
+    status: 'done',
     old: '/templates/old/ppay/terminal-order-cancelled-property-lh-en.html',
     new: '/templates/new/ppay/terminal-order-cancelled-property-lh-en.html',
     scenarios: [
