@@ -28,6 +28,8 @@
     .body-bold      { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 24px; color: #333333; }
     .details-title  { margin: 0 0 16px 0; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 20px; color: #333333; }
     .detail-text    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 400; line-height: 17px; color: #333333; }
+    .detail-bold    { font-family: Roboto, Arial, sans-serif; font-size: 14px; font-weight: 700; line-height: 17px; color: #333333; }
+    .order-note     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 12px; font-weight: 400; line-height: 18px; color: #333333; }
     .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
     .link           { color: #000FFF; text-decoration: underline; }
     .footer-link    { color: #333333; text-decoration: underline; }
@@ -40,6 +42,10 @@
       .info-body    { padding: 20px !important; }
       .col-row      { display: block !important; }
       .col          { width: 100% !important; display: block !important; box-sizing: border-box !important; }
+      .item-row     { display: block !important; }
+      .item-col     { display: block !important; width: 100% !important; box-sizing: border-box !important; }
+      .item-meta    { display: block !important; width: 100% !important; text-align: left !important; white-space: normal !important; padding-left: 0 !important; padding-top: 8px !important; }
+      .btn          { display: block !important; text-align: center !important; }
       .footer-body  { padding: 24px 20px 12px 20px !important; }
       .footer-legal { padding: 0 20px 24px 20px !important; }
     }
@@ -97,7 +103,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <p class="body-text">Great news! Your payment terminal order has been shipped and is on its way to you.</p>
+                    <p class="body-text">We are pleased to let you know that your payment terminal order has been shipped. Once it arrives, simply <a href="https://helpcentre.littlehotelier.com/en/articles/10070508-setting-up-your-payment-terminal" class="link">set up your terminal</a> and <a href="https://helpcentre.littlehotelier.com/en/articles/10070514-processing-payments-with-your-payment-terminal" class="link">start accepting seamless payments</a> at your property!</p>
                   </td>
                 </tr>
               </table>
@@ -106,7 +112,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0" class="details-box">
                 <tr>
                   <td class="box-body" style="padding: 35px;">
-                    <p class="details-title">Shipment details</p>
+                    <p class="details-title">Order details</p>
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
                         <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Order ID:</td>
@@ -117,14 +123,132 @@
                         <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{terminalOrder.shipmentDate}}</td>
                       </tr>
                       <tr class="col-row">
-                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Estimated arrival:</td>
-                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{terminalOrder.estimatedArrivalDate}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Estimated arrival date:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{terminalOrder.estimatedArrivalDate}}</td>
+                      </tr>
+                      <tr class="col-row">
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Tracking number:</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{terminalOrder.shipping.tracking.carrier}} - {{terminalOrder.shipping.tracking.trackingNumber}}</td>
                       </tr>
                     </table>
                   </td>
                 </tr>
               </table>
               <!-- ==================== /DETAILS BOX ==================== -->
+
+              <!-- ==================== ITEM BREAKDOWN ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 20px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td valign="middle">
+                          <p class="details-title" style="margin: 0;">Item breakdown</p>
+                        </td>
+                        <td align="right" valign="middle">
+                          <p class="order-note" style="margin: 0; color: #717171;">Prices in {{terminalOrder.currency}}</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- ==================== CONDITIONAL: Payment terminal ==================== -->
+                {{#eq hasTerminalHardware "true"}}
+                <tr>
+                  <td style="padding-bottom: 20px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="76" valign="top" style="padding-right: 16px; width: 76px;">
+                          <img src="../assets/terminal/terminal.png" alt="Payment terminal" width="60" height="60" style="display: block;" />
+                        </td>
+                        <td valign="top">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr class="item-row">
+                              <td class="item-col" valign="top">
+                                <p class="detail-bold" style="margin: 0 0 4px 0;">Hardware terminal</p>
+                                <p class="detail-text" style="color: #717171; margin: 0 0 2px 0;">Wi-Fi only</p>
+                                <p class="detail-text" style="color: #717171; margin: 0;">{{terminalOrder.terminalHardware.amount}} per device</p>
+                              </td>
+                              <td class="item-meta" valign="top" align="right" style="white-space: nowrap; padding-left: 16px;">
+                                <p class="detail-bold" style="margin: 0 0 4px 0;">{{terminalOrder.terminalHardware.totalAmount}}</p>
+                                <p class="detail-text" style="color: #717171; margin: 0;">Qty: {{terminalOrder.terminalHardware.quantity}}</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {{/eq}}
+                <!-- ==================== /CONDITIONAL ==================== -->
+
+                <!-- ==================== CONDITIONAL: Charging dock ==================== -->
+                {{#eq hasChargingDock "true"}}
+                <tr>
+                  <td style="padding-bottom: 20px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td width="76" valign="top" style="width: 76px;">
+                          <img src="../assets/terminal/dock.png" alt="Charging dock" width="60" height="60" style="display: block;" />
+                        </td>
+                        <td valign="top">
+                          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                            <tr class="item-row">
+                              <td class="item-col" valign="top">
+                                <p class="detail-bold" style="margin: 0 0 4px 0;">Charging dock</p>
+                                <p class="detail-text" style="color: #717171; margin: 0 0 2px 0;">Ethernet, 24/7 charging</p>
+                                <p class="detail-text" style="color: #717171; margin: 0;">{{terminalOrder.chargingDock.amount}} per device</p>
+                              </td>
+                              <td class="item-meta" valign="top" align="right" style="white-space: nowrap; padding-left: 16px;">
+                                <p class="detail-bold" style="margin: 0 0 4px 0;">{{terminalOrder.chargingDock.totalAmount}}</p>
+                                <p class="detail-text" style="color: #717171; margin: 0;">Qty: {{terminalOrder.chargingDock.quantity}}</p>
+                              </td>
+                            </tr>
+                          </table>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                {{/eq}}
+                <!-- ==================== /CONDITIONAL ==================== -->
+
+                <!-- Subtotal + Shipping -->
+                <tr>
+                  <td style="border-top: 1px solid #e0e0e0; padding-top: 12px; padding-bottom: 12px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="detail-text" style="padding-bottom: 8px;">Subtotal</td>
+                        <td class="detail-text" style="padding-bottom: 8px; text-align: right;">{{terminalOrder.itemSubTotal}}</td>
+                      </tr>
+                      <tr>
+                        <td class="detail-text">Shipping</td>
+                        <td class="detail-text" style="text-align: right;">{{terminalOrder.shipping.amount}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+
+                <!-- Total -->
+                <tr>
+                  <td style="border-top: 1px solid #e0e0e0; padding-top: 12px; padding-bottom: 8px;">
+                    <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                      <tr>
+                        <td class="detail-bold">Total</td>
+                        <td class="detail-bold" style="text-align: right;">{{terminalOrder.totalAmountWithoutTax}}</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="order-note" style="font-style: italic; color: #717171;">If applicable, tax will be added to your invoice.</p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /ITEM BREAKDOWN ==================== -->
 
               <!-- CTA button -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -160,7 +284,7 @@
                         </td>
                         <td>
                           <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
-                          <p class="body-text"><a href="{{helpCentreUrl}}" class="link">Visit our Help Centre</a> to find everything you need to know about payment terminals.</p>
+                          <p class="body-text"><a href="{{helpCentreUrl}}" class="link">Visit our Help Centre</a> to find everything you need to know about payment terminals. If you have any questions please don't hesitate to email our support team at <a href="mailto:{{supportEmail}}" class="link">{{supportEmail}}</a>.</p>
                         </td>
                       </tr>
                     </table>
