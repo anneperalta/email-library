@@ -31,6 +31,7 @@
     .legal-text     { margin: 0; font-family: Roboto, Arial, sans-serif; font-size: 10px; font-weight: 400; line-height: 16px; color: #333333; }
     .link           { color: #000FFF; text-decoration: underline; }
     .footer-link    { color: #333333; text-decoration: underline; }
+    .btn            { display: inline-block; background-color: #FF6842; color: #FFFFFF; font-family: Roboto, Arial, sans-serif; font-size: 16px; font-weight: 700; line-height: 18px; text-decoration: none; padding: 15px 30px; border-radius: 100px; }
 
     @media screen and (max-width: 480px) {
       .outer-padding { padding: 20px 12px !important; }
@@ -87,7 +88,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 16px;">
-                    <p class="body-text">Your payment terminal has been disconnected from your Little Hotelier account.</p>
+                    <p class="body-text">You have disconnected your payment terminal from Little Hotelier. You can reconnect the device at any time.</p>
                   </td>
                 </tr>
               </table>
@@ -120,20 +121,13 @@
               </table>
               <!-- ==================== /DETAILS BOX ==================== -->
 
-              <!-- Reconnect paragraph -->
+              <!-- Action button -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-text">To reconnect, visit <a href="{{terminal.link}}" class="link">your terminal settings</a>.</p>
-                  </td>
-                </tr>
-              </table>
-
-              <!-- Support paragraph -->
-              <table width="100%" cellpadding="0" cellspacing="0" border="0">
-                <tr>
-                  <td style="padding-bottom: 35px;">
-                    <p class="body-text">If you have any questions, please email our support team at <a href="mailto:support@littlehotelier.com" class="link">support@littlehotelier.com</a>.</p>
+                  <td style="padding-bottom: 35px;"
+                      data-spacing="action button&#10;↓ 35px (section gap)">
+                    <a href="{{terminal.link}}" class="btn"
+                       data-typography="Roboto · 16px · 700&#10;line-height: 18px · #FFFFFF&#10;bg: #FF6842 · radius: 100px">Reconnect terminal</a>
                   </td>
                 </tr>
               </table>
@@ -163,7 +157,7 @@
                         </td>
                         <td>
                           <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
-                          <p class="body-text"><a href="{{helpCentreUrl}}" class="link">Visit our Help Centre</a> to find everything you need to know about payment terminals.</p>
+                          <p class="body-text">If you have any questions, please don't hesitate to e-mail our support team at <a href="mailto:support@littlehotelier.com" class="link">support@littlehotelier.com</a>.</p>
                         </td>
                       </tr>
                     </table>
