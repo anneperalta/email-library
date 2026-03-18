@@ -72,7 +72,7 @@
                           <img src="../assets/icons/alert.svg" alt="" width="24" height="24" style="display: block;" />
                         </td>
                         <td>
-                          <h2 class="email-subtitle">Action required: Your SiteMinder Pay account has been restricted</h2>
+                          <h2 class="email-subtitle">Verify your SiteMinder Pay account now to continue processing payments</h2>
                         </td>
                       </tr>
                     </table>
@@ -93,7 +93,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 16px;">
-                    <p class="body-text">Your SiteMinder Pay account for {{property.name}} has been restricted as we need you to complete identity verification.</p>
+                    <p class="body-text">Your SiteMinder Pay account for <strong>{{property.name}}</strong> is currently restricted. You cannot process payments or receive payouts until verification is complete.</p>
                   </td>
                 </tr>
               </table>
@@ -102,7 +102,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 35px;">
-                    <p class="body-text">Please complete your verification as soon as possible to restore full access to payment processing.</p>
+                    <p class="body-text">It only takes a few minutes to complete verify your account so you can process payments seamlessly.</p>
                   </td>
                 </tr>
               </table>
@@ -115,6 +115,44 @@
                   </td>
                 </tr>
               </table>
+
+              <!-- ==================== FAQ SECTION ==================== -->
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <h2 class="email-subtitle">Frequently asked questions</h2>
+                  </td>
+                </tr>
+              </table>
+
+              <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">What happens if I don't verify my account?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 24px;">
+                    <p class="body-text">Without verification, you cannot process payments or receive payouts to your bank account. If you don't verify your account within 30 days, your account may be terminated without further notice.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 4px;">
+                    <p class="body-bold">What's required to complete verification?</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 16px;">
+                    <p class="body-text">You'll need to provide documentation that varies based on your location. This could include a scanned copy of a government-issued photo ID, social security number or business registration documents.</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding-bottom: 35px;">
+                    <p class="body-text"><a href="{{helpLink}}" class="link">Learn more</a></p>
+                  </td>
+                </tr>
+              </table>
+              <!-- ==================== /FAQ SECTION ==================== -->
 
               <!-- Sign-off -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -141,7 +179,7 @@
                         </td>
                         <td>
                           <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
-                          <p class="body-text"><a href="{{helpLink}}" class="link">Visit our Help Centre</a> to find everything you need to know about account verification.</p>
+                          <p class="body-text">Need help? Contact our SiteMinder support team at <a href="mailto:support@siteminder.com" class="link">support@siteminder.com</a>.</p>
                         </td>
                       </tr>
                     </table>

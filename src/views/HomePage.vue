@@ -1,13 +1,11 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { computed } from 'vue'
 import { templates, statusConfig, productConfig } from '../data/templates.js'
 import { useComments } from '../composables/useComments.js'
+import { useFilters } from '../composables/useFilters.js'
 import CommentsPopup from '../components/CommentsPopup.vue'
 
-const search = ref('')
-const filterCategory = ref('All')
-const filterStatus = ref('All')
-const filterProduct = ref('All')
+const { search, filterCategory, filterStatus, filterProduct, isFiltered, clearFilters } = useFilters()
 
 const tableTemplates = templates.filter(t => t.category !== 'Base Templates')
 
@@ -70,6 +68,7 @@ const { popup, openComments, commentCount } = useComments()
           {{ s === 'All' ? 'All statuses' : statusConfig[s].label }}
         </option>
       </select>
+      <button v-if="isFiltered" class="home__clear" @click="clearFilters">Clear</button>
     </div>
 
     <div v-if="filtered.length === 0" class="home__empty">No templates match your filters.</div>
@@ -251,6 +250,21 @@ const { popup, openComments, commentCount } = useComments()
   background: #fff;
   outline: none;
   cursor: pointer;
+}
+
+.home__clear {
+  padding: 8px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #fff;
+  color: #374151;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.home__clear:hover {
+  background: #f3f4f6;
 }
 
 .home__table {

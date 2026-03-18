@@ -94,18 +94,18 @@
                     <table width="100%" cellpadding="0" cellspacing="0" border="0">
                       <tr class="col-row">
                         <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Account number:</td>
-                        <td class="col detail-bold" width="50%" valign="top" style="padding-bottom: 8px;">•••• {{bankLast4}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">•••• {{bankLast4}}</td>
                       </tr>
                       {{#eq isDdaTypeBACS "true"}}
                       <tr class="col-row">
                         <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">Sort code:</td>
-                        <td class="col detail-bold" width="50%" valign="top" style="padding-bottom: 8px;">{{sortCode}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 8px;">{{sortCode}}</td>
                       </tr>
                       {{/eq}}
                       {{#if propertyName}}
                       <tr class="col-row">
                         <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">Property name:</td>
-                        <td class="col detail-bold" width="50%" valign="top" style="padding-bottom: 0;">{{propertyName}}</td>
+                        <td class="col detail-text" width="50%" valign="top" style="padding-bottom: 0;">{{propertyName}}</td>
                       </tr>
                       {{/if}}
                     </table>
@@ -151,31 +151,18 @@
                   </td>
                 </tr>
                 <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-text">The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-text">If there are any changes to the amount, date or frequency of your Direct Debit the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed. If you request the organisation to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</p>
-                  </td>
-                </tr>
-                <tr>
-                  <td style="padding-bottom: 16px;">
-                    <p class="body-text">If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.</p>
-                  </td>
-                </tr>
-                <tr>
                   <td style="padding-bottom: 35px;">
-                    <p class="body-text">You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.</p>
+                    <ul style="margin: 0; padding-left: 20px;">
+                      <li class="body-text" style="padding-bottom: 8px;">The Guarantee is offered by all banks and building societies that accept instructions to pay Direct Debits.</li>
+                      <li class="body-text" style="padding-bottom: 8px;">If there are any changes to the amount, date or frequency of your Direct Debit the organisation will notify you (normally 10 working days) in advance of your account being debited or as otherwise agreed. If you request the organisation to collect a payment, confirmation of the amount and date will be given to you at the time of the request.</li>
+                      <li class="body-text" style="padding-bottom: 8px;">If an error is made in the payment of your Direct Debit, by the organisation or your bank or building society, you are entitled to a full and immediate refund of the amount paid from your bank or building society.</li>
+                      <li class="body-text">You can cancel a Direct Debit at any time by simply contacting your bank or building society. Written confirmation may be required. Please also notify the organisation.</li>
+                    </ul>
                   </td>
                 </tr>
               </table>
               {{/eq}}
               <!-- ==================== /BACS GUARANTEE ==================== -->
-
-              <!-- crmId -->
-              {{#if crmId}}<p class="detail-text" style="margin-bottom: 35px;">{{crmId}}</p>{{/if}}
 
               <!-- Sign-off -->
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -202,7 +189,7 @@
                         </td>
                         <td>
                           <p class="body-bold" style="margin-bottom: 4px;">Need more information?</p>
-                          <p class="body-text"><a href="{{helpLink}}" class="link">Visit our Help Centre</a> to find everything you need to know about refunds and direct debits.</p>
+                          <p class="body-text">Visit our <a href="{{helpLink}}" class="link">refunds and direct debit help pages</a> or contact <a href="mailto:{{supportEmail}}" class="link">{{supportEmail}}</a>.</p>
                         </td>
                       </tr>
                     </table>

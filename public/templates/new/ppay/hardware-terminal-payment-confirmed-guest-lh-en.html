@@ -126,7 +126,7 @@
                 </tr>
                 <tr>
                   <td style="padding-bottom: 40px;">
-                    <p class="opening-body">Here is a summary of your payment.</p>
+                    <p class="opening-body">This email is to confirm your payment towards your reservation. We hope you have a wonderful stay.</p>
                   </td>
                 </tr>
               </table>
@@ -159,8 +159,14 @@
                         </td>
                       </tr>
                       <tr>
+                        <td style="padding-bottom: 0px;">
+                          <p class="details-label">Payment date</p>
+                        </td>
+                      </tr>
+                      <tr>
                         <td>
-                          <p class="status-info">{{reservation.payment.date}}</p>
+                          <p class="details-value">{{reservation.payment.date}}</p>
+                          <p class="details-value">{{property.timezone}}</p>
                         </td>
                       </tr>
                     </table>
@@ -193,7 +199,7 @@
               <table width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td style="padding-bottom: 24px;">
-                    <p class="closing-body">This is not intended to be a tax invoice or receipt. Please contact the property if you require an official tax invoice.</p>
+                    <p class="closing-body">If you have any questions or special requests, please don’t hesitate to reach out.</p>
                   </td>
                 </tr>
                 <tr>
